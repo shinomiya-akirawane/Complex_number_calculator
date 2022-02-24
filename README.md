@@ -29,7 +29,7 @@ Bootstrap + Django
 
 #### Tasks 
 
-**Xinyu, Hou:** Templates genrated by Bootstrap
-**TianXiang, Xiong:** Model + SQL
-**Yuhang, Zhou:** urls
-**Zhaoyan, Dong:** View
+ - **Xinyu, Hou:** Templates genrated by Bootstrap
+ - **TianXiang, Xiong:** Model + SQL
+ - **Yuhang, Zhou:** urls
+ - **Zhaoyan, Dong:** View
