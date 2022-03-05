@@ -1,6 +1,7 @@
 # Complex_number_calculator
 A group repository for ENGF0002 
 
+**Please ensure that you work on your own branch, do not merge with master untill the code pass all tests**
 #### Project Strcuture
 
 The structure of the project follows **MVT(Models,Views,templates)** structure
@@ -33,3 +34,6 @@ Bootstrap + Django
  - **TianXiang, Xiong:** Model + SQL
  - **Yuhang, Zhou:** urls
  - **Zhaoyan, Dong:** View
+
+ #### Instrcutions for View.py
+ Use CBV (class basic view), be careful about the **urls**, need to use extra 'as_view' parameter.
