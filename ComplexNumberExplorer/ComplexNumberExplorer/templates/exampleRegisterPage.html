@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Register</title>
+
+</head>
+
+<body>
+
+   <form action="/register/" method="post">
+
+      {% csrf_token %}
+
+      <p>
+
+          <label>用户名</label>
+
+          <input name="user" type="text">
+
+      </p>
+
+      <p>
+
+          <label>密码</label>
+
+          <input name="pwd" type="pwd">
+
+          <input type="submit" value="register" >
+
+          <span style="color: red;">{{error_msg }}</span>
+
+      </p>
+
+  </form>
+
+ </body>

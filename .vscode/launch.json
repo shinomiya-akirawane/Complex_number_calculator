@@ -4,13 +4,15 @@
     // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+        {"name":"Python: Django","type":"python","request":"launch","program":"${workspaceFolder}\\ComplexNumberExplorer\\manage.py","args":["runserver"],"django":true},
         {
             "name": "Python: Django",
             "type": "python",
             "request": "launch",
-            "program": "${workspaceFolder}\\manage.py",
+            "program": "${workspaceFolder}\\ComplexNumberExplorer\\manage.py",
             "args": [
-                "runserver"
+                "runserver",
+                "--noreload"
             ],
             "django": true
         }
