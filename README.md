@@ -33,3 +33,5 @@ Bootstrap + Django
  - **TianXiang, Xiong:** Model + SQL
  - **Yuhang, Zhou:** urls
  - **Zhaoyan, Dong:** View
+
+ #### 
