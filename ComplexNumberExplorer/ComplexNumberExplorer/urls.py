@@ -7,10 +7,12 @@ urlpatterns = [
     # homepage and login system
     path('homepage/', views.homepage),
     path('login/', views.login),
+    path('register/', views.register),
 
     # quiz
+    path('quiz_list/', views.quiz_list),
     path('quiz/', views.quiz),
 
     path('directRegister/', views.directRegister),
-    path('register/',views.registerView),
+
 ]

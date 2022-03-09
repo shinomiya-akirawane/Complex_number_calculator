@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz</title>
+</head>
+<body>
+    <h1>Complex Number Practice Sheet</h1>
+    <p>
+        Question.1 calculate 1 + 1
+    </p>
+    <form method="POST" action="/quiz/">
+        {% csrf_token %}
+        <input type="text" name="answer">
+        <input type="submit" value="提交">
+    </form>
+
+    <p>
+        <a href="" style="display:block; font-size: larger">Previous Question</a>
+        <a href="" style="display:block; text-align: right">Next Question</a>
+    </p>
+    <p><a href="/quiz_list/">Quiz List</a></p>
+    {{ result }}
+
+
+</body>
+</html>
