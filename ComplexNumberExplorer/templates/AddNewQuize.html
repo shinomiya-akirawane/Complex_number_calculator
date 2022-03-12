@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+{% load static %}
 <html lang="en">
   <head>
     <title>teacher_AddNewQuize - prototype</title>
@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
     <meta property="twitter:card" content="summary_large_image" />
+    <!--Bootstrap core CSS -->
+    <link href = "{% static 'bootstrap/css/bootstrap.min.css'%}" rel = "stylesheet">
     <style>
       html {
         line-height: 1.15;
@@ -104,11 +106,11 @@
         color: #63667066;
       }
     </style>
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="{% static 'css/style.css'%}" />
   </head>
   <body>
     <div>
-      <link href="./teacher_add-new-quize.css" rel="stylesheet" />
+      <link rel="stylesheet" href="{% static 'css/AddNewQuize.css'%}" />
 
       <div class="teacher_add-new-quize-container">
         <header
@@ -117,7 +119,7 @@
         >
           <img
             alt="logo"
-            src="public/playground_assets/logo.png"
+            src="/static/img/logo.png"
             class="teacher_add-new-quize-image"
           />
           <div data-type="BurgerMenu" class="navigation-burger-menu">
@@ -139,13 +141,13 @@
             <nav class="teacher_add-new-quize-nav">
               <img
                 alt="image"
-                src="public/playground_assets/classes%20icon-200h.png"
+                src="/static/img/classes%20icon-200h.png"
                 class="teacher_add-new-quize-image1"
               />
               <span class="teacher_add-new-quize-text">Classes</span>
               <img
                 alt="image"
-                src="public/playground_assets/quiz%20icon-200h.png"
+                src="/static/img/quiz%20icon-200h.png"
                 class="teacher_add-new-quize-image2"
               />
               <span class="teacher_add-new-quize-text1">Quiz</span>
@@ -303,5 +305,9 @@
         runAllScripts();
       };
     </script>
+    <!-- import dependence of bootstrap-->
+    <script src = "{% static 'popper/popper.js' %}"></script>
+    <!-- import bootstrap core JS -->
+    <script src = "{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
   </body>
 </html>

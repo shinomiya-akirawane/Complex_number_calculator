@@ -54,7 +54,7 @@ ROOT_URLCONF = 'ComplexNumberExplorer.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'ComplexNumberExplorer/templates')],       # 修改位置
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],       # 修改位置
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -124,6 +124,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # store for statics files,such as pictures
 STATIC_URL = '/static/' # 别名 
+STATIC_ROOT = os.path.join(BASE_DIR, "root")
 STATICFILES_DIRS = [ 
-    os.path.join(BASE_DIR, "ComplexNumberExplorer/statics"), 
+    os.path.join(BASE_DIR, "statics"), 
 ]
