@@ -1,7 +1,6 @@
 # Complex_number_calculator
 A group repository for ENGF0002 
 
-**Please ensure that you work on your own branch, do not merge with master untill the code pass all tests**
 #### Project Strcuture
 
 The structure of the project follows **MVT(Models,Views,templates)** structure
@@ -35,5 +34,11 @@ Bootstrap + Django
  - **Yuhang, Zhou:** urls
  - **Zhaoyan, Dong:** View
 
- #### Instrcutions for View.py
- Use CBV (class basic view), be careful about the **urls**, need to use extra 'as_view' parameter.
+ #### algorithm library instruction
+ 
+**Form of input:**
+ -The type is str 
+ - a+bj *(a and b are real numbers not include pi and e)*
+ - r(cos $\theta$ + jsin$\theta$) *(r ,$\theta$ are real numbers not include pi and e)*
+ - r*e<sup>$\theta$j</sup> *(r ,$\theta$ are real numbers not include pi and e)*
+ - input should not include any space
