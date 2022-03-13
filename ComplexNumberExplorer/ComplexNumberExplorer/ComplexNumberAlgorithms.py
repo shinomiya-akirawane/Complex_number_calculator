@@ -17,6 +17,8 @@ def getForm(inputFormular:str):
         return "error input type"
 
 def list2str(l):
+    if l == []:
+        return ''
     str = ''.join(l)
     return str
 '''
@@ -208,6 +210,7 @@ def equationSeparator(equation:str):
     rightHandSide = rightHandSide.replace(' ','')
     result = {'leftSide':leftHandSide,'rightSide':rightHandSide}
     return result
+
 def signFiliper(temp):
     if temp[1] == '-':
         temp.remove('-')
@@ -233,6 +236,8 @@ def preSideFormular(sideKind,formular):
                 if formular[i-1] == '-':
                     temp.insert(0,'-')
                     temp = signFiliper(temp)
+                elif formular[i-1] == '*':
+                    temp.insert(0,'*')
                 numParts.append(temp)
                 continue
             if formular[j+2] == 'z' and formular[j+1] == '*':
@@ -246,6 +251,9 @@ def preSideFormular(sideKind,formular):
                     temp = signFiliper(temp)
                 temp.insert(0,'1/')
                 paraParts.append(temp)
+            elif formular[i-1] == '*':
+                temp.insert(0,'*')
+                numParts.append(temp)
             else:
                 if formular[i-1] == '-':
                     temp.insert(0,'-')
@@ -254,23 +262,64 @@ def preSideFormular(sideKind,formular):
     if paraParts == []:
         for i in range(0,len(formular)):
             if formular[i] == 'z' and formular[i-1] == '-':
-                paraParts.append(-1)
+                paraParts.append('-1')
             elif formular[i] == 'z':
-                paraParts.append(1)
+                paraParts.append('1')
     result = {sideKind+'ParaList':paraParts,sideKind+'NumList':numParts}
     return result
+
+def Listlist2ListStr(partDic):
+    for k in partDic:
+        for i in range (0,len(partDic[k])):
+            partDic[k][i] = list2str(partDic[k][i])
+    return partDic
+
+def multipleMerge(PartDic):
+    for k in PartDic:
+        for l in range(0,len(PartDic[k])):
+            if '*' in PartDic[k][l]:
+                PartDic[k][l] = PartDic[k][l].replace('*','')
+                PartDic[k][l] = complexMultiple(PartDic[k][l],PartDic[k][l-1],'general')
+                PartDic[k][l-1] = ''
+    for k in PartDic:
+        if '' in PartDic[k]:
+            PartDic[k].remove('')
+    return PartDic
+
+def addMerge(PartDic):
+    for k in PartDic:
+        l = len(PartDic[k])
+        while(l > 1):
+            PartDic[k][0] = complexAdd(PartDic[k][0],PartDic[k][1],'general')
+            del PartDic[k][1]
+            l = len(PartDic[k])
+    return PartDic
 # equations like: p1z -/+/*// (a+bi) = (c+di)
 def linearEquationSolver(equation:str):
     separator = equationSeparator(equation)
     leftSide = separator['leftSide']
     rightSide = separator['rightSide']
-    if '|' in equation:
-        leftSide = leftSide.replace('|','',2)
-        linearEquationSolver(leftSide+'='+rightSide)
-        rightSide = '-' + rightSide
-        linearEquationSolver(leftSide+'='+rightSide)
-    else:
-        leftPartDic =  preSideFormular('left',leftSide)
-        rightPartDic = preSideFormular('right',rightSide)
-        
-linearEquationSolver('z=(2+3i)')
+    leftPartDic =  preSideFormular('left',leftSide)
+    rightPartDic = preSideFormular('right',rightSide)
+    leftPartDic = Listlist2ListStr(leftPartDic)
+    rightPartDic = Listlist2ListStr(rightPartDic)
+    leftPartDic = multipleMerge(leftPartDic)
+    rightPartDic = multipleMerge(rightPartDic)
+    leftPartDic = addMerge(leftPartDic)
+    rightPartDic = addMerge(rightPartDic)
+    if len(leftPartDic['leftNumList']):
+        leftPartDic['leftNumList'][0] = list(leftPartDic['leftNumList'][0])
+        leftPartDic['leftNumList'][0].insert(0,'-')
+        rightPartDic['rightNumList'].append(list2str(signFiliper(leftPartDic['leftNumList'][0])))
+        leftPartDic['leftNumList'][0].clear()
+        rightPartDic = addMerge(rightPartDic)
+    if len(leftPartDic['leftNumList']) != 0 or len(rightPartDic['rightParaList']) != 0:
+        print('merge not complete')
+        print('leftNumList',leftPartDic['leftNumList'])
+        print('rightParaList',rightPartDic['rightParaList'])
+        return
+    result = complexDivide(rightPartDic['rightNumList'][0],leftPartDic['leftParaList'][0],'general')
+    return result
+    print(leftPartDic)
+    print(rightPartDic)
+print(linearEquationSolver('-(1+2j)*z=-(1+2j)*(3+4j)'))
