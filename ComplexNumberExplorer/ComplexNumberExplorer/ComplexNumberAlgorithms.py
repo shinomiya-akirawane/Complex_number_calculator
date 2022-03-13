@@ -1,6 +1,8 @@
 from math import acos,asin
 from cmath import * 
 from os import readlink
+from tkinter.ttk import Separator
+from turtle import left, right
 from unittest import result
 #accepted input equation and return its type.
 def getForm(inputFormular:str):
@@ -186,3 +188,89 @@ def complexDivide(z1:str,z2:str,targetForm):
     result = result.replace(')','')
     result = formTranslation(result,targetForm)
     return result
+
+def equationSeparator(equation:str):
+    leftHandSide = ''
+    rightHandSide = []
+    for letter in equation:
+        if letter == '=':
+            break
+        else:
+            leftHandSide += letter
+    leftHandSide = leftHandSide.replace(' ','')
+    for i in range(len(equation)-1,0,-1):
+        if equation[i] == '=':
+            break
+        else:
+            rightHandSide.append(equation[i])
+    rightHandSide.reverse()
+    rightHandSide=list2str(rightHandSide)
+    rightHandSide = rightHandSide.replace(' ','')
+    result = {'leftSide':leftHandSide,'rightSide':rightHandSide}
+    return result
+def signFiliper(temp):
+    if temp[1] == '-':
+        temp.remove('-')
+        temp.remove('-')
+    for i in range(1,len(temp)-1):
+        if temp[i] == '+':
+            temp[i] = '-'
+        elif temp[i] == '-':
+            temp[i] = '+'
+    return temp
+
+def preSideFormular(sideKind,formular):
+    numParts = []
+    paraParts = []
+    for i in range (0,len(formular)-1):
+        temp = []
+        if formular[i] == '(':
+            j=i+1
+            while(formular[j]!=')'):
+                temp.append(formular[j])
+                j+=1
+            if j+2 > len(formular):
+                if formular[i-1] == '-':
+                    temp.insert(0,'-')
+                    temp = signFiliper(temp)
+                numParts.append(temp)
+                continue
+            if formular[j+2] == 'z' and formular[j+1] == '*':
+                if formular[i-1] == '-':
+                    temp.insert(0,'-')
+                    temp = signFiliper(temp)
+                paraParts.append(temp)
+            elif formular[i-2] == 'z' and formular[i-1] == '/':
+                if formular[i-3] == '-':
+                    temp.insert(0,'-')
+                    temp = signFiliper(temp)
+                temp.insert(0,'1/')
+                paraParts.append(temp)
+            else:
+                if formular[i-1] == '-':
+                    temp.insert(0,'-')
+                    temp = signFiliper(temp)
+                numParts.append(temp)
+    if paraParts == []:
+        for i in range(0,len(formular)):
+            if formular[i] == 'z' and formular[i-1] == '-':
+                paraParts.append(-1)
+            elif formular[i] == 'z':
+                paraParts.append(1)
+    result = {sideKind+'ParaList':paraParts,sideKind+'NumList':numParts}
+    return result
+# equations like: p1z -/+/*// (a+bi) = (c+di)
+def linearEquationSolver(equation:str):
+    separator = equationSeparator(equation)
+    leftSide = separator['leftSide']
+    rightSide = separator['rightSide']
+    if '|' in equation:
+        leftSide = leftSide.replace('|','',2)
+        linearEquationSolver(leftSide+'='+rightSide)
+        rightSide = '-' + rightSide
+        linearEquationSolver(leftSide+'='+rightSide)
+    else:
+        leftPartDic =  preSideFormular('left',leftSide)
+        rightPartDic = preSideFormular('right',rightSide)
+        
+linearEquationSolver('z=(2+3i)')
