@@ -1,9 +1,7 @@
 from math import acos,asin
 from cmath import * 
-from os import readlink
-from tkinter.ttk import Separator
-from turtle import left, right
-from unittest import result
+import matplotlib.pyplot as plt
+import numpy as np
 #accepted input equation and return its type.
 def getForm(inputFormular:str):
     inputlen = len(inputFormular)
@@ -320,6 +318,24 @@ def linearEquationSolver(equation:str):
         return
     result = complexDivide(rightPartDic['rightNumList'][0],leftPartDic['leftParaList'][0],'general')
     return result
-    print(leftPartDic)
-    print(rightPartDic)
-print(linearEquationSolver('-(1+2j)*z=-(1+2j)*(3+4j)'))
+# +, -, *, /
+def coordinatesGeneratorForSimpleCal(equation:str):
+    pass
+# a + bj
+def coordinatesGeneratorForSingleNum(num:str):
+    parts = extractParts(num)
+    real = float(list2str(parts['real']))
+    img = float(list2str(parts['img']))
+    x = real
+    y = img
+    axisLen = max(abs(x),abs(y))*2
+    plt.xlabel('real')
+    plt.xlim(min(-axisLen,axisLen),max(-axisLen,axisLen))
+    plt.ylabel('image')
+    plt.ylim(min(-axisLen,axisLen),max(-axisLen,axisLen))
+    plt.title(num)
+    plt.grid(True)
+    plt.quiver(0,0,x,y,scale = 1,scale_units = 'xy', angles = 'xy')
+    plt.show()
+#print(linearEquationSolver('-(1+2j)*z=-(1+2j)*(3+4j)'))
+coordinatesGeneratorForSingleNum('-2+4j')
