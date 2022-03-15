@@ -1,5 +1,6 @@
 from math import acos,asin
-from cmath import * 
+from cmath import *
+from click import pass_context 
 import matplotlib.pyplot as plt
 import numpy as np
 #accepted input equation and return its type.
@@ -318,24 +319,98 @@ def linearEquationSolver(equation:str):
         return
     result = complexDivide(rightPartDic['rightNumList'][0],leftPartDic['leftParaList'][0],'general')
     return result
+def extractEquation(equation:str):
+    modules = []
+    index = 0
+    for i in range(0,len(equation)):
+        if equation[i] == '(':
+            modules.append([])
+            j=i+1
+            while(equation[j] !=')'):
+                modules[index].append(equation[j])
+                j+=1
+            index+=1
+    return modules
+# only support for (a+bi) +/-/*/ / (c+di)*n
+def combinedCal(equation:str):
+    modules = []
+    index = 0
+    for i in range(0,len(equation)):
+        if equation[i] == '(':
+            modules.append([])
+            if i-1>=0:
+                modules[index].append(equation[i-1])
+            j=i
+            while(equation[j] !=')'):
+                modules[index].append(equation[j])
+                j+=1
+            index+=1
+    length = len(modules)
+    modules[0].remove('(')
+    while(length !=1 ):
+        if modules[1][0] == '(':
+            modules[1].remove('(')
+        elif modules[1][0] == '-':
+            modules[1].remove('(')
+            modules[1] = signFiliper(modules[1])
+            if i != 0:
+                z1 = list2str(modules[1])
+                z2 = list2str(modules[0])
+                modules[1] = list(complexAdd(z1,z2,'general'))
+                modules.pop(0)
+        elif modules[1][0] == '+':
+            modules[1].remove('+')
+            modules[1].remove('(')
+            if i != 0:
+                z1 = list2str(modules[1])
+                z2 = list2str(modules[0])
+                modules[1] = list(complexAdd(z1,z2,'general'))
+                modules.pop(0)
+        elif modules[1][0] == '*':
+            modules[1].remove('*')
+            modules[1].remove('(')
+            if i != 0:
+                z1 = list2str(modules[1])
+                z2 = list2str(modules[0])
+                modules[1] = list(complexMultiple(z1,z2,'general'))
+                modules.pop(0)
+        elif modules[1][0] == '/':
+            modules[1].remove('/')
+            modules[1].remove('(')
+            if i != 0:
+                z1 = list2str(modules[1])
+                z2 = list2str(modules[0])
+                modules[1] = list(complexDivide(z1,z2,'general'))
+                modules.pop(0)
+        length = len(modules)
+    return(list2str(modules[0]))
 # +, -, *, /
-def coordinatesGeneratorForSimpleCal(equation:str):
-    pass
-# a + bj
-def coordinatesGeneratorForSingleNum(num:str):
-    parts = extractParts(num)
-    real = float(list2str(parts['real']))
-    img = float(list2str(parts['img']))
-    x = real
-    y = img
-    axisLen = max(abs(x),abs(y))*2
+def plotForSimpleCal(equation:str):
+    nums = extractEquation(equation)
+    nums.append(combinedCal(equation))
+    plotForNums(nums)
+# ['a + bj','c + dj']
+def plotForNums(nums:list):
+    fig = plt.figure()
     plt.xlabel('real')
-    plt.xlim(min(-axisLen,axisLen),max(-axisLen,axisLen))
     plt.ylabel('image')
-    plt.ylim(min(-axisLen,axisLen),max(-axisLen,axisLen))
-    plt.title(num)
     plt.grid(True)
-    plt.quiver(0,0,x,y,scale = 1,scale_units = 'xy', angles = 'xy')
+    maxLen = -9999999
+    for num in nums:
+        parts = extractParts(num)
+        real = float(list2str(parts['real']))
+        img = float(list2str(parts['img']))
+        x = real
+        y = img
+        if max(abs(x),abs(y)) > maxLen:
+            maxLen = max(abs(x),abs(y))
+        plt.quiver(0,0,x,y,scale = 1,scale_units = 'xy', angles = 'xy')
+    axisLen = maxLen*2
+    plt.xlim(min(-axisLen,axisLen),max(-axisLen,axisLen))
+    plt.ylim(min(-axisLen,axisLen),max(-axisLen,axisLen))
+    plt.quiver(-axisLen,0,axisLen,0,scale = 0.5,scale_units = 'xy', angles = 'xy')
+    plt.quiver(0,-axisLen,0,axisLen,scale = 0.5,scale_units = 'xy', angles = 'xy')
     plt.show()
 #print(linearEquationSolver('-(1+2j)*z=-(1+2j)*(3+4j)'))
-coordinatesGeneratorForSingleNum('-2+4j')
+#plotForSingleNum('-2+4j')
+plotForSimpleCal('(1+2j)*(2+3j)')
