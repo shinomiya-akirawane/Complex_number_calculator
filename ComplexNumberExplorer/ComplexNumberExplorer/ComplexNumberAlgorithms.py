@@ -1,8 +1,8 @@
-from math import acos,asin
+from math import tan
 from cmath import *
-from click import pass_context 
 import matplotlib.pyplot as plt
 import numpy as np
+from pylab import *
 #accepted input equation and return its type.
 def getForm(inputFormular:str):
     inputlen = len(inputFormular)
@@ -384,14 +384,14 @@ def combinedCal(equation:str):
                 modules.pop(0)
         length = len(modules)
     return(list2str(modules[0]))
-# +, -, *, /
+# (a+bj) +, -, *, / (c+dj)
 def plotForSimpleCal(equation:str):
     nums = extractEquation(equation)
     nums.append(combinedCal(equation))
     plotForNums(nums)
 # ['a + bj','c + dj']
 def plotForNums(nums:list):
-    fig = plt.figure()
+    plt.figure()
     plt.xlabel('real')
     plt.ylabel('image')
     plt.grid(True)
@@ -411,6 +411,103 @@ def plotForNums(nums:list):
     plt.quiver(-axisLen,0,axisLen,0,scale = 0.5,scale_units = 'xy', angles = 'xy')
     plt.quiver(0,-axisLen,0,axisLen,scale = 0.5,scale_units = 'xy', angles = 'xy')
     plt.show()
+# |z-(a+bj)| = r, |z-(a+bj)| = |z-(c+dj)|, arg[z-(a+bj)] = a*pi, |z|+|z-(a+bi)| = r
+def plotForEquation(equation:str):
+    sides = equationSeparator(equation)
+    leftSide = sides['leftSide']
+    rightSide = sides['rightSide']
+    if '|' in rightSide:
+        leftPoint = extractEquation(leftSide)
+        rightPoint = extractEquation(rightSide)
+        leftParts = extractParts(list2str(leftPoint[0]))
+        rightParts = extractParts(list2str(rightPoint[0]))
+        x1 = float(list2str(leftParts['real']))
+        y1 = float(list2str(leftParts['img']))
+        x2 = float(list2str(rightParts['real']))
+        y2 = float(list2str(rightParts['img']))
+        axisLen = max((abs(x2-x1)),abs(y2-y1))*5
+        gradient = (y2-y1)/(x2-x1)
+        lineX = np.linspace(x1,x2)
+        lineY = gradient*lineX + (y2-gradient*x2)
+        verticalG = -1/gradient
+        midX= (x1+x2)/2 
+        midY= (y1+y2)/2 
+        verticalX = np.linspace(-10000,10000)
+        verticalY = verticalG*verticalX + midY - verticalG*midX
+        plt.figure()
+        plt.xlabel('real')
+        plt.ylabel('image')
+        plt.grid(True)
+        plt.xlim(min(-axisLen,axisLen),max(-axisLen,axisLen))
+        plt.ylim(min(-axisLen,axisLen),max(-axisLen,axisLen))
+        plt.quiver(-axisLen,0,axisLen,0,scale = 0.5,scale_units = 'xy', angles = 'xy')
+        plt.quiver(0,-axisLen,0,axisLen,scale = 0.5,scale_units = 'xy', angles = 'xy')
+        plt.plot(x1,y1,'.r')
+        plt.text(x1,y1,list2str(leftPoint[0]))
+        plt.text(x2,y2,list2str(rightPoint[0]))
+        plt.plot(x2,y2,'.r')
+        plt.plot(lineX,lineY,'g--')
+        plt.plot(verticalX,verticalY)
+        plt.show()
+    elif 'pi' in rightSide:
+        leftPoint = extractEquation(leftSide)
+        leftParts = extractParts(list2str(leftPoint[0]))
+        rightParts = rightSide
+        x = float(list2str(leftParts['real']))
+        y = float(list2str(leftParts['img']))
+        axisLen = max((abs(x)),abs(y))*5
+        paraX = np.linspace(x,10000)
+        paraY = y + paraX*0
+        i=0
+        piPara = ''
+        while rightParts[i] != '*':
+            piPara += rightParts[i]
+            i+=1
+        piPara = float(piPara)
+        gradient = tan(piPara*pi)
+        angleX = np.linspace(x,10000)
+        angleY = gradient*angleX + y - gradient*x
+        plt.figure()
+        plt.xlabel('real')
+        plt.ylabel('image')
+        plt.grid(True)
+        plt.xlim(min(-axisLen,axisLen),max(-axisLen,axisLen))
+        plt.ylim(min(-axisLen,axisLen),max(-axisLen,axisLen))
+        plt.quiver(-axisLen,0,axisLen,0,scale = 0.5,scale_units = 'xy', angles = 'xy')
+        plt.quiver(0,-axisLen,0,axisLen,scale = 0.5,scale_units = 'xy', angles = 'xy')
+        plt.plot(x,y,'.r')
+        plt.plot(paraX,paraY,'g--')
+        plt.plot(angleX,angleY)
+        plt.text(x,y,str(piPara)+'*pi')
+        plt.show()
+    else:
+        leftPoint = extractEquation(leftSide)
+        leftParts = extractParts(list2str(leftPoint[0]))
+        rightParts = float(rightSide)
+        x = float(list2str(leftParts['real']))
+        y = float(list2str(leftParts['img']))
+        radius = rightParts
+        axisLen = abs(radius)+abs(y*1.25)
+        CircleX = CircleY = np.arange(-radius,radius,0.1)
+        CircleX, CircleY = np.meshgrid(CircleX, CircleY)
+        figure, axes = plt.subplots()
+        paraX = np.linspace(x,x+radius)
+        paraY = y + paraX*0
+        plt.xlabel('real')
+        plt.ylabel('image')
+        plt.grid(True)
+        plt.xlim(min(-axisLen,axisLen),max(-axisLen,axisLen))
+        plt.ylim(min(-axisLen,axisLen),max(-axisLen,axisLen))
+        plt.quiver(-axisLen,0,axisLen,0,scale = 0.5,scale_units = 'xy', angles = 'xy')
+        plt.quiver(0,-axisLen,0,axisLen,scale = 0.5,scale_units = 'xy', angles = 'xy')
+        plt.plot(x,y,'.r')
+        plt.text(x,y,list2str(leftPoint[0]))
+        c = plt.Circle((x,y),radius,fill = False)
+        axes.add_artist(c)
+        axes.set_aspect(1)
+        plt.plot(paraX,paraY,'g--')
+        plt.text(x+radius/2,y,str(radius))
+        plt.show()
 #print(linearEquationSolver('-(1+2j)*z=-(1+2j)*(3+4j)'))
 #plotForSingleNum('-2+4j')
-plotForSimpleCal('(1+2j)*(2+3j)')
+plotForEquation('|z-(-3-8j)| = 5')
