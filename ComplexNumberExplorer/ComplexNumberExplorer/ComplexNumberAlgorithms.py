@@ -1,5 +1,6 @@
-from math import tan
+from math import *
 from cmath import *
+from tkinter.tix import Form
 import matplotlib.pyplot as plt
 import numpy as np
 from pylab import *
@@ -13,9 +14,8 @@ class FormTranslation:
             return str
     @staticmethod
     def list2strPro(complexList):
-        for list in complexList:
-            for i in range (0,len(complexList[list])):
-                complexList[list][i] = FormTranslation.list2str(complexList[list][i])
+        for list in range(0,len(complexList)):
+            complexList[list] = FormTranslation.list2str(complexList[list])
         return complexList
     @staticmethod
     #accepted input equation and return its type.
@@ -78,9 +78,9 @@ class FormTranslation:
 class StrPreOperation:
     '''
         example of outputs:
-        2e^3i: {'real':'2','img':'3'}
-        3cos2pi+4sin2pii: {'real':"3cos2pi",'img':"4sin2pii"}
-        2+3i: {'real':'2','img':'3'}
+        2e^3j: {'real':'2','img':'3'}
+        3cos2pi+4sin2pij: {'real':"3cos2pi",'img':"4sin2pij"}
+        2+3j: {'real':'2','img':'3'}
     '''
     @staticmethod
     def extractParts(inputFormular:str):
@@ -160,7 +160,7 @@ class StrPreOperation:
         result = {'leftSide':leftHandSide,'rightSide':rightHandSide}
         return result
     @staticmethod
-    def preSideFormular(sideKind,formular):
+    def preSideFormular(sideKind:str,formular:str):
         numParts = []
         paraParts = []
         for i in range (0,len(formular)-1):
@@ -173,7 +173,7 @@ class StrPreOperation:
                 if j+2 > len(formular):
                     if formular[i-1] == '-':
                         temp.insert(0,'-')
-                        temp = MathOperation.MathOperation.signFiliper(temp)
+                        temp = MathOperation.signFiliper(temp)
                     elif formular[i-1] == '*':
                         temp.insert(0,'*')
                     numParts.append(temp)
@@ -181,12 +181,12 @@ class StrPreOperation:
                 if formular[j+2] == 'z' and formular[j+1] == '*':
                     if formular[i-1] == '-':
                         temp.insert(0,'-')
-                        temp = MathOperation.MathOperation.signFiliper(temp)
+                        temp = MathOperation.signFiliper(temp)
                     paraParts.append(temp)
                 elif formular[i-2] == 'z' and formular[i-1] == '/':
                     if formular[i-3] == '-':
                         temp.insert(0,'-')
-                        temp = MathOperation.MathOperation.signFiliper(temp)
+                        temp = MathOperation.signFiliper(temp)
                     temp.insert(0,'1/')
                     paraParts.append(temp)
                 elif formular[i-1] == '*':
@@ -195,13 +195,13 @@ class StrPreOperation:
                 else:
                     if formular[i-1] == '-':
                         temp.insert(0,'-')
-                        temp = MathOperation.MathOperation.signFiliper(temp)
+                        temp = MathOperation.signFiliper(temp)
                     numParts.append(temp)
         if paraParts == []:
             for i in range(0,len(formular)):
                 if formular[i] == 'z' and formular[i-1] == '-':
                     paraParts.append('-1')
-                elif formular[i] == 'z':
+                elif formular[i] == 'z'and formular[i-1] != '*':
                     paraParts.append('1')
         result = {sideKind+'ParaList':paraParts,sideKind+'NumList':numParts}
         return result
@@ -281,7 +281,7 @@ class MathOperation:
         result = FormTranslation.formTranslation(result,targetForm)
         return result
     @staticmethod
-    def signFiliper(temp):
+    def signFiliper(temp:list):
         if temp[1] == '-':
             temp.remove('-')
             temp.remove('-')
@@ -292,7 +292,7 @@ class MathOperation:
                 temp[i] = '+'
         return temp
     @staticmethod
-    def multipleMerge(PartDic):
+    def multipleMerge(PartDic:dict):
         for k in PartDic:
             for l in range(0,len(PartDic[k])):
                 if '*' in PartDic[k][l]:
@@ -313,8 +313,8 @@ class MathOperation:
                 l = len(PartDic[k])
         return PartDic
 class MathCalculator:
-
-    # equations like: p1z -/+/*// (a+bi) = (c+di)
+    # equations like: p*z (-/+/*//) (a+bj) = (c+dj)
+    #p must be (a+bj) form
     @staticmethod
     def linearEquationSolver(equation:str):
         separator = StrPreOperation.equationSeparator(equation)
@@ -322,8 +322,10 @@ class MathCalculator:
         rightSide = separator['rightSide']
         leftPartDic =  StrPreOperation.preSideFormular('left',leftSide)
         rightPartDic = StrPreOperation.preSideFormular('right',rightSide)
-        leftPartDic = FormTranslation.list2strPro(leftPartDic)
-        rightPartDic = FormTranslation.list2strPro(rightPartDic)
+        leftPartDic['leftParaList'] = FormTranslation.list2strPro(leftPartDic['leftParaList'])
+        leftPartDic['leftNumList'] = FormTranslation.list2strPro(leftPartDic['leftNumList'])
+        rightPartDic['rightParaList'] = FormTranslation.list2strPro(rightPartDic['rightParaList'])
+        rightPartDic['rightNumList'] = FormTranslation.list2strPro(rightPartDic['rightNumList'])
         leftPartDic = MathOperation.multipleMerge(leftPartDic)
         rightPartDic = MathOperation.multipleMerge(rightPartDic)
         leftPartDic = MathOperation.addMerge(leftPartDic)
@@ -332,7 +334,7 @@ class MathCalculator:
             leftPartDic['leftNumList'][0] = list(leftPartDic['leftNumList'][0])
             leftPartDic['leftNumList'][0].insert(0,'-')
             rightPartDic['rightNumList'].append(FormTranslation.list2str(MathOperation.signFiliper(leftPartDic['leftNumList'][0])))
-            leftPartDic['leftNumList'][0].clear()
+            del leftPartDic['leftNumList'][0]
             rightPartDic = MathOperation.addMerge(rightPartDic)
         if len(leftPartDic['leftNumList']) != 0 or len(rightPartDic['rightParaList']) != 0:
             print('merge not complete')
@@ -342,7 +344,7 @@ class MathCalculator:
         result = MathOperation.complexDivide(rightPartDic['rightNumList'][0],leftPartDic['leftParaList'][0],'general')
         return result
 
-    # only support for (a+bi) +/-/*/ / (c+di)*n
+    # only support for formular has this format: (a+bi) (+/-/*/ /) (c+di)*n
     @staticmethod
     def combinedCal(equation:str):
         modules = []
@@ -384,6 +386,8 @@ class MathCalculator:
                 if i != 0:
                     z1 = FormTranslation.list2str(modules[1])
                     z2 = FormTranslation.list2str(modules[0])
+                    if z2[0] == '-' and z2[1] == '-':
+                        z2 = FormTranslation.list2str (MathOperation.signFiliper(list(z2)))
                     modules[1] = list(MathOperation.complexMultiple(z1,z2,'general'))
                     modules.pop(0)
             elif modules[1][0] == '/':
@@ -399,7 +403,7 @@ class MathCalculator:
 
 class Graph():
     @staticmethod
-    def plotaxis(axisLen):
+    def plotAxis(axisLen):
         plt.xlabel('real')
         plt.ylabel('image')
         plt.grid(True)
@@ -409,9 +413,9 @@ class Graph():
         plt.quiver(0,-axisLen,0,axisLen,scale = 0.5,scale_units = 'xy', angles = 'xy')
     # (a+bj) +, -, *, / (c+dj)
     @staticmethod
-    def plotForSimpleCal(equation:str):
-        plt.figure()
+    def plotForCombinedCal(equation:str):
         nums = StrPreOperation.extractEquation(equation)
+        nums = FormTranslation.list2strPro(nums)
         nums.append(MathCalculator.combinedCal(equation))
         Graph.plotForNums(nums)
     # ['a + bj','c + dj']
@@ -428,12 +432,24 @@ class Graph():
             if max(abs(x),abs(y)) > maxLen:
                 maxLen = max(abs(x),abs(y))
             plt.quiver(0,0,x,y,scale = 1,scale_units = 'xy', angles = 'xy')
+            plt.text(x,y,str(real)+'+'+str(img)+'j')
         axisLen = maxLen*2
-        Graph.plotaxis(axisLen)
+        Graph.plotAxis(axisLen)
         plt.show()
-    # |z-(a+bj)| = r, |z-(a+bj)| = |z-(c+dj)|, arg[z-(a+bj)] = a*pi
+    #|z-(a+bj)| = r, |z-(a+bj)| = |z-(c+dj)|, arg[z-(a+bj)] = a*pi, # equations like: p*z (-/+/*//) (a+bj) = (c+dj),p must be (a+bj) form
     @staticmethod
     def plotForEquation(equation:str):
+        sides = StrPreOperation.equationSeparator(equation)
+        leftSide = sides['leftSide']
+        rightSide = sides['rightSide']
+        if 'arg' in leftSide or '|' in leftSide:
+            Graph.plotForAbsEquation(equation)
+        else:
+            ans = MathCalculator.linearEquationSolver(equation)
+            Graph.plotForNums([ans])
+    # |z-(a+bj)| = r, |z-(a+bj)| = |z-(c+dj)|, arg[z-(a+bj)] = a*pi
+    @staticmethod
+    def plotForAbsEquation(equation:str):
         sides = StrPreOperation.equationSeparator(equation)
         leftSide = sides['leftSide']
         rightSide = sides['rightSide']
@@ -456,7 +472,7 @@ class Graph():
             midY= (y1+y2)/2 
             verticalX = np.linspace(-10000,10000)
             verticalY = verticalG*verticalX + midY - verticalG*midX
-            Graph.plotaxis(axisLen)
+            Graph.plotAxis(axisLen)
             plt.plot(x1,y1,'.r')
             plt.text(x1,y1,FormTranslation.list2str(leftPoint[0]))
             plt.text(x2,y2,FormTranslation.list2str(rightPoint[0]))
@@ -483,7 +499,7 @@ class Graph():
             gradient = tan(piPara*pi)
             angleX = np.linspace(x,10000)
             angleY = gradient*angleX + y - gradient*x
-            Graph.plotaxis(axisLen)
+            Graph.plotAxis(axisLen)
             plt.plot(x,y,'.r')
             plt.plot(paraX,paraY,'g--')
             plt.plot(angleX,angleY)
@@ -502,7 +518,7 @@ class Graph():
             figure, axes = plt.subplots()
             paraX = np.linspace(x,x+radius)
             paraY = y + paraX*0
-            Graph.plotaxis(axisLen)
+            Graph.plotAxis(axisLen)
             plt.plot(x,y,'.r')
             plt.text(x,y,FormTranslation.list2str(leftPoint[0]))
             c = plt.Circle((x,y),radius,fill = False)
@@ -511,8 +527,11 @@ class Graph():
             plt.plot(paraX,paraY,'g--')
             plt.text(x+radius/2,y,str(radius))
             plt.show()
-#print(linearEquationSolver('-(1+2j)*z=-(1+2j)*(3+4j)'))
 #Graph.plotForEquation('|z-(-3-8j)| = 5')
 #Graph.plotForEquation('|z-(-2+3j)| = |z-(4+5j)|')
-Graph.plotForEquation('arg[z-(1+2j)] = 0.3*pi')
+#Graph.plotForEquation('arg[z-(1+2j)] = 0.3*pi')
+#Graph.plotForEquation('-(1+2j)*z-(3+4j)=(3+1j)')
 #Plot.plotForNums(['1+2j','3+3j'])
+#print(MathCalculator.linearEquationSolver('-(1+2j)*z-(3+4j)=(3+1j)'))
+#print(MathCalculator.combinedCal('-(-1+2j)*(3+4j)'))
+#Graph.plotForCombinedCal('-(-1+2j)*(3+4j)')
