@@ -2,7 +2,7 @@
 {% load static %}
 <html lang="en">
   <head>
-    <title>prototype</title>
+    <title>Complex Number Explorer</title>
     <meta property="og:title" content="prototype" />
     <meta property="og:title" content="Login_Signup - prototype" />
     <meta property="og:title" content="teacher_AddNewQuize - prototype" />
@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
     <meta property="twitter:card" content="summary_large_image" />
+    <link rel="shortcut icon" href="../statics/img/logo.ico">
     <!--Bootstrap core CSS -->
     <link rel = "stylesheet" href = "{% static 'bootstrap/css/bootstrap.min.css'%}">
     <style>
@@ -63,24 +64,31 @@
             </svg>
           </div>
           <a
-            href="/login_signup.html"
+            href="/login/"
             class="home-primary-btn button-primary button"
           >
             Login/Sign up
           </a>
         </header>
+
         <div class="home-container01">
-          <div class="home-input-container">
-            <div class="home-container02 input">
-              <input
-                type="text"
-                placeholder="Enter an equation"
-                class="home-input input"
-                id = "txt"
-              />
+          <form method="POST" action="/home/">
+            {% csrf_token %}
+            <div class="home-input-container">
+                <div class="home-container02 input">
+                <input
+                  type="text"
+                  placeholder="Enter an equation"
+                  class="home-input input"
+                  id = "txt"
+                  name="input"
+                />
+              </div>
+              <button class="home-button button-primary button" type="submit">Draw</button>
             </div>
-            <button class="home-button button-primary button">Draw</button>
-          </div>
+          </form>
+
+
           <div class="home-sidebar">
             <nav class="home-nav">
               <img
@@ -107,6 +115,7 @@
               <a href="/login_signup.html" class="home-navlink2">Tacher</a>
             </nav>
           </div>
+
           <div class="home-container03"></div>
           <div class="home-container04">
             <div class="home-container05">

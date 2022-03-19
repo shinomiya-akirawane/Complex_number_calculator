@@ -6,5 +6,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', views.home),
     path('login/', views.loginSignUp),
-    path('newQuiz/', views.AddNewQuiz),
+    path('addNewQuiz/', views.addNewQuiz),
+    path('studentQuiz/', views.studentQuiz),
+    path('quiz/', views.quiz),
 ]
