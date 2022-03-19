@@ -1,20 +1,95 @@
 <!DOCTYPE html>
 {% load static %}
+
 <html lang="en">
   <head>
-    <title>Complex Number Explorer</title>
+    <title>prototype</title>
     <meta property="og:title" content="prototype" />
-    <meta property="og:title" content="Login_Signup - prototype" />
-    <meta property="og:title" content="teacher_AddNewQuize - prototype" />
+    <meta property="og:title" content="LoginSignup - prototype" />
+    <meta property="og:title" content="500Error - prototype" />
+    <meta property="og:title" content="TeacherClasses - prototype" />
+    <meta property="og:title" content="400Error - prototype" />
+    <meta property="og:title" content="QuizHistory - prototype" />
+    <meta property="og:title" content="TakingQuiz_01 - prototype" />
+    <meta property="og:title" content="CreateQuiz - prototype" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
     <meta property="twitter:card" content="summary_large_image" />
-    <link rel="shortcut icon" href="../statics/img/logo.ico">
     <!--Bootstrap core CSS -->
-    <link rel = "stylesheet" href = "{% static 'bootstrap/css/bootstrap.min.css'%}">
+    <link
+      rel="stylesheet"
+      href="{% static 'bootstrap/css/bootstrap.min.css'%}"
+    />
     <style>
-      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6 {  margin: 0;  padding: 0;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}
+      html {
+        line-height: 1.15;
+      }
+      body {
+        margin: 0;
+      }
+      * {
+        box-sizing: border-box;
+        border-width: 0;
+        border-style: solid;
+      }
+      p,
+      li,
+      ul,
+      pre,
+      div,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        margin: 0;
+        padding: 0;
+      }
+      button,
+      input,
+      optgroup,
+      select,
+      textarea {
+        font-family: inherit;
+        font-size: 100%;
+        line-height: 1.15;
+        margin: 0;
+      }
+      button,
+      select {
+        text-transform: none;
+      }
+      button,
+      [type="button"],
+      [type="reset"],
+      [type="submit"] {
+        -webkit-appearance: button;
+      }
+      button::-moz-focus-inner,
+      [type="button"]::-moz-focus-inner,
+      [type="reset"]::-moz-focus-inner,
+      [type="submit"]::-moz-focus-inner {
+        border-style: none;
+        padding: 0;
+      }
+      button:-moz-focus,
+      [type="button"]:-moz-focus,
+      [type="reset"]:-moz-focus,
+      [type="submit"]:-moz-focus {
+        outline: 1px dotted ButtonText;
+      }
+      a {
+        color: inherit;
+        text-decoration: inherit;
+      }
+      input {
+        padding: 2px 4px;
+      }
+      img {
+        display: block;
+      }
     </style>
     <style>
       html {
@@ -24,14 +99,13 @@
 
       body {
         font-weight: 400;
-        font-style:normal;
+        font-style: normal;
         text-decoration: none;
         text-transform: none;
         letter-spacing: normal;
         line-height: 1.1;
         color: var(--dl-color-grays-dark100);
         background-color: var(--dl-color-grays-white100);
-
       }
     </style>
     <link
@@ -39,23 +113,19 @@
       href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&display=swap"
     />
     <style>
-      ::placeholder{
-      color: #63667066;
+      ::placeholder {
+        color: #63667066;
       }
     </style>
     <link rel="stylesheet" href="{% static 'css/style.css'%}" />
   </head>
   <body>
     <div>
-      <link rel = "stylesheet" href="{% static 'css/home.css'%}"/>
+      <link href="{% static 'css/home.css'%}" rel="stylesheet" />
 
       <div class="home-container">
         <header data-role="Header" class="home-max-width navigation-container">
-          <img
-            alt="logo"
-            src="/static/img/logo.png"
-            class="home-image"
-          />
+          <img alt="logo" src="/static/img/logo.png" class="home-image" />
           <div data-type="BurgerMenu" class="navigation-burger-menu">
             <svg viewBox="0 0 1024 1024" class="home-icon">
               <path
@@ -64,31 +134,24 @@
             </svg>
           </div>
           <a
-            href="/login/"
+            href="/loginSignUp.html"
             class="home-primary-btn button-primary button"
           >
             Login/Sign up
           </a>
         </header>
-
-        <div class="home-container01">
-          <form method="POST" action="/home/">
-            {% csrf_token %}
-            <div class="home-input-container">
-                <div class="home-container02 input">
-                <input
-                  type="text"
-                  placeholder="Enter an equation"
-                  class="home-input input"
-                  id = "txt"
-                  name="input"
-                />
-              </div>
-              <button class="home-button button-primary button" type="submit">Draw</button>
+        <div class="home-container1">
+          <div class="home-input-container">
+            <div class="home-container2 input">
+              <input
+                type="text"
+                placeholder="Enter an equation"
+                class="home-input input"
+                id="txt"
+              />
             </div>
-          </form>
-
-
+            <button class="home-button button-primary button">Draw</button>
+          </div>
           <div class="home-sidebar">
             <nav class="home-nav">
               <img
@@ -97,80 +160,52 @@
                 class="home-image1"
               />
               <span class="home-text">Argand Diagram</span>
-              <a href="/login_signup.html" class="home-navlink">
+              <a href="loginSignUp.html" class="home-navlink">
                 <img
                   alt="image"
                   src="/static/img/student icon-200w.png"
                   class="home-image2"
                 />
               </a>
-              <span class="home-text1">Student</span>
-              <a href="/login_signup.html" class="home-navlink1">
+              <a href="/loginSignUp.html" class="home-navlink1">Student</a>
+              <a href="/loginSignUp.html" class="home-navlink2">
                 <img
                   alt="image"
                   src="/static/img/teacher%20icon-200h.png"
                   class="home-image3"
                 />
               </a>
-              <a href="/login_signup.html" class="home-navlink2">Tacher</a>
+              <a href="/loginSignUp.html" class="home-navlink3">Tacher</a>
             </nav>
           </div>
-
-          <div class="home-container03"></div>
-          <div class="home-container04">
-            <div class="home-container05">
-              <button class="home-button01 button">7</button>
-              <button class="home-button02 button">8</button>
-              <button class="home-button03 button">9</button>
-              <button class="home-button04 button">×</button>
-              <button class="home-button05 button">÷</button>
-            </div>
-            <div class="home-container06">
-              <button class="home-button06 button">4</button>
-              <button class="home-button07 button">5</button>
-              <button class="home-button08 button">6</button>
-              <button class="home-button09 button">＋</button>
-              <button class="home-button10 button">－</button>
-            </div>
-            <div class="home-container07">
-              <button class="home-button11 button">1</button>
-              <button class="home-button12 button">2</button>
-              <button class="home-button13 button">3</button>
-              <button class="home-button14 button">=</button>
-              <button class="home-button15 button">
-                <span class="home-text2">DEL</span>
-              </button>
-            </div>
-            <div class="home-container08">
-              <button class="home-button16 button">0</button>
-              <button class="home-button17 button">.</button>
-              <button class="home-button18 button">(</button>
-              <button class="home-button19 button">)</button>
-              <button class="home-button20 button">↵</button>
-            </div>
-            <div class="home-container09">
+          <div class="home-container3"></div>
+          <div class="home-container4">
+            <div class="home-container5">
               <!-- example button with clickon event -->
-              <button class="home-button21 button" onclick = "buttonInput()" id = 'z'>z</button>
-
-              <button class="home-button22 button">x</button>
-              <button class="home-button23 button">y</button>
-              <button class="home-button24 button">π</button>
+              <button
+                class="home-button01 button"
+                onclick="buttonInput()"
+                id="z"
+              >
+                z
+              </button>
+              <button class="home-button02 button">x</button>
+              <button class="home-button03 button">y</button>
+              <button class="home-button04 button">π</button>
             </div>
-            <div class="home-container10">
-              <button class="home-button25 button">^2</button>
-              <button class="home-button26 button">^</button>
-              <button class="home-button27 button">√</button>
-              <button class="home-button28 button">e</button>
+            <div class="home-container6">
+              <div class="home-container7">
+                <button class="home-button05 button">^</button>
+                <button class="home-button06 button">√</button>
+                <button class="home-button07 button">e</button>
+              </div>
+              <button class="home-button08 button">i</button>
             </div>
-            <div class="home-container11">
-              <button class="home-button29 button">＜</button>
-              <button class="home-button30 button">＞</button>
-              <button class="home-button31 button">≤</button>
-              <button class="home-button32 button">≥</button>
-            </div>
-            <div class="home-container12">
-              <button class="home-button33 button">|□|</button>
-              <button class="home-button34 button">i</button>
+            <div class="home-container8">
+              <button class="home-button09 button">＜</button>
+              <button class="home-button10 button">＞</button>
+              <button class="home-button11 button">≤</button>
+              <button class="home-button12 button">≥</button>
             </div>
           </div>
         </div>
@@ -178,11 +213,12 @@
     </div>
     <!-- example JS for button onclick-->
     <script>
-      function buttonInput(){
-        var value = document.getElementById('txt').value;
-        document.getElementById('txt').value = value + 'z';
+      function buttonInput() {
+        var value = document.getElementById("txt").value;
+        document.getElementById("txt").value = value + "z";
       }
     </script>
+
     <script>
       window.onload = () => {
         const runAllScripts = () => {
@@ -258,8 +294,8 @@
       };
     </script>
     <!-- import dependence of bootstrap-->
-    <script src = "{% static 'popper/popper.js' %}"></script>
+    <script src="{% static 'popper/popper.js' %}"></script>
     <!-- import bootstrap core JS -->
-    <script src = "{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
   </body>
 </html>

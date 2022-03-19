@@ -2,11 +2,7 @@
 {% load static %}
 <html lang="en">
   <head>
-    <title>LoginSignup - prototype</title>
-    <meta property="og:title" content="LoginSignup - prototype" />
-    <meta property="og:title" content="500Error - prototype" />
-    <meta property="og:title" content="TeacherClasses - prototype" />
-    <meta property="og:title" content="400Error - prototype" />
+    <title>QuizHistory - prototype</title>
     <meta property="og:title" content="QuizHistory - prototype" />
     <meta property="og:title" content="TakingQuiz_01 - prototype" />
     <meta property="og:title" content="CreateQuiz - prototype" />
@@ -16,10 +12,9 @@
     <meta property="twitter:card" content="summary_large_image" />
     <!--Bootstrap core CSS -->
     <link
-      href="{% static 'bootstrap/css/bootstrap.min.css'%}"
       rel="stylesheet"
+      href="{% static 'bootstrap/css/bootstrap.min.css'%}"
     />
-
     <style>
       html {
         line-height: 1.15;
@@ -116,64 +111,61 @@
         color: #63667066;
       }
     </style>
-    <link rel="stylesheet" href="{%static 'css/style.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/style.css'%}" />
   </head>
   <body>
     <div>
-      <link href="{% static 'css/loginSignup.css'%}" rel="stylesheet" />
+      <link href="{% static 'css/QuizHistory.css' %}" rel="stylesheet" />
 
-      <div class="login-signup-container">
+      <div class="quiz-history-container">
         <header
           data-role="Header"
-          class="login-signup-max-width navigation-container"
+          class="quiz-history-max-width navigation-container"
         >
           <img
             alt="logo"
             src="/static/img/logo.png"
-            class="login-signup-image"
+            class="quiz-history-image"
           />
           <div data-type="BurgerMenu" class="navigation-burger-menu">
-            <svg viewBox="0 0 1024 1024" class="login-signup-icon">
+            <svg viewBox="0 0 1024 1024" class="quiz-history-icon">
               <path
                 d="M128 554.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 298.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 810.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667z"
               ></path>
             </svg>
           </div>
           <a
-            href=".html"
-            class="login-signup-primary-btn button-primary button"
+            href="loginSignUp.html"
+            class="quiz-history-primary-btn button-primary button"
           >
-            Homepage
+            Profile
           </a>
         </header>
-        <div class="login-signup-container1">
-          <div class="login-signup-container2 input">
-            <input
-              type="text"
-              placeholder="Password"
-              class="login-signup-input input"
-            />
-          </div>
-          <button class="login-signup-button button-primary button">
-            Sign In 
-          </button>
-          <div class="login-signup-input-container">
-            <div class="login-signup-container3 input">
-              <input
-                type="text"
-                placeholder="User ID"
-                class="login-signup-input1 input"
+        <div class="quiz-history-container1">
+          <div class="quiz-history-container2">
+            <div class="quiz-history-sidebar"></div>
+            <nav class="quiz-history-nav">
+              <img
+                alt="image"
+                src="/static/img/history.png"
+                class="quiz-history-image1"
               />
-            </div>
+              <span class="quiz-history-text">History</span>
+              <a href="TakingQuiz.html" class="quiz-history-navlink">
+                <img
+                  alt="image"
+                  src="/static/img/penicon.png"
+                  class="quiz-history-image2"
+                />
+              </a>
+              <a href="TakingQuiz.html" class="quiz-history-navlink1">
+                Practice Quiz
+              </a>
+            </nav>
           </div>
         </div>
       </div>
     </div>
-
-    {% comment %}
-    <script src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
-    {% endcomment %}
-
     <script>
       window.onload = () => {
         const runAllScripts = () => {

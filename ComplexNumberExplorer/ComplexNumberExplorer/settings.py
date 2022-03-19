@@ -123,7 +123,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # store for statics files,such as pictures
-#STATIC_URL = '/static/' # 别名 
+STATIC_URL = '/static/' # 别名 
 STATIC_ROOT = os.path.join(BASE_DIR, "root")
 STATICFILES_DIRS = [ 
     os.path.join(BASE_DIR, "statics"), 

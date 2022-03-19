@@ -1,0 +1,23 @@
+.error1-container {
+  width: 100%;
+  display: flex;
+  overflow: auto;
+  min-height: 100vh;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgba(220, 220, 220, 0.6);
+}
+.error1-image {
+  width: 838px;
+  height: 440px;
+  object-fit: cover;
+}
+.error1-navlink {
+  top: 554px;
+  left: 732px;
+  position: absolute;
+  font-size: 14px;
+  text-decoration: underline    none;
+  background-color: #D9D9D9;
+}

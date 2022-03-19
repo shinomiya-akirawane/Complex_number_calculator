@@ -2,10 +2,7 @@
 {% load static %}
 <html lang="en">
   <head>
-    <title>LoginSignup - prototype</title>
-    <meta property="og:title" content="LoginSignup - prototype" />
-    <meta property="og:title" content="500Error - prototype" />
-    <meta property="og:title" content="TeacherClasses - prototype" />
+    <title>400Error - prototype</title>
     <meta property="og:title" content="400Error - prototype" />
     <meta property="og:title" content="QuizHistory - prototype" />
     <meta property="og:title" content="TakingQuiz_01 - prototype" />
@@ -16,8 +13,8 @@
     <meta property="twitter:card" content="summary_large_image" />
     <!--Bootstrap core CSS -->
     <link
-      href="{% static 'bootstrap/css/bootstrap.min.css'%}"
       rel="stylesheet"
+      href="{% static 'bootstrap/css/bootstrap.min.css'%}"
     />
 
     <style>
@@ -116,64 +113,21 @@
         color: #63667066;
       }
     </style>
-    <link rel="stylesheet" href="{%static 'css/style.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/style.css'%}" />
   </head>
   <body>
     <div>
-      <link href="{% static 'css/loginSignup.css'%}" rel="stylesheet" />
+      <link href="{% static 'css/error404.css'%}" rel="stylesheet" />
 
-      <div class="login-signup-container">
-        <header
-          data-role="Header"
-          class="login-signup-max-width navigation-container"
-        >
-          <img
-            alt="logo"
-            src="/static/img/logo.png"
-            class="login-signup-image"
-          />
-          <div data-type="BurgerMenu" class="navigation-burger-menu">
-            <svg viewBox="0 0 1024 1024" class="login-signup-icon">
-              <path
-                d="M128 554.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 298.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 810.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667z"
-              ></path>
-            </svg>
-          </div>
-          <a
-            href=".html"
-            class="login-signup-primary-btn button-primary button"
-          >
-            Homepage
-          </a>
-        </header>
-        <div class="login-signup-container1">
-          <div class="login-signup-container2 input">
-            <input
-              type="text"
-              placeholder="Password"
-              class="login-signup-input input"
-            />
-          </div>
-          <button class="login-signup-button button-primary button">
-            Sign In 
-          </button>
-          <div class="login-signup-input-container">
-            <div class="login-signup-container3 input">
-              <input
-                type="text"
-                placeholder="User ID"
-                class="login-signup-input1 input"
-              />
-            </div>
-          </div>
-        </div>
+      <div class="error-container">
+        <img
+          alt="image"
+          src="/static/img/404errorpage-400h.jpg"
+          class="error-image"
+        />
+        <a href="/home.html" class="error-navlink">Home Page</a>
       </div>
     </div>
-
-    {% comment %}
-    <script src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
-    {% endcomment %}
-
     <script>
       window.onload = () => {
         const runAllScripts = () => {

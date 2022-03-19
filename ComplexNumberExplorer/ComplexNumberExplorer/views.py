@@ -1,32 +1,26 @@
-from django.shortcuts import render, redirect
-from django.http import HttpRequest, HttpResponse
-
-
+from django.shortcuts import render
+from django.http import HttpRequest,HttpResponse
 def home(request):
-    if request.method == 'POST':
-        input = request.POST.get('input')
-        print(input)
-        return redirect('/home/')
-    return render(request, 'home.html')
-
+    return render(request,'home.html')
 
 def loginSignUp(request):
-    return render(request, 'loginSignUp.html')
+    return render(request,'loginSignUp.html')
 
+def CreateQuiz(request):
+    return render(request,'CreateQuiz.html')
 
-def addNewQuiz(request):
-    if request.method == 'POST':
-        question = request.POST.get('question')
-        answer = request.POST.get('answer')
-        print(question)
-        print(answer)
-        return redirect('/addNewQuiz/')
-    return render(request, 'addNewQuiz.html')
+def error404(request):
+    return render(request,'error404.html')
 
+def error500(request):
+    return render(request,'error500.html')
 
-def studentQuiz(request):
-    return render(request, 'studentQuiz.html')
+def TakingQuiz(request):
+    return render(request,'TakingQuiz.html')
 
+def TeacherClasses(request):
+    return render(request,'TeacherClasses.html')
 
-def quiz(request):
-    return render(request, 'quiz.html')
+def Quizhistory(request):
+    return render(request,'QuizHistory.html')
+

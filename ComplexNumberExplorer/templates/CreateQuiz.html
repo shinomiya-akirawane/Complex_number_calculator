@@ -2,13 +2,7 @@
 {% load static %}
 <html lang="en">
   <head>
-    <title>LoginSignup - prototype</title>
-    <meta property="og:title" content="LoginSignup - prototype" />
-    <meta property="og:title" content="500Error - prototype" />
-    <meta property="og:title" content="TeacherClasses - prototype" />
-    <meta property="og:title" content="400Error - prototype" />
-    <meta property="og:title" content="QuizHistory - prototype" />
-    <meta property="og:title" content="TakingQuiz_01 - prototype" />
+    <title>CreateQuiz - prototype</title>
     <meta property="og:title" content="CreateQuiz - prototype" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,7 +13,6 @@
       href="{% static 'bootstrap/css/bootstrap.min.css'%}"
       rel="stylesheet"
     />
-
     <style>
       html {
         line-height: 1.15;
@@ -116,64 +109,101 @@
         color: #63667066;
       }
     </style>
-    <link rel="stylesheet" href="{%static 'css/style.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/style.css'%}" />
   </head>
   <body>
     <div>
-      <link href="{% static 'css/loginSignup.css'%}" rel="stylesheet" />
+      <link href="{%static 'css/CreateQuiz.css'%}" rel="stylesheet" />
 
-      <div class="login-signup-container">
+      <div class="create-quiz-container">
         <header
           data-role="Header"
-          class="login-signup-max-width navigation-container"
+          class="create-quiz-max-width navigation-container"
         >
           <img
             alt="logo"
             src="/static/img/logo.png"
-            class="login-signup-image"
+            class="create-quiz-image"
           />
           <div data-type="BurgerMenu" class="navigation-burger-menu">
-            <svg viewBox="0 0 1024 1024" class="login-signup-icon">
+            <svg viewBox="0 0 1024 1024" class="create-quiz-icon">
               <path
                 d="M128 554.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 298.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 810.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667z"
               ></path>
             </svg>
           </div>
           <a
-            href=".html"
-            class="login-signup-primary-btn button-primary button"
+            href="/LoginSignup.html"
+            class="create-quiz-primary-btn button-primary button"
           >
-            Homepage
+            Profile
           </a>
         </header>
-        <div class="login-signup-container1">
-          <div class="login-signup-container2 input">
-            <input
-              type="text"
-              placeholder="Password"
-              class="login-signup-input input"
-            />
-          </div>
-          <button class="login-signup-button button-primary button">
-            Sign In 
-          </button>
-          <div class="login-signup-input-container">
-            <div class="login-signup-container3 input">
-              <input
-                type="text"
-                placeholder="User ID"
-                class="login-signup-input1 input"
+        <div class="create-quiz-container1">
+          <div class="create-quiz-sidebar">
+            <nav class="create-quiz-nav">
+              <a href="/TeacherClasses.html" class="create-quiz-navlink">
+                <img
+                  alt="image"
+                  src="/static/img/classes%20icon-200h.png"
+                  class="create-quiz-image1"
+                />
+              </a>
+              <a href="/TeacherClasses.html" class="create-quiz-navlink1">
+                Classes
+              </a>
+              <img
+                alt="image"
+                src="/static/img/quiz%20icon-200h.png"
+                class="create-quiz-image2"
               />
+              <span class="create-quiz-text">Create a Quiz</span>
+            </nav>
+          </div>
+          <span class="create-quiz-text1">
+            <span class="create-quiz-text2">Question 1</span>
+          </span>
+          <span class="create-quiz-text3">Answer</span>
+          <input type="text" class="create-quiz-textinput input" />
+          <button class="create-quiz-primary-btn1 button-primary button">
+            Auto Generate
+          </button>
+          <button class="create-quiz-primary-btn2 button-primary button">
+            <span class="create-quiz-text4">
+              <span>Confirm</span>
+              <span class="create-quiz-text6"></span>
+            </span>
+          </button>
+          <input
+            type="text"
+            placeholder="Input question here"
+            class="create-quiz-textinput1 input"
+          />
+        </div>
+        <div class="create-quiz-container2">
+          <div class="create-quiz-container3">
+            <button class="create-quiz-button button">z</button>
+            <button class="create-quiz-button01 button">x</button>
+            <button class="create-quiz-button02 button">y</button>
+            <button class="create-quiz-button03 button">π</button>
+          </div>
+          <div class="create-quiz-container4">
+            <div class="create-quiz-container5">
+              <button class="create-quiz-button04 button">^</button>
+              <button class="create-quiz-button05 button">√</button>
+              <button class="create-quiz-button06 button">e</button>
             </div>
+            <button class="create-quiz-button07 button">i</button>
+          </div>
+          <div class="create-quiz-container6">
+            <button class="create-quiz-button08 button">＜</button>
+            <button class="create-quiz-button09 button">＞</button>
+            <button class="create-quiz-button10 button">≤</button>
+            <button class="create-quiz-button11 button">≥</button>
           </div>
         </div>
       </div>
     </div>
-
-    {% comment %}
-    <script src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
-    {% endcomment %}
-
     <script>
       window.onload = () => {
         const runAllScripts = () => {

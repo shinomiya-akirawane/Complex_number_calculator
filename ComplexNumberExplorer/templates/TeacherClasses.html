@@ -2,9 +2,7 @@
 {% load static %}
 <html lang="en">
   <head>
-    <title>LoginSignup - prototype</title>
-    <meta property="og:title" content="LoginSignup - prototype" />
-    <meta property="og:title" content="500Error - prototype" />
+    <title>TeacherClasses - prototype</title>
     <meta property="og:title" content="TeacherClasses - prototype" />
     <meta property="og:title" content="400Error - prototype" />
     <meta property="og:title" content="QuizHistory - prototype" />
@@ -16,10 +14,9 @@
     <meta property="twitter:card" content="summary_large_image" />
     <!--Bootstrap core CSS -->
     <link
-      href="{% static 'bootstrap/css/bootstrap.min.css'%}"
       rel="stylesheet"
+      href="{% static 'bootstrap/css/bootstrap.min.css'%}"
     />
-
     <style>
       html {
         line-height: 1.15;
@@ -116,64 +113,60 @@
         color: #63667066;
       }
     </style>
-    <link rel="stylesheet" href="{%static 'css/style.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/style.css'%}" />
   </head>
   <body>
     <div>
-      <link href="{% static 'css/loginSignup.css'%}" rel="stylesheet" />
+      <link href="{% static 'css/TeacherClasses.css' %}" rel="stylesheet" />
 
-      <div class="login-signup-container">
+      <div class="teacher-classes-container">
         <header
           data-role="Header"
-          class="login-signup-max-width navigation-container"
+          class="teacher-classes-max-width navigation-container"
         >
           <img
             alt="logo"
             src="/static/img/logo.png"
-            class="login-signup-image"
+            class="teacher-classes-image"
           />
           <div data-type="BurgerMenu" class="navigation-burger-menu">
-            <svg viewBox="0 0 1024 1024" class="login-signup-icon">
+            <svg viewBox="0 0 1024 1024" class="teacher-classes-icon">
               <path
                 d="M128 554.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 298.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 810.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667z"
               ></path>
             </svg>
           </div>
           <a
-            href=".html"
-            class="login-signup-primary-btn button-primary button"
+            href="/loginSignUp.html"
+            class="teacher-classes-primary-btn button-primary button"
           >
-            Homepage
+            Profile
           </a>
         </header>
-        <div class="login-signup-container1">
-          <div class="login-signup-container2 input">
-            <input
-              type="text"
-              placeholder="Password"
-              class="login-signup-input input"
-            />
-          </div>
-          <button class="login-signup-button button-primary button">
-            Sign In 
-          </button>
-          <div class="login-signup-input-container">
-            <div class="login-signup-container3 input">
-              <input
-                type="text"
-                placeholder="User ID"
-                class="login-signup-input1 input"
+        <div class="teacher-classes-container1">
+          <div class="teacher-classes-sidebar">
+            <nav class="teacher-classes-nav">
+              <img
+                alt="image"
+                src="/static/img/classes-icon.png"
+                class="teacher-classes-image1"
               />
-            </div>
+              <span class="teacher-classes-text">Classes</span>
+              <a href="/CreateQuiz.html" class="teacher-classes-navlink">
+                <img
+                  alt="image"
+                  src="/static/img/quiz-icon.png"
+                  class="teacher-classes-image2"
+                />
+              </a>
+              <a href="CreateQuiz.html" class="teacher-classes-navlink1">
+                Create a Quiz
+              </a>
+            </nav>
           </div>
         </div>
       </div>
     </div>
-
-    {% comment %}
-    <script src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
-    {% endcomment %}
-
     <script>
       window.onload = () => {
         const runAllScripts = () => {
