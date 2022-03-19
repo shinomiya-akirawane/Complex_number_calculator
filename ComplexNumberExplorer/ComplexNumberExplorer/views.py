@@ -1,13 +1,18 @@
 from django.shortcuts import render
 from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, HttpResponse, redirect
+#from models import questionModel
+#import ComplexNumberAlgorithms
 
 
 # 网站主页
 def home(request):
     if request.method == "POST":
         equation = request.POST.get('input')
-        print(equation)
+        if '=' in equation:
+            plotForEquation(equation)
+        else:
+            plotForAbsEquation(equation)
         return redirect('/home/')
 
     return render(request, 'home.html')
@@ -15,6 +20,7 @@ def home(request):
 
 def loginSignUp(request):
     return render(request, 'loginSignUp.html')
+
 
 def CreateQuiz(request):
     return render(request, 'CreateQuiz.html')
@@ -29,7 +35,8 @@ def error500(request):
 
 
 def TakingQuiz(request):
-    return render(request, 'TakingQuiz.html')
+    question = '1+1=?'
+    return render(request, 'TakingQuiz.html', {'question': question})
 
 
 def TeacherClasses(request):

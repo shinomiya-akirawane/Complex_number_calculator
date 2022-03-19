@@ -146,12 +146,16 @@
             <span class="taking-quiz_01-text1">Question 1</span>
           </span>
           <span class="taking-quiz_01-text2">Your Answer:</span>
-          <input type="text" class="taking-quiz_01-textinput input" />
-          <button class="taking-quiz_01-primary-btn1 button-primary button">
+          <form method="POST" action="TakingQuiz">
+            <input type="text" class="taking-quiz_01-textinput input" />
+            <button class="taking-quiz_01-primary-btn1 button-primary button">
             <span class="taking-quiz_01-text3">
               <span>Next Question →</span>
             </span>
-          </button>
+            </button>
+          </form>
+
+
           <div class="taking-quiz_01-container2">
             <div class="taking-quiz_01-sidebar"></div>
             <nav class="taking-quiz_01-nav">
@@ -173,7 +177,7 @@
               <span class="taking-quiz_01-text5">Practice Quiz</span>
             </nav>
           </div>
-          <span class="taking-quiz_01-text6">question display here</span>
+          <span class="taking-quiz_01-text6">{{question}}</span>
         </div>
         <div class="taking-quiz_01-container3">
           <div class="taking-quiz_01-container4">
