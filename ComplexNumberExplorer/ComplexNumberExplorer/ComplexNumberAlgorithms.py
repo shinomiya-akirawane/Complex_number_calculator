@@ -1,9 +1,10 @@
 from math import *
 from cmath import *
-from tkinter.tix import Form
 import matplotlib.pyplot as plt
 import numpy as np
 from pylab import *
+
+IMAGE_ADDRESS = 'ComplexNumberExplorer/ComplexNumberExplorer/statics/img/img1.png'
 class FormTranslation:
     @staticmethod
     def list2str(l):
@@ -435,7 +436,7 @@ class Graph():
             plt.text(x,y,str(real)+'+'+str(img)+'j')
         axisLen = maxLen*2
         Graph.plotAxis(axisLen)
-        plt.savefig('ComplexNumberExplorer/ComplexNumberExplorer/statics/img/img1.png')
+        plt.savefig(IMAGE_ADDRESS)
     #|z-(a+bj)| = r, |z-(a+bj)| = |z-(c+dj)|, arg[z-(a+bj)] = a*pi, # equations like: p*z (-/+/*//) (a+bj) = (c+dj),p must be (a+bj) form
     @staticmethod
     def plotForEquation(equation:str):
@@ -479,7 +480,7 @@ class Graph():
             plt.plot(x2,y2,'.r')
             plt.plot(lineX,lineY,'g--')
             plt.plot(verticalX,verticalY)
-            plt.savefig('ComplexNumberExplorer/ComplexNumberExplorer/statics/img/img1.png')
+            plt.savefig(IMAGE_ADDRESS)
         elif 'pi' in rightSide:
             plt.figure()
             leftPoint = StrPreOperation.extractEquation(leftSide)
@@ -504,7 +505,7 @@ class Graph():
             plt.plot(paraX,paraY,'g--')
             plt.plot(angleX,angleY)
             plt.text(x,y,str(piPara)+'*pi')
-            plt.savefig('ComplexNumberExplorer/ComplexNumberExplorer/statics/img/img1.png')
+            plt.savefig(IMAGE_ADDRESS)
         else:
             leftPoint = StrPreOperation.extractEquation(leftSide)
             leftParts = StrPreOperation.extractParts(FormTranslation.list2str(leftPoint[0]))
@@ -526,7 +527,7 @@ class Graph():
             axes.set_aspect(1)
             plt.plot(paraX,paraY,'g--')
             plt.text(x+radius/2,y,str(radius))
-            plt.savefig('ComplexNumberExplorer/ComplexNumberExplorer/statics/img/img1.png')
+            plt.savefig(IMAGE_ADDRESS)
 #Graph.plotForEquation('|z-(-3-8j)| = 5')
 Graph.plotForEquation('|z-(-2+3j)| = |z-(4+5j)|')
 #Graph.plotForEquation('arg[z-(1+2j)] = 0.3*pi')
