@@ -119,6 +119,7 @@
     <link rel="stylesheet" href="{%static 'css/style.css'%}" />
   </head>
   <body>
+
     <div>
       <link href="{% static 'css/loginSignup.css'%}" rel="stylesheet" />
 
@@ -140,33 +141,39 @@
             </svg>
           </div>
           <a
-            href=".html"
+            href="/home/"
             class="login-signup-primary-btn button-primary button"
           >
             Homepage
           </a>
         </header>
-        <div class="login-signup-container1">
-          <div class="login-signup-container2 input">
-            <input
-              type="text"
-              placeholder="Password"
-              class="login-signup-input input"
-            />
-          </div>
-          <button class="login-signup-button button-primary button">
-            Sign In 
-          </button>
-          <div class="login-signup-input-container">
-            <div class="login-signup-container3 input">
+        <form method="POST" action="/login/">
+          {% csrf_token %}
+          <div class="login-signup-container1">
+            <div class="login-signup-container2 input">
               <input
-                type="text"
-                placeholder="User ID"
-                class="login-signup-input1 input"
+                type="password"
+                placeholder="Password"
+                class="login-signup-input input"
+                name="pwd"
               />
             </div>
+            <button class="login-signup-button button-primary button" type="submit">
+              Sign In 
+            </button>
+            <div class="login-signup-input-container">
+              <div class="login-signup-container3 input">
+                <input
+                  type="text"
+                  placeholder="User ID"
+                  class="login-signup-input1 input"
+                  name="ID"
+                />
+              </div>
+            </div>
           </div>
-        </div>
+        </form>
+
       </div>
     </div>
 

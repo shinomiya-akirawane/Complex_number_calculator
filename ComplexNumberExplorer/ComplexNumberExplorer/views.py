@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, HttpResponse, redirect
-#from models import questionModel
-#import ComplexNumberAlgorithms
+# from ComplexNumberExplorer.models import *
+from .ComplexNumberAlgorithms import *
 
 
 # 网站主页
@@ -10,15 +10,22 @@ def home(request):
     if request.method == "POST":
         equation = request.POST.get('input')
         if '=' in equation:
-            plotForEquation(equation)
+            Graph().plotForEquation
         else:
-            plotForAbsEquation(equation)
+            Graph().plotForAbsEquation
         return redirect('/home/')
 
     return render(request, 'home.html')
 
 
 def loginSignUp(request):
+    if request.method == 'POST':
+        userID = request.POST.get('ID')
+        password = request.POST.get('pwd')
+        if userID == 'admin' and password == '123':
+            return redirect('/takingquiz/')
+        else:
+            return render(request, 'loginSignUp.html', {'reply': 'wrong user ID or password!'})
     return render(request, 'loginSignUp.html')
 
 
@@ -35,6 +42,9 @@ def error500(request):
 
 
 def TakingQuiz(request):
+    if request.method == 'POST':
+        answer = request.POST.get('answer')
+        return redirect('/takingquiz/')
     question = '1+1=?'
     return render(request, 'TakingQuiz.html', {'question': question})
 
@@ -43,14 +53,8 @@ def TeacherClasses(request):
     return render(request, 'TeacherClasses.html')
 
 
-def Quizhistory(request):
-    return request(request, 'Quizhistory.html')
-
-
-
-
-
-
+def quizhistory(request):
+    return render(request, 'QuizHistory.html')
 
 
 # 登录界面

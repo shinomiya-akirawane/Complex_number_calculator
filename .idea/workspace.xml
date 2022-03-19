@@ -5,17 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3b2a46d8-fec0-45a4-a25e-e4630a16b34a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ComplexNumberExplorer/ComplexNumberExplorer/models/questionModel.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ComplexNumberExplorer/ComplexNumberExplorer/statics/css/CreateQuiz.css" beforeDir="false" afterPath="$PROJECT_DIR$/ComplexNumberExplorer/ComplexNumberExplorer/statics/css/CreateQuiz.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ComplexNumberExplorer/ComplexNumberExplorer/statics/css/loginSignUp.css" beforeDir="false" afterPath="$PROJECT_DIR$/ComplexNumberExplorer/ComplexNumberExplorer/statics/css/loginSignUp.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ComplexNumberExplorer/ComplexNumberExplorer/templates/QuizHistory.html" beforeDir="false" afterPath="$PROJECT_DIR$/ComplexNumberExplorer/ComplexNumberExplorer/templates/QuizHistory.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ComplexNumberExplorer/ComplexNumberExplorer/templates/TakingQuiz.html" beforeDir="false" afterPath="$PROJECT_DIR$/ComplexNumberExplorer/ComplexNumberExplorer/templates/TakingQuiz.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ComplexNumberExplorer/ComplexNumberExplorer/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/ComplexNumberExplorer/ComplexNumberExplorer/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ComplexNumberExplorer/ComplexNumberExplorer/templates/loginSignUp.html" beforeDir="false" afterPath="$PROJECT_DIR$/ComplexNumberExplorer/ComplexNumberExplorer/templates/loginSignUp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ComplexNumberExplorer/ComplexNumberExplorer/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ComplexNumberExplorer/ComplexNumberExplorer/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ComplexNumberExplorer/ComplexNumberExplorer/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ComplexNumberExplorer/ComplexNumberExplorer/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />

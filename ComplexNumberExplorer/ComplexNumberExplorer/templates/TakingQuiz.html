@@ -146,9 +146,10 @@
             <span class="taking-quiz_01-text1">Question 1</span>
           </span>
           <span class="taking-quiz_01-text2">Your Answer:</span>
-          <form method="POST" action="TakingQuiz">
-            <input type="text" class="taking-quiz_01-textinput input" />
-            <button class="taking-quiz_01-primary-btn1 button-primary button">
+          <form method="POST" action="/takingquiz/">
+            {% csrf_token %}
+            <input type="text" class="taking-quiz_01-textinput input" name="answer"/>
+            <button class="taking-quiz_01-primary-btn1 button-primary button" type="submit">
             <span class="taking-quiz_01-text3">
               <span>Next Question →</span>
             </span>
@@ -159,14 +160,14 @@
           <div class="taking-quiz_01-container2">
             <div class="taking-quiz_01-sidebar"></div>
             <nav class="taking-quiz_01-nav">
-              <a href="QuizHistory.html" class="taking-quiz_01-navlink">
+              <a href="/quizhistory/" class="taking-quiz_01-navlink">
                 <img
                   alt="image"
                   src="/static/img/history.png"
                   class="taking-quiz_01-image1"
                 />
               </a>
-              <a href="QuizHistory.html" class="taking-quiz_01-navlink1">
+              <a href="/quizhistory/" class="taking-quiz_01-navlink1">
                 History
               </a>
               <img
