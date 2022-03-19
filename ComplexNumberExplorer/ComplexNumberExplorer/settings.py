@@ -124,9 +124,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # store for statics files,such as pictures
 STATIC_URL = '/static/' # 别名 
-'''
-    STATICFILES_DIRS = [
+STATIC_ROOT = os.path.join(BASE_DIR, "root")
+STATICFILES_DIRS = [ 
     os.path.join(BASE_DIR, "ComplexNumberExplorer/statics"),
 ]
-'''
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'sta'),)

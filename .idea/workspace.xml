@@ -4,7 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b2a46d8-fec0-45a4-a25e-e4630a16b34a" name="Changes" comment="" />
+    <list default="true" id="3b2a46d8-fec0-45a4-a25e-e4630a16b34a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ComplexNumberExplorer/ComplexNumberExplorer/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/ComplexNumberExplorer/ComplexNumberExplorer/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ComplexNumberExplorer/ComplexNumberExplorer/statics/css/cssExample.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ComplexNumberExplorer/ComplexNumberExplorer/statics/images/imageExample.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ComplexNumberExplorer/ComplexNumberExplorer/statics/images/logo.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ComplexNumberExplorer/ComplexNumberExplorer/statics/images/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ComplexNumberExplorer/ComplexNumberExplorer/statics/images/star.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ComplexNumberExplorer/ComplexNumberExplorer/statics/js/example.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ComplexNumberExplorer/ComplexNumberExplorer/statics/plugins/example" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ComplexNumberExplorer/ComplexNumberExplorer/templates/quiz.html" beforeDir="false" afterPath="$PROJECT_DIR$/ComplexNumberExplorer/ComplexNumberExplorer/templates/quiz.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ComplexNumberExplorer/ComplexNumberExplorer/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ComplexNumberExplorer/ComplexNumberExplorer/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ComplexNumberExplorer/ComplexNumberExplorer/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ComplexNumberExplorer/ComplexNumberExplorer/views.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

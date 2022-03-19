@@ -4,13 +4,46 @@ from django.shortcuts import render, HttpResponse, redirect
 
 
 # 网站主页
-def homepage(request):
+def home(request):
     if request.method == "POST":
-        equation = request.POST.get()
+        equation = request.POST.get('input')
         print(equation)
-        return redirect('/')
+        return redirect('/home/')
 
-    return render(request, 'homepage.html')
+    return render(request, 'home.html')
+
+
+def loginSignUp(request):
+    return render(request, 'loginSignUp.html')
+
+def CreateQuiz(request):
+    return render(request, 'CreateQuiz.html')
+
+
+def error404(request):
+    return render(request, 'error404.html')
+
+
+def error500(request):
+    return render(request, 'error500.html')
+
+
+def TakingQuiz(request):
+    return render(request, 'TakingQuiz.html')
+
+
+def TeacherClasses(request):
+    return render(request, 'TeacherClasses.html')
+
+
+def Quizhistory(request):
+    return request(request, 'Quizhistory.html')
+
+
+
+
+
+
 
 
 # 登录界面
