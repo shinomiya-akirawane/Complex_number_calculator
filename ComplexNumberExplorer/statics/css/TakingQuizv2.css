@@ -93,8 +93,8 @@
   position: absolute;
 }
 .taking-quizv2-primary-btn1 {
-  top: 343px;
-  left: 840px;
+  top: 375px;
+  left: 838px;
   width: 124px;
   height: 55px;
   display: flex;
@@ -108,6 +108,26 @@
 .taking-quizv2-text05 {
   top: 17px;
   left: 31px;
+  position: absolute;
+  font-size: 18px;
+  text-align: center;
+}
+.taking-quizv2-primary-btn2 {
+  top: 377px;
+  left: 1022px;
+  width: 124px;
+  height: 55px;
+  display: flex;
+  position: absolute;
+  font-size: 12px;
+  text-align: center;
+  padding-right: 5px;
+  flex-direction: row;
+  background-color: #30d8fa;
+}
+.taking-quizv2-text07 {
+  top: 17px;
+  left: 39px;
   position: absolute;
   font-size: 18px;
   text-align: center;
@@ -171,7 +191,7 @@
   margin-top: 5px;
   text-decoration: none;
 }
-.taking-quizv2-text08 {
+.taking-quizv2-text09 {
   top: 151px;
   left: 390px;
   position: absolute;
@@ -339,7 +359,7 @@
   margin-left: 2px;
   margin-bottom: 2px;
 }
-.taking-quizv2-text09 {
+.taking-quizv2-text10 {
   top: 572px;
   left: 335px;
   position: absolute;
@@ -351,14 +371,14 @@
   text-transform: none;
   text-decoration: none;
 }
-.taking-quizv2-text10 {
+.taking-quizv2-text11 {
   font-style: normal;
   font-family: Lexend;
   font-weight: 600;
   text-transform: none;
   text-decoration: none;
 }
-.taking-quizv2-text11 {
+.taking-quizv2-text12 {
   top: 653px;
   left: 396px;
   position: absolute;
@@ -376,12 +396,18 @@
   .taking-quizv2-primary-btn1 {
     background-color: #52d4e6;
   }
+  .taking-quizv2-primary-btn2 {
+    background-color: #52d4e6;
+  }
 }
 @media (max-width: 767px) {
   .taking-quizv2-primary-btn {
     display: none;
   }
   .taking-quizv2-primary-btn1 {
+    display: none;
+  }
+  .taking-quizv2-primary-btn2 {
     display: none;
   }
   .taking-quizv2-sidebar {

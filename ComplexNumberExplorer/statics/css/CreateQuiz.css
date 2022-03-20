@@ -14,7 +14,7 @@
   max-width: 100%;
   box-shadow: 0px 10px 10px 0px #d4d4d4;
   background-size: cover;
-  background-image: url("public/playground_assets/theme%20colour-greenblue1-200h.jpg");
+  background-image: url("/static/img/themecolour.jpg");
 }
 .create-quiz-image {
   height: 61px;
@@ -176,6 +176,7 @@
   top: 122px;
   left: 337px;
   width: 384px;
+  height: 45px;
   position: absolute;
 }
 .create-quiz-container2 {

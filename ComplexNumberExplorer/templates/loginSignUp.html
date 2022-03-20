@@ -2,13 +2,16 @@
 {% load static %}
 <html lang="en">
   <head>
-    <title>LoginSignup - prototype</title>
-    <meta property="og:title" content="LoginSignup - prototype" />
+    <title>loginSignUp - prototype</title>
+    <meta property="og:title" content="loginSignUp - prototype" />
     <meta property="og:title" content="500Error - prototype" />
     <meta property="og:title" content="TeacherClasses - prototype" />
     <meta property="og:title" content="400Error - prototype" />
+    <meta property="og:title" content="register - prototype" />
+    <meta property="og:title" content="TakingQuizv2 - prototype" />
+    <meta property="og:title" content="QuizList - prototype" />
     <meta property="og:title" content="QuizHistory - prototype" />
-    <meta property="og:title" content="TakingQuiz_01 - prototype" />
+    <meta property="og:title" content="TakingQuiz - prototype" />
     <meta property="og:title" content="CreateQuiz - prototype" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -122,58 +125,65 @@
     <div>
       <link href="{% static 'css/loginSignup.css'%}" rel="stylesheet" />
 
-      <div class="login-signup-container">
+      <div class="login-sign-up-container">
         <header
           data-role="Header"
-          class="login-signup-max-width navigation-container"
+          class="login-sign-up-max-width navigation-container"
         >
           <img
             alt="logo"
             src="/static/img/logo.png"
-            class="login-signup-image"
+            class="login-sign-up-image"
           />
           <div data-type="BurgerMenu" class="navigation-burger-menu">
-            <svg viewBox="0 0 1024 1024" class="login-signup-icon">
+            <svg viewBox="0 0 1024 1024" class="login-sign-up-icon">
               <path
                 d="M128 554.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 298.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 810.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667z"
               ></path>
             </svg>
           </div>
           <a
-            href=".html"
-            class="login-signup-primary-btn button-primary button"
+            href="/home/"
+            class="login-sign-up-primary-btn button-primary button"
           >
             Homepage
           </a>
         </header>
-        <div class="login-signup-container1">
-          <div class="login-signup-container2 input">
-            <input
-              type="text"
-              placeholder="Password"
-              class="login-signup-input input"
-            />
-          </div>
-          <button class="login-signup-button button-primary button">
-            Sign In 
-          </button>
-          <div class="login-signup-input-container">
-            <div class="login-signup-container3 input">
+        <div class="login-sign-up-container1">
+          <form method='POST' action='/login/'>
+            {% csrf_token %}
+            <div class="login-sign-up-container2 input">
               <input
-                type="text"
-                placeholder="User ID"
-                class="login-signup-input1 input"
+                name='password'
+                type="password"
+                placeholder="Password"
+                class="login-sign-up-input input"
               />
             </div>
-          </div>
+            <button type='submit' class="login-sign-up-button button-primary button">
+              Sign In 
+            </button>
+            <a
+              href="/register/"
+              class="login-sign-up-button1 button-primary button"
+            >
+              Register
+            </a>
+            <div class="login-sign-up-input-container">
+              <div class="login-sign-up-container3 input">
+                <input
+                  name='username'
+                  type="text"
+                  placeholder="Username"
+                  class="login-sign-up-input1 input"
+                />
+              </div>
+            </div>
+          </form>
+          
         </div>
       </div>
     </div>
-
-    {% comment %}
-    <script src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
-    {% endcomment %}
-
     <script>
       window.onload = () => {
         const runAllScripts = () => {

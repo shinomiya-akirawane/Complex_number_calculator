@@ -15,7 +15,7 @@
   max-width: 100%;
   box-shadow: 0px 10px 10px 0px #d4d4d4;
   background-size: cover;
-  background-image: url("/static/img/themecolour.jpg");
+  background-image: url("/playground_assets/theme%20colour-greenblue1-200h.jpg");
 }
 .home-image {
   height: 61px;
@@ -67,8 +67,9 @@
 }
 .home-input {
   flex: 1;
-  color: var(--dl-color-grays-gray40);
+  color: var(--dl-color-grays-black100);
   width: 645px;
+  height: 50px;
   border-width: 0px;
   padding-left: 12px;
   padding-right: 12px;
@@ -191,7 +192,6 @@
   margin-left: 10px;
   justify-content: center;
 }
-
 .home-button01 {
   width: 70px;
   height: 45px;

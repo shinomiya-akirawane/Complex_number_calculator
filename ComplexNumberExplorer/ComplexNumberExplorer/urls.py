@@ -9,9 +9,14 @@ urlpatterns = [
     path('newQuiz/', views.CreateQuiz),
     path('error404/', views.error404),
     path('error500/', views.error500),
-    path('takingquiz/', views.TakingQuiz),
+    path('takingquiz/', views.TakingQuizv2),
     path('teacherclasses/', views.TeacherClasses),
     path('quizhistory/', views.Quizhistory),
+    path('register/', views.Register),
+    path('quizlist/', views.QuizList),
+
+    
+
 
 
 ]

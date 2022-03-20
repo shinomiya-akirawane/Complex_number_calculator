@@ -2,11 +2,12 @@
 {% load static %}
 <html lang="en">
   <head>
-    <title>TeacherClasses - prototype</title>
-    <meta property="og:title" content="TeacherClasses - prototype" />
-    <meta property="og:title" content="400Error - prototype" />
+    <title>register - prototype</title>
+    <meta property="og:title" content="register - prototype" />
+    <meta property="og:title" content="TakingQuizv2 - prototype" />
+    <meta property="og:title" content="QuizList - prototype" />
     <meta property="og:title" content="QuizHistory - prototype" />
-    <meta property="og:title" content="TakingQuiz_01 - prototype" />
+    <meta property="og:title" content="TakingQuiz - prototype" />
     <meta property="og:title" content="CreateQuiz - prototype" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -117,55 +118,83 @@
   </head>
   <body>
     <div>
-      <link href="{% static 'css/TeacherClasses.css' %}" rel="stylesheet" />
+      <link href="{% static 'css/register.css'%}" rel="stylesheet" />
 
-      <div class="teacher-classes-container">
+      <div class="register-container">
         <header
           data-role="Header"
-          class="teacher-classes-max-width navigation-container"
+          class="register-max-width navigation-container"
         >
-          <img
-            alt="logo"
-            src="/static/img/logo.png"
-            class="teacher-classes-image"
-          />
+          <img alt="logo" src="/static/img/logo.png" class="register-image" />
           <div data-type="BurgerMenu" class="navigation-burger-menu">
-            <svg viewBox="0 0 1024 1024" class="teacher-classes-icon">
+            <svg viewBox="0 0 1024 1024" class="register-icon">
               <path
                 d="M128 554.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 298.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 810.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667z"
               ></path>
             </svg>
           </div>
-          <a
-            href="/home/"
-            class="teacher-classes-primary-btn button-primary button"
-          >
-            Log Out
+          <a href="/home/" class="register-primary-btn button-primary button">
+            Homepage
           </a>
         </header>
-        <div class="teacher-classes-container1">
-          <div class="teacher-classes-sidebar">
-            <nav class="teacher-classes-nav">
-              <img
-                alt="image"
-                src="/static/img/classes-icon.png"
-                class="teacher-classes-image1"
+        <form method='POST' action='/register/'>
+          {% csrf_token %}
+          <div class="register-container1">
+            <div class="register-container2 input">
+              <input
+                name='email'
+                type="text"
+                placeholder="Email"
+                class="register-input input"
               />
-              <span class="teacher-classes-text">Classes</span>
-              <a href="/newQuiz/" class="teacher-classes-navlink">
-                <img
-                  alt="image"
-                  src="/static/img/quiz-icon.png"
-                  class="teacher-classes-image2"
-                />
-              </a>
-              <a href="CreateQuiz.html" class="teacher-classes-navlink1">
-                Create a Quiz
-              </a>
-            </nav>
+            </div>
+            <div class="register-container3 input">
+              <input
+                name='groupNumber'
+                type="text"
+                placeholder="Group Number"
+                class="register-input1 input"
+              />
+            </div>
+            <div class="register-container4 input">
+              <input
+                name='username'
+                type="text"
+                placeholder="Username"
+                class="register-input2 input"
+              />
+            </div>
+            <div class="register-container5 input">
+              <input
+                name='userType'
+                type="text"
+                placeholder="User Type"
+                class="register-input3 input"
+              />
+            </div>
+            <div class="register-container6 input">
+              <input
+                name='password'
+                type="password"
+                placeholder="Enter Password:"
+                class="register-input4 input"
+              />
+            </div>
+            <div class="register-container7 input">
+              <input
+                name='cpassword'
+                type="password"
+                placeholder="Confirm Password:"
+                class="register-input5 input"
+              />
+            </div>
           </div>
+          <button type='submit' class="register-button button-primary button">
+            Register
+          </button>
         </div>
-      </div>
+        </form>
+        
     </div>
     <script>
       window.onload = () => {
@@ -237,7 +266,6 @@
             );
           });
         };
-
         runAllScripts();
       };
     </script>

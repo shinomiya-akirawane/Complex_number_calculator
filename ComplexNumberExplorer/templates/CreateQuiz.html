@@ -133,23 +133,23 @@
             </svg>
           </div>
           <a
-            href="/LoginSignup.html"
+            href="/home/"
             class="create-quiz-primary-btn button-primary button"
           >
-            Profile
+            Log Out
           </a>
         </header>
         <div class="create-quiz-container1">
           <div class="create-quiz-sidebar">
             <nav class="create-quiz-nav">
-              <a href="/TeacherClasses.html" class="create-quiz-navlink">
+              <a href="/teacherclasses/" class="create-quiz-navlink">
                 <img
                   alt="image"
                   src="/static/img/classes%20icon-200h.png"
                   class="create-quiz-image1"
                 />
               </a>
-              <a href="/TeacherClasses.html" class="create-quiz-navlink1">
+              <a href="/teacherclasses/" class="create-quiz-navlink1">
                 Classes
               </a>
               <img
@@ -159,27 +159,40 @@
               />
               <span class="create-quiz-text">Create a Quiz</span>
             </nav>
+          
           </div>
+          <form method='POST', action='/newQuiz/'>
+            {% csrf_token %}
           <span class="create-quiz-text1">
             <span class="create-quiz-text2">Question 1</span>
           </span>
+        
           <span class="create-quiz-text3">Answer</span>
-          <input type="text" class="create-quiz-textinput input" />
-          <button class="create-quiz-primary-btn1 button-primary button">
-            Auto Generate
-          </button>
-          <button class="create-quiz-primary-btn2 button-primary button">
+          <input name='answer' type="text" class="create-quiz-textinput input" />
+          
+          <button type='submit' class="create-quiz-primary-btn2 button-primary button">
             <span class="create-quiz-text4">
               <span>Confirm</span>
               <span class="create-quiz-text6"></span>
             </span>
           </button>
           <input
+            name='question'
             type="text"
             placeholder="Input question here"
             class="create-quiz-textinput1 input"
           />
+        </form>
+        <form method='GET' action='/newQuiz/?auto_generate/'>
+          
+          <button type='submit' class="create-quiz-primary-btn1 button-primary button">
+            Auto Generate
+          </button>
+        </form>
+          
         </div>
+         
+          
         <div class="create-quiz-container2">
           <div class="create-quiz-container3">
             <button class="create-quiz-button button">z</button>
@@ -193,7 +206,7 @@
               <button class="create-quiz-button05 button">√</button>
               <button class="create-quiz-button06 button">e</button>
             </div>
-            <button class="create-quiz-button07 button">i</button>
+            <button class="create-quiz-button07 button">j</button>
           </div>
           <div class="create-quiz-container6">
             <button class="create-quiz-button08 button">＜</button>
