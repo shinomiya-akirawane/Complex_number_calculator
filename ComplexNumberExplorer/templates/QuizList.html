@@ -2,13 +2,7 @@
 {% load static %}
 <html lang="en">
   <head>
-    <title>loginSignUp - prototype</title>
-    <meta property="og:title" content="loginSignUp - prototype" />
-    <meta property="og:title" content="500Error - prototype" />
-    <meta property="og:title" content="TeacherClasses - prototype" />
-    <meta property="og:title" content="400Error - prototype" />
-    <meta property="og:title" content="register - prototype" />
-    <meta property="og:title" content="TakingQuizv2 - prototype" />
+    <title>QuizList - prototype</title>
     <meta property="og:title" content="QuizList - prototype" />
     <meta property="og:title" content="QuizHistory - prototype" />
     <meta property="og:title" content="TakingQuiz - prototype" />
@@ -19,10 +13,9 @@
     <meta property="twitter:card" content="summary_large_image" />
     <!--Bootstrap core CSS -->
     <link
-      href="{% static 'bootstrap/css/bootstrap.min.css'%}"
       rel="stylesheet"
+      href="{% static 'bootstrap/css/bootstrap.min.css'%}"
     />
-
     <style>
       html {
         line-height: 1.15;
@@ -119,62 +112,53 @@
         color: #63667066;
       }
     </style>
-    <link rel="stylesheet" href="{%static 'css/style.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/style.css'%}" />
   </head>
   <body>
     <div>
-      <link href="{% static 'css/loginSignup.css'%}" rel="stylesheet" />
+      <link href="{% static 'css/QuizList.css'%}" rel="stylesheet" />
 
-      <div class="login-sign-up-container">
+      <div class="quiz-list-container">
         <header
           data-role="Header"
-          class="login-sign-up-max-width navigation-container"
+          class="quiz-list-max-width navigation-container"
         >
-          <img
-            alt="logo"
-            src="/static/img/logo.png"
-            class="login-sign-up-image"
-          />
+          <img alt="logo" src="/static/img/logo.png" class="quiz-list-image" />
           <div data-type="BurgerMenu" class="navigation-burger-menu">
-            <svg viewBox="0 0 1024 1024" class="login-sign-up-icon">
+            <svg viewBox="0 0 1024 1024" class="quiz-list-icon">
               <path
                 d="M128 554.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 298.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 810.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667z"
               ></path>
             </svg>
           </div>
           <a
-            href=".html"
-            class="login-sign-up-primary-btn button-primary button"
+            href="/loginSignUp.html"
+            class="quiz-list-primary-btn button-primary button"
           >
-            Homepage
+            Log Out
           </a>
         </header>
-        <div class="login-sign-up-container1">
-          <div class="login-sign-up-container2 input">
-            <input
-              type="text"
-              placeholder="Password"
-              class="login-sign-up-input input"
-            />
+        <div class="quiz-list-container1">
+          <span class="quiz-list-text">
+            <span class="quiz-list-text1">Quiz No.</span>
+          </span>
+          <span class="quiz-list-text2">Stauts</span>
+          <div class="quiz-list-container2">
+            <div class="quiz-list-sidebar"></div>
+            <nav class="quiz-list-nav">
+              <a href="/QuizList.html" class="quiz-list-navlink">
+                <img
+                  alt="image"
+                  src="/static/img/history.png"
+                  class="quiz-list-image1"
+                />
+              </a>
+              <a href="/QuizList.html" class="quiz-list-navlink1">
+                <span>Quiz List</span>
+              </a>
+            </nav>
           </div>
-          <button class="login-sign-up-button button-primary button">
-            Sign In 
-          </button>
-          <a
-            href="register.html"
-            class="login-sign-up-button1 button-primary button"
-          >
-            Register
-          </a>
-          <div class="login-sign-up-input-container">
-            <div class="login-sign-up-container3 input">
-              <input
-                type="text"
-                placeholder="Username"
-                class="login-sign-up-input1 input"
-              />
-            </div>
-          </div>
+          <span class="quiz-list-text4">quiz list display here</span>
         </div>
       </div>
     </div>
@@ -248,7 +232,6 @@
             );
           });
         };
-
         runAllScripts();
       };
     </script>

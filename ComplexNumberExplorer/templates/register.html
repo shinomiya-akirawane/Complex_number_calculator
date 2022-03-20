@@ -2,11 +2,7 @@
 {% load static %}
 <html lang="en">
   <head>
-    <title>loginSignUp - prototype</title>
-    <meta property="og:title" content="loginSignUp - prototype" />
-    <meta property="og:title" content="500Error - prototype" />
-    <meta property="og:title" content="TeacherClasses - prototype" />
-    <meta property="og:title" content="400Error - prototype" />
+    <title>register - prototype</title>
     <meta property="og:title" content="register - prototype" />
     <meta property="og:title" content="TakingQuizv2 - prototype" />
     <meta property="og:title" content="QuizList - prototype" />
@@ -19,10 +15,9 @@
     <meta property="twitter:card" content="summary_large_image" />
     <!--Bootstrap core CSS -->
     <link
-      href="{% static 'bootstrap/css/bootstrap.min.css'%}"
       rel="stylesheet"
+      href="{% static 'bootstrap/css/bootstrap.min.css'%}"
     />
-
     <style>
       html {
         line-height: 1.15;
@@ -119,63 +114,76 @@
         color: #63667066;
       }
     </style>
-    <link rel="stylesheet" href="{%static 'css/style.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/style.css'%}" />
   </head>
   <body>
     <div>
-      <link href="{% static 'css/loginSignup.css'%}" rel="stylesheet" />
+      <link href="{% static 'css/register.css'%}" rel="stylesheet" />
 
-      <div class="login-sign-up-container">
+      <div class="register-container">
         <header
           data-role="Header"
-          class="login-sign-up-max-width navigation-container"
+          class="register-max-width navigation-container"
         >
-          <img
-            alt="logo"
-            src="/static/img/logo.png"
-            class="login-sign-up-image"
-          />
+          <img alt="logo" src="/static/img/logo.png" class="register-image" />
           <div data-type="BurgerMenu" class="navigation-burger-menu">
-            <svg viewBox="0 0 1024 1024" class="login-sign-up-icon">
+            <svg viewBox="0 0 1024 1024" class="register-icon">
               <path
                 d="M128 554.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 298.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 810.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667z"
               ></path>
             </svg>
           </div>
-          <a
-            href=".html"
-            class="login-sign-up-primary-btn button-primary button"
-          >
+          <a href=".html" class="register-primary-btn button-primary button">
             Homepage
           </a>
         </header>
-        <div class="login-sign-up-container1">
-          <div class="login-sign-up-container2 input">
+        <div class="register-container1">
+          <div class="register-container2 input">
             <input
               type="text"
-              placeholder="Password"
-              class="login-sign-up-input input"
+              placeholder="Email"
+              class="register-input input"
             />
           </div>
-          <button class="login-sign-up-button button-primary button">
-            Sign In 
-          </button>
-          <a
-            href="register.html"
-            class="login-sign-up-button1 button-primary button"
-          >
-            Register
-          </a>
-          <div class="login-sign-up-input-container">
-            <div class="login-sign-up-container3 input">
-              <input
-                type="text"
-                placeholder="Username"
-                class="login-sign-up-input1 input"
-              />
-            </div>
+          <div class="register-container3 input">
+            <input
+              type="text"
+              placeholder="Group Number"
+              class="register-input1 input"
+            />
+          </div>
+          <div class="register-container4 input">
+            <input
+              type="text"
+              placeholder="Username"
+              class="register-input2 input"
+            />
+          </div>
+          <div class="register-container5 input">
+            <input
+              type="text"
+              placeholder="User Type"
+              class="register-input3 input"
+            />
+          </div>
+          <div class="register-container6 input">
+            <input
+              type="text"
+              placeholder="Enter Password:"
+              class="register-input4 input"
+            />
+          </div>
+          <div class="register-container7 input">
+            <input
+              type="text"
+              placeholder="Confirm Password:"
+              class="register-input5 input"
+            />
           </div>
         </div>
+        <a href="register.html" class="register-button button-primary button">
+          Register
+        </a>
       </div>
     </div>
     <script>
@@ -248,7 +256,6 @@
             );
           });
         };
-
         runAllScripts();
       };
     </script>

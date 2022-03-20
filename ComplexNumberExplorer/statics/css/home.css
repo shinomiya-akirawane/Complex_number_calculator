@@ -67,11 +67,11 @@
 }
 .home-input {
   flex: 1;
-  color: var(--dl-color-grays-gray40);
-  width: 645px;
+  width: 345px;
   border-width: 0px;
   padding-left: 12px;
   padding-right: 12px;
+  position: absolute;
 }
 .home-button {
   display: flex;
