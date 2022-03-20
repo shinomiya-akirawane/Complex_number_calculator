@@ -191,13 +191,16 @@
               <!-- example button with clickon event -->
               <button
                 class="home-button01 button"
-                onclick="buttonInput()"
+                onclick="buttonInput('z')"
                 id="z"
               >
                 z
               </button>
-              <button class="home-button02 button">x</button>
-              <button class="home-button03 button">y</button>
+              <button
+                      class="home-button02 button"
+                      onclick="buttonInput('x')"
+              >x</button>
+              <button class="home-button03 button" onclick="buttonInput('y')">y</button>
               <button class="home-button04 button">π</button>
             </div>
             <div class="home-container6">
@@ -220,9 +223,9 @@
     </div>
     <!-- example JS for button onclick-->
     <script>
-      function buttonInput() {
+      function buttonInput(character) {
         var value = document.getElementById("txt").value;
-        document.getElementById("txt").value = value + "z";
+        document.getElementById("txt").value = value + character;
       }
     </script>
 
