@@ -22,8 +22,8 @@ def error500(request):
     return render(request, 'error500.html')
 
 
-def TakingQuiz(request):
-    return render(request, 'TakingQuiz.html')
+def TakingQuizv2(request):
+    return render(request, 'TakingQuizv2.html')
 
 
 def TeacherClasses(request):
@@ -36,3 +36,7 @@ def Quizhistory(request):
 
 def Register(request):
     return render(request, 'register.html')
+
+
+def QuizList(request):
+    return render(request, 'QuizList.html')

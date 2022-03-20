@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 {% load static %}
+
 <html lang="en">
   <head>
-    <title>register - prototype</title>
-    <meta property="og:title" content="register - prototype" />
+    <title>TakingQuizv2 - prototype</title>
     <meta property="og:title" content="TakingQuizv2 - prototype" />
     <meta property="og:title" content="QuizList - prototype" />
     <meta property="og:title" content="QuizHistory - prototype" />
@@ -118,83 +118,99 @@
   </head>
   <body>
     <div>
-      <link href="{% static 'css/register.css'%}" rel="stylesheet" />
+      <link href="{% static 'css/TakingQuizv2.css'%}" rel="stylesheet" />
 
-      <div class="register-container">
+      <div class="taking-quizv2-container">
         <header
           data-role="Header"
-          class="register-max-width navigation-container"
+          class="taking-quizv2-max-width navigation-container"
         >
-          <img alt="logo" src="/static/img/logo.png" class="register-image" />
+          <img
+            alt="logo"
+            src="/static/img/logo.png"
+            class="taking-quizv2-image"
+          />
           <div data-type="BurgerMenu" class="navigation-burger-menu">
-            <svg viewBox="0 0 1024 1024" class="register-icon">
+            <svg viewBox="0 0 1024 1024" class="taking-quizv2-icon">
               <path
                 d="M128 554.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 298.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 810.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667z"
               ></path>
             </svg>
           </div>
-          <a href="/home/" class="register-primary-btn button-primary button">
-            Homepage
+          <a
+            href="/home/"
+            class="taking-quizv2-primary-btn button-primary button"
+          >
+            Log Out
           </a>
         </header>
-        <form method='POST' action='/register/'>
-          {% csrf_token %}
-          <div class="register-container1">
-            <div class="register-container2 input">
-              <input
-                name='email'
-                type="text"
-                placeholder="Email"
-                class="register-input input"
-              />
-            </div>
-            <div class="register-container3 input">
-              <input
-                name='groupNumber'
-                type="text"
-                placeholder="Group Number"
-                class="register-input1 input"
-              />
-            </div>
-            <div class="register-container4 input">
-              <input
-                name='username'
-                type="text"
-                placeholder="Username"
-                class="register-input2 input"
-              />
-            </div>
-            <div class="register-container5 input">
-              <input
-                name='userType'
-                type="text"
-                placeholder="User Type"
-                class="register-input3 input"
-              />
-            </div>
-            <div class="register-container6 input">
-              <input
-                name='password'
-                type="password"
-                placeholder="Enter Password:"
-                class="register-input4 input"
-              />
-            </div>
-            <div class="register-container7 input">
-              <input
-                name='cpassword'
-                type="password"
-                placeholder="Confirm Password:"
-                class="register-input5 input"
-              />
-            </div>
-          </div>
-          <button type='submit' class="register-button button-primary button">
-            Register
+        <div class="taking-quizv2-container1">
+          <span class="taking-quizv2-text">
+            <span class="taking-quizv2-text01">Question 1</span>
+          </span>
+          <span class="taking-quizv2-text02">
+            <span class="taking-quizv2-text03">Quiz 1</span>
+          </span>
+          <form method='POST' action='/takingquiz/'>
+            {% csrf_token %}
+            <span class="taking-quizv2-text04">Your Answer:</span>
+          <input name='answer' type="text" class="taking-quizv2-textinput input" />
+          <button type='submit' class="taking-quizv2-primary-btn1 button-primary button">
+            <span class="taking-quizv2-text05"><span>Submit</span></span>
           </button>
+          </form>
+          <form method='GET' action='/takingquiz/?nid={{questionID}}'>
+            <button class="taking-quizv2-primary-btn2 button-primary button">
+              <span class="taking-quizv2-text07">Next</span>
+            </button>
+          </form>
+
+          <div class="taking-quizv2-container2">
+            <div class="taking-quizv2-sidebar"></div>
+            <nav class="taking-quizv2-nav">
+              <a href="/quizlist/" class="taking-quizv2-navlink">
+                <img
+                  alt="image"
+                  src="/static/img/history.png"
+                  class="taking-quizv2-image1"
+                />
+              </a>
+              <a href="/quizlist/" class="taking-quizv2-navlink1">
+                <span>Quiz List</span>
+              </a>
+            </nav>
+          </div>
+          <span class="taking-quizv2-text09">question display here</span>
         </div>
-        </form>
-        
+        <div class="taking-quizv2-container3">
+          <div class="taking-quizv2-container4">
+            <button class="taking-quizv2-button button">z</button>
+            <button class="taking-quizv2-button01 button">x</button>
+            <button class="taking-quizv2-button02 button">y</button>
+            <button class="taking-quizv2-button03 button">π</button>
+          </div>
+          <div class="taking-quizv2-container5">
+            <div class="taking-quizv2-container6">
+              <button class="taking-quizv2-button04 button">^</button>
+              <button class="taking-quizv2-button05 button">√</button>
+              <button class="taking-quizv2-button06 button">e</button>
+            </div>
+            <button class="taking-quizv2-button07 button">i</button>
+          </div>
+          <div class="taking-quizv2-container7">
+            <button class="taking-quizv2-button08 button">＜</button>
+            <button class="taking-quizv2-button09 button">＞</button>
+            <button class="taking-quizv2-button10 button">≤</button>
+            <button class="taking-quizv2-button11 button">≥</button>
+          </div>
+        </div>
+        <span class="taking-quizv2-text10">
+          <span class="taking-quizv2-text11">Solution</span>
+        </span>
+        <span class="taking-quizv2-text12">
+          correct answer will display once submitted
+        </span>
+      </div>
     </div>
     <script>
       window.onload = () => {
@@ -266,6 +282,7 @@
             );
           });
         };
+
         runAllScripts();
       };
     </script>

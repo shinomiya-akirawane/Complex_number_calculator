@@ -60,6 +60,7 @@
   flex: 1;
   color: var(--dl-color-grays-black100);
   width: 645px;
+  height: 47px;
   border-width: 0px;
   padding-left: 12px;
   padding-right: 12px;
@@ -128,6 +129,7 @@
   flex: 1;
   color: var(--dl-color-grays-black100);
   width: 645px;
+  height: 47px;
   border-width: 0px;
   padding-left: 12px;
   padding-right: 12px;
