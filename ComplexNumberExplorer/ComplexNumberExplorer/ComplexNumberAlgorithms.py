@@ -1,10 +1,11 @@
 from math import *
 from cmath import *
+from cmath import polar as complexPolar
 import matplotlib.pyplot as plt
 import numpy as np
 from pylab import *
 
-IMAGE_ADDRESS = 'ComplexNumberExplorer/ComplexNumberExplorer/statics/img/img1.png'
+IMAGE_ADDRESS = 'img1.png'
 class FormTranslation:
     @staticmethod
     def list2str(l):
@@ -38,11 +39,19 @@ class FormTranslation:
             real_str = FormTranslation.list2str(parts['real'])
             real = float(real_str)
             img_str = FormTranslation.list2str(parts['img'])
-            img = float(img_str)
             if FormTranslation.getForm(inputFormular) == 'general':
-                moduleArg = polar(complex(real,img))
+                img = float(img_str)
+                moduleArg = complexPolar(complex(real,img))
                 resultFormular = str(moduleArg[0]) + 'e^' + str(moduleArg[1]) + 'j'
             elif FormTranslation.getForm(inputFormular) == 'polar':
+                num = ''
+                for i in range(0,len(img_str)-1):
+                    if img_str[i] == 'p':
+                        break
+                    num += img_str[i]
+                num = float(num)
+                img = num*pi
+                img_str = str(img)
                 resultFormular = real_str + 'e^' + img_str + 'j'
             else:
                 return 'wrong input form'
@@ -54,11 +63,20 @@ class FormTranslation:
             real_str = FormTranslation.list2str(parts['real'])
             real = float(real_str)
             img_str = FormTranslation.list2str(parts['img'])
-            img = float(img_str)
             if FormTranslation.getForm(inputFormular) == 'general':
-                moduleArg = polar(complex(real,img))
+                img = float(img_str)
+                num = complex(real,img)
+                moduleArg = complexPolar(num)
                 resultFormular = str(moduleArg[0]) + '(cos ' + str(moduleArg[1]) + ' + sin '+ str(moduleArg[1]) + ' j)'
             elif FormTranslation.getForm(inputFormular) == 'exp':
+                num = ''
+                for i in range(0,len(img_str)-1):
+                    if img_str[i] == 'p':
+                        break
+                    num += img_str[i]
+                num = float(num)
+                img = num*pi
+                img_str = str(img)                
                 resultFormular = real_str + '(cos ' + img_str + ' + sin '+ img_str + ' j'
             else:
                 return 'wrong input form'
@@ -71,20 +89,37 @@ class FormTranslation:
             real_str = FormTranslation.list2str(parts['real'])
             real = float(real_str)
             img_str = FormTranslation.list2str(parts['img'])
-            img = float(img_str)
-            resultFormular = str(rect(real,img))
-            return resultFormular
+            if 'pi' in img_str:
+                num = ''
+                for i in range(0,len(img_str)-1):
+                    if img_str[i] == 'p':
+                        break
+                    num += img_str[i]
+                num = float(num)
+                img = num*pi
+            else:
+                img = float(img_str)
+            resultFormular = rect(real,img)
+            resultFormular = complex(round(resultFormular.real,1),round(resultFormular.imag,1))
+            return str(resultFormular)
         else:
             return 'wrong input form'
 class StrPreOperation:
     '''
         example of outputs:
         2e^3j: {'real':'2','img':'3'}
-        3cos2pi+4sin2pij: {'real':"3cos2pi",'img':"4sin2pij"}
+        3(cos2pi+sin2pij): {'real':"3",'img':"2pi"}
         2+3j: {'real':'2','img':'3'}
     '''
     @staticmethod
+    def removeSpaces(string:str):
+        if ' ' in string:
+            string = string.replace(' ','')
+        return string
+
+    @staticmethod
     def extractParts(inputFormular:str):
+        StrPreOperation.removeSpaces(inputFormular)
         formularLen = len(inputFormular)
         realPart = []
         imagePart = []
@@ -94,13 +129,26 @@ class StrPreOperation:
                     break
                 else:
                     realPart.append(letter)
+            realPart = FormTranslation.list2str(realPart)
             for i in range (formularLen-1,-1,-1):
                 if inputFormular[i] is '^':
                     break
                 else:
                     imagePart.append(inputFormular[i])
             imagePart.reverse()
-            imagePart.remove('j')
+            imagePart = FormTranslation.list2str(imagePart)
+            if 'pi' in imagePart:
+                num = ''
+                for i in range(0,len(imagePart)-1):
+                    if imagePart[i] == 'p':
+                        break
+                    num += imagePart[i]
+                num = float(num)
+                imagePart = list(str(num*pi))
+            else:
+                imagePart = list(imagePart)
+            if 'j' in imagePart:
+                imagePart.remove('j')
             return {'real':realPart,'img':imagePart}
 
         elif(FormTranslation.getForm(inputFormular) == 'general'):
@@ -129,19 +177,21 @@ class StrPreOperation:
                     break
                 else:
                     realPart.append(letter)
-
             for i in range (formularLen-1,-1,-1):
                 if inputFormular[i] == 'n':
                     break
                 else:
                     imagePart.append(inputFormular[i])
             imagePart.reverse()
-            imagePart.remove(')')
+            imagePart.remove('j')
+            if ')' in imagePart:
+                imagePart.remove(')')
             return {'real':realPart,'img':imagePart}
         else:
             return 'wrong input form'
     @staticmethod
     def equationSeparator(equation:str):
+        StrPreOperation.removeSpaces(equation)
         leftHandSide = ''
         rightHandSide = []
         for letter in equation:
@@ -162,6 +212,8 @@ class StrPreOperation:
         return result
     @staticmethod
     def preSideFormular(sideKind:str,formular:str):
+        StrPreOperation.removeSpaces(sideKind)
+        StrPreOperation.removeSpaces(formular)
         numParts = []
         paraParts = []
         for i in range (0,len(formular)-1):
@@ -204,10 +256,12 @@ class StrPreOperation:
                     paraParts.append('-1')
                 elif formular[i] == 'z'and formular[i-1] != '*':
                     paraParts.append('1')
+        
         result = {sideKind+'ParaList':paraParts,sideKind+'NumList':numParts}
         return result
     @staticmethod
     def extractEquation(equation:str):
+        StrPreOperation.removeSpaces(equation)
         modules = []
         index = 0
         for i in range(0,len(equation)):
@@ -218,6 +272,10 @@ class StrPreOperation:
                     modules[index].append(equation[j])
                     j+=1
                 index+=1
+        modules = FormTranslation.list2strPro(modules)
+        for i in range (0,len(modules)):
+            if FormTranslation.getForm(modules[i]) != 'general':
+                modules[i] = FormTranslation.formTranslation(modules[i],'general')
         return modules
 
 class MathOperation:
@@ -460,10 +518,22 @@ class Graph():
             rightPoint = StrPreOperation.extractEquation(rightSide)
             leftParts = StrPreOperation.extractParts(FormTranslation.list2str(leftPoint[0]))
             rightParts = StrPreOperation.extractParts(FormTranslation.list2str(rightPoint[0]))
-            x1 = float(FormTranslation.list2str(leftParts['real']))
-            y1 = float(FormTranslation.list2str(leftParts['img']))
-            x2 = float(FormTranslation.list2str(rightParts['real']))
-            y2 = float(FormTranslation.list2str(rightParts['img']))
+            x1 = FormTranslation.list2str(leftParts['real'])
+            if '(' in x1:
+                x1 = x1.replace('(','') 
+            x1 = float(x1)
+            y1 = FormTranslation.list2str(leftParts['img'])
+            if ')' in y1:
+                y1 = y1.replace(')','') 
+            y1 = float(y1)
+            x2 = FormTranslation.list2str(rightParts['real'])
+            if '(' in x2:
+                x2 = x2.replace('(','') 
+            x2 = float(x2)
+            y2 = FormTranslation.list2str(rightParts['img'])
+            if ')' in y2:
+                y2 = y2.replace(')','') 
+            y2 = float(y2)
             axisLen = max((abs(x2-x1)),abs(y2-y1))*5
             gradient = (y2-y1)/(x2-x1)
             lineX = np.linspace(x1,x2)
@@ -486,8 +556,14 @@ class Graph():
             leftPoint = StrPreOperation.extractEquation(leftSide)
             leftParts = StrPreOperation.extractParts(FormTranslation.list2str(leftPoint[0]))
             rightParts = rightSide
-            x = float(FormTranslation.list2str(leftParts['real']))
-            y = float(FormTranslation.list2str(leftParts['img']))
+            x = FormTranslation.list2str(leftParts['real'])
+            if '(' in x:
+                x = x.replace('(','')
+            x = float(x)
+            y = FormTranslation.list2str(leftParts['img'])
+            if ')' in y:
+                y = y.replace(')','') 
+            y = float(y)
             axisLen = max((abs(x)),abs(y))*5
             paraX = np.linspace(x,10000)
             paraY = y + paraX*0
@@ -510,8 +586,14 @@ class Graph():
             leftPoint = StrPreOperation.extractEquation(leftSide)
             leftParts = StrPreOperation.extractParts(FormTranslation.list2str(leftPoint[0]))
             rightParts = float(rightSide)
-            x = float(FormTranslation.list2str(leftParts['real']))
-            y = float(FormTranslation.list2str(leftParts['img']))
+            x = FormTranslation.list2str(leftParts['real'])
+            if '(' in x:
+                x = x.replace('(','')
+            x = float(x)
+            y = FormTranslation.list2str(leftParts['img'])
+            if ')' in y:
+                y = y.replace(')','') 
+            y = float(y)
             radius = rightParts
             axisLen = abs(radius)+abs(y*1.25)
             CircleX = CircleY = np.arange(-radius,radius,0.1)
@@ -528,11 +610,15 @@ class Graph():
             plt.plot(paraX,paraY,'g--')
             plt.text(x+radius/2,y,str(radius))
             plt.savefig(IMAGE_ADDRESS)
-#Graph.plotForEquation('|z-(-3-8j)| = 5')
-Graph.plotForEquation('|z-(-2+3j)| = |z-(4+5j)|')
-#Graph.plotForEquation('arg[z-(1+2j)] = 0.3*pi')
-#Graph.plotForEquation('-(1+2j)*z-(3+4j)=(3+1j)')
-#Plot.plotForNums(['1+2j','3+3j'])
+#Graph.plotForEquation('|z-(2+3j)| = 5')
+#Graph.plotForEquation('|z - (3e^0.2pij)| = |z-(3e^2pij)|')
+#Graph.plotForEquation('arg[z-(3e^0.2pij)] = 0.3*pi')
+#Graph.plotForEquation('- (1+2j) *z-(3+4j)=(3e^0.2pij)')
+#Graph.plotForNums(['1+2j','3e^0.2pij'])
 #print(MathCalculator.linearEquationSolver('-(1+2j)*z-(3+4j)=(3+1j)'))
 #print(MathCalculator.combinedCal('-(-1+2j)*(3+4j)'))
 #Graph.plotForCombinedCal('-(-1+2j)*(3+4j)')
+#print(StrPreOperation.extractEquation('(2+3j) + (2e^3j)'))
+#print(FormTranslation.formTranslation('3e^0.2pij','polar'))
+#print(FormTranslation.formTranslation('3e^0.2pij','general'))
+#print(FormTranslation.formTranslation('3+2j','exp'))
