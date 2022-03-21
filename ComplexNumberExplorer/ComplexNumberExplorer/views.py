@@ -44,3 +44,7 @@ def QuizList(request):
 
 def TeacherQuizList(request):
     return render(request, 'TeacherQuizList.html')
+
+
+def quizHistoryv2(request):
+    return render(request, 'quizHistoryv2.html')

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 {% load static %}
-
 <html lang="en">
   <head>
-    <title>CreateQuiz - prototype</title>
+    <title>QuizHistory - prototype</title>
+    <meta property="og:title" content="QuizHistory - prototype" />
+    <meta property="og:title" content="TakingQuiz - prototype" />
     <meta property="og:title" content="CreateQuiz - prototype" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -114,20 +115,20 @@
   </head>
   <body>
     <div>
-      <link href="{%static 'css/CreateQuiz.css'%}" rel="stylesheet" />
+      <link href="{% static 'css/QuizHistory.css'%}" rel="stylesheet" />
 
-      <div class="create-quiz-container">
+      <div class="quiz-history-container">
         <header
           data-role="Header"
-          class="create-quiz-max-width navigation-container"
+          class="quiz-history-max-width navigation-container"
         >
           <img
             alt="logo"
-            src="/static/img/logo.png"
-            class="create-quiz-image"
+            src="fa90b0fc-6294-473f-9a66-07a5f7b759fd"
+            class="quiz-history-image"
           />
           <div data-type="BurgerMenu" class="navigation-burger-menu">
-            <svg viewBox="0 0 1024 1024" class="create-quiz-icon">
+            <svg viewBox="0 0 1024 1024" class="quiz-history-icon">
               <path
                 d="M128 554.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 298.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 810.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667z"
               ></path>
@@ -135,85 +136,53 @@
           </div>
           <a
             href="login-sign-up.html"
-            class="create-quiz-primary-btn button-primary button"
+            class="quiz-history-primary-btn button-primary button"
           >
-            Log Out
+            Profile
           </a>
         </header>
-        <div class="create-quiz-container1">
-          <div class="create-quiz-sidebar">
-            <nav class="create-quiz-nav">
-              <a href="/teacherclasses/" class="create-quiz-navlink">
-                <img
-                  alt="image"
-                  src="/static/img/classes%20icon-200h.png"
-                  class="create-quiz-image1"
-                />
-              </a>
-              <a href="/teacherclasses/" class="create-quiz-navlink1">
-                Classes
-              </a>
+        <div class="quiz-history-container1">
+          <div class="quiz-history-container2">
+            <div class="quiz-history-sidebar"></div>
+            <nav class="quiz-history-nav">
               <img
                 alt="image"
-                src="/static/img/quiz%20icon-200h.png"
-                class="create-quiz-image2"
+                src="f8dd58b9-700a-4210-a379-944b0afcf648"
+                class="quiz-history-image1"
               />
-              <span class="create-quiz-text">Create a Quiz</span>
+              <span class="quiz-history-text">History List</span>
             </nav>
           </div>
-
-
-
-          <form method="POST" , action="/newQuiz/">
-            {% csrf_token %}
-          <span class="create-quiz-text1">
-            <span class="create-quiz-text2">Question 1</span>
+          <span class="quiz-history-text01">
+            <span class="quiz-history-text02">Question 1</span>
           </span>
-
-          <span class="create-quiz-text3">Answer</span>
-          <input 
-          type="text" class="create-quiz-textinput input" />
-          <button class="create-quiz-primary-btn1 button-primary button">
-            Auto Generate
+          <span class="quiz-history-text03">
+            <span class="quiz-history-text04">Solution</span>
+          </span>
+          <span class="quiz-history-text05">Your Answer:</span>
+          <button class="quiz-history-primary-btn1 button-primary button">
+            <span class="quiz-history-text06">
+              <span>Next Question →</span>
+            </span>
           </button>
-          
-          <button class="create-quiz-primary-btn2 button-primary button">
-            <span class="create-quiz-text4">Next Question</span>
-          </button>
-          <button class="create-quiz-primary-btn3 button-primary button">
-            <span class="create-quiz-text5">Submit</span>
-          </button>
-
-          <input
-            type="text"
-            placeholder="Input question here"
-            class="create-quiz-textinput1 input"
-          />
-        </div>
-        <div class="create-quiz-container2">
-          <div class="create-quiz-container3">
-            <button class="create-quiz-button button">z</button>
-            <button class="create-quiz-button01 button">x</button>
-            <button class="create-quiz-button02 button">y</button>
-            <button class="create-quiz-button03 button">π</button>
-          </div>
-          <div class="create-quiz-container4">
-            <div class="create-quiz-container5">
-              <button class="create-quiz-button04 button">^</button>
-              <button class="create-quiz-button05 button">√</button>
-              <button class="create-quiz-button06 button">e</button>
+          <div class="quiz-history-container3">
+            <div class="quiz-history-container4">
+              <button class="quiz-history-button button">Q1</button>
+              <button class="quiz-history-button1 button">Q2</button>
+              <button class="quiz-history-button2 button">Q3</button>
+              <button class="quiz-history-button3 button">Q4</button>
             </div>
-            <button class="create-quiz-button07 button">i</button>
           </div>
-          <div class="create-quiz-container6">
-            <button class="create-quiz-button08 button">＜</button>
-            <button class="create-quiz-button09 button">＞</button>
-            <button class="create-quiz-button10 button">≤</button>
-            <button class="create-quiz-button11 button">≥</button>
-          </div>
+          <span class="quiz-history-text08">question display here</span>
+          <span class="quiz-history-text09">
+            user&apos;s answer display here
+          </span>
+          <span class="quiz-history-text10">correcanswer display here</span>
+          <div class="quiz-history-container5"></div>
         </div>
       </div>
     </div>
+    <script src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
     <script>
       window.onload = () => {
         const runAllScripts = () => {
