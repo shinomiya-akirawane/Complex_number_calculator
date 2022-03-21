@@ -10,8 +10,8 @@ def loginSignUp(request):
     return render(request, 'loginSignUp.html')
 
 
-def CreateQuiz(request):
-    return render(request, 'CreateQuiz.html')
+def CreateQuizv2(request):
+    return render(request, 'CreateQuizv2.html')
 
 
 def error404(request):
