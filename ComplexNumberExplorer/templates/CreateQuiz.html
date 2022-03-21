@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <title>CreateQuiz - prototype</title>
+    <meta property="og:title" content="CreateQuiz - prototype" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <!--Bootstrap core CSS -->
+    <link
+      href="{% static 'bootstrap/css/bootstrap.min.css'%}"
+      rel="stylesheet"
+    />
+    <style>
+      html {
+        line-height: 1.15;
+      }
+      body {
+        margin: 0;
+      }
+      * {
+        box-sizing: border-box;
+        border-width: 0;
+        border-style: solid;
+      }
+      p,
+      li,
+      ul,
+      pre,
+      div,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        margin: 0;
+        padding: 0;
+      }
+      button,
+      input,
+      optgroup,
+      select,
+      textarea {
+        font-family: inherit;
+        font-size: 100%;
+        line-height: 1.15;
+        margin: 0;
+      }
+      button,
+      select {
+        text-transform: none;
+      }
+      button,
+      [type="button"],
+      [type="reset"],
+      [type="submit"] {
+        -webkit-appearance: button;
+      }
+      button::-moz-focus-inner,
+      [type="button"]::-moz-focus-inner,
+      [type="reset"]::-moz-focus-inner,
+      [type="submit"]::-moz-focus-inner {
+        border-style: none;
+        padding: 0;
+      }
+      button:-moz-focus,
+      [type="button"]:-moz-focus,
+      [type="reset"]:-moz-focus,
+      [type="submit"]:-moz-focus {
+        outline: 1px dotted ButtonText;
+      }
+      a {
+        color: inherit;
+        text-decoration: inherit;
+      }
+      input {
+        padding: 2px 4px;
+      }
+      img {
+        display: block;
+      }
+    </style>
+    <style>
+      html {
+        font-family: Lexend;
+        font-size: 16px;
+      }
+
+      body {
+        font-weight: 400;
+        font-style: normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 1.1;
+        color: var(--dl-color-grays-dark100);
+        background-color: var(--dl-color-grays-white100);
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    />
+    <style>
+      ::placeholder {
+        color: #63667066;
+      }
+    </style>
+    <link rel="stylesheet" href="{% static 'css/style.css'%}" />
+  </head>
+  <body>
+    <div>
+      <link href="{%static 'css/CreateQuiz.css'%}" rel="stylesheet" />
+
+      <div class="create-quiz-container">
+        <header
+          data-role="Header"
+          class="create-quiz-max-width navigation-container"
+        >
+          <img
+            alt="logo"
+            src="/static/img/logo.png"
+            class="create-quiz-image"
+          />
+          <div data-type="BurgerMenu" class="navigation-burger-menu">
+            <svg viewBox="0 0 1024 1024" class="create-quiz-icon">
+              <path
+                d="M128 554.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 298.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 810.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667z"
+              ></path>
+            </svg>
+          </div>
+          <a
+            href="/home/"
+            class="create-quiz-primary-btn button-primary button"
+          >
+            Log Out
+          </a>
+        </header>
+        <div class="create-quiz-container1">
+          <div class="create-quiz-sidebar">
+            <nav class="create-quiz-nav">
+              <a href="/teacherclasses/" class="create-quiz-navlink">
+                <img
+                  alt="image"
+                  src="/static/img/classes%20icon-200h.png"
+                  class="create-quiz-image1"
+                />
+              </a>
+              <a href="/teacherclasses/" class="create-quiz-navlink1">
+                Classes
+              </a>
+              <img
+                alt="image"
+                src="/static/img/quiz%20icon-200h.png"
+                class="create-quiz-image2"
+              />
+              <span class="create-quiz-text">Create a Quiz</span>
+            </nav>
+          
+          </div>
+          <form method='POST', action='/newQuiz/'>
+            {% csrf_token %}
+          <span class="create-quiz-text1">
+            <span class="create-quiz-text2">Question 1</span>
+          </span>
+        
+          <span class="create-quiz-text3">Answer</span>
+          <input name='answer' type="text" class="create-quiz-textinput input" />
+          
+          <button type='submit' class="create-quiz-primary-btn2 button-primary button">
+            <span class="create-quiz-text4">
+              <span>Confirm</span>
+              <span class="create-quiz-text6"></span>
+            </span>
+          </button>
+          <input
+            name='question'
+            type="text"
+            placeholder="Input question here"
+            class="create-quiz-textinput1 input"
+            id="txt"
+          />
+        </form>
+        <form method='GET' action='/newQuiz/?auto_generate/'>
+          
+          <button type='submit' class="create-quiz-primary-btn1 button-primary button">
+            Auto Generate
+          </button>
+        </form>
+          
+        </div>
+         
+          
+        <div class="create-quiz-container2">
+          <div class="create-quiz-container3">
+            <button class="create-quiz-button button" onclick="buttonInput('z')">z</button>
+            <button class="create-quiz-button01 button" onclick="buttonInput('sin')">sin</button>
+            <button class="create-quiz-button02 button" onclick="buttonInput('cos')">cos</button>
+            <button class="create-quiz-button03 button" onclick="buttonInput('pi')">pi</button>
+          </div>
+          <div class="create-quiz-container4">
+            <div class="create-quiz-container5">
+              <button class="create-quiz-button04 button" onclick="buttonInput('^')">^</button>
+              <button class="create-quiz-button05 button" onclick="buttonInput('|')">|</button>
+              <button class="create-quiz-button06 button" onclick="buttonInput('e')">e</button>
+            </div>
+            <button class="create-quiz-button07 button" onclick="buttonInput('j')">j</button>
+          </div>
+          <div class="create-quiz-container6">
+            <button class="create-quiz-button08 button" onclick="buttonInput('arg')">arg</button>
+            <button class="create-quiz-button09 button" onclick="buttonInput('(')">(</button>
+            <button class="create-quiz-button10 button" onclick="buttonInput(')')">)</button>
+            <button class="create-quiz-button11 button" onclick="buttonInput('=')">=</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- example JS for button onclick-->
+    <script>
+      function buttonInput(character) {
+        var value = document.getElementById("txt").value;
+        document.getElementById("txt").value = value + character;
+      }
+    </script>
+    <script>
+      window.onload = () => {
+        const runAllScripts = () => {
+          initializeAllSliders();
+        };
+
+        const listenForUrlChanges = () => {
+          let url = location.href;
+          document.body.addEventListener(
+            "click",
+            () => {
+              requestAnimationFrame(() => {
+                if (url !== location.href) {
+                  runAllScripts();
+                  url = location.href;
+                }
+              });
+            },
+            true
+          );
+        };
+
+        const initializeAllSliders = () => {
+          const allSliders = document.querySelectorAll('[data-type="slider"]');
+          allSliders.forEach((carrousel) => {
+            initializeSlider(carrousel);
+          });
+        };
+
+        const initializeSlider = (carrousel) => {
+          let currentSlide = 0;
+
+          const slides = carrousel.querySelectorAll('[data-type="slide"]');
+          const nextSlideBtns = carrousel.querySelectorAll(
+            '[data-action="nextSlide"]'
+          );
+          const previousSlideBtns = carrousel.querySelectorAll(
+            '[data-action="previousSlide"]'
+          );
+
+          const changeSlide = (slideIndex, action) => {
+            currentSlide = slideIndex;
+
+            switch (action) {
+              case "next":
+                slideIndex === slides.length - 1
+                  ? (currentSlide = 0)
+                  : currentSlide++;
+                break;
+              case "previous":
+                slideIndex === 0
+                  ? (currentSlide = slides.length - 1)
+                  : currentSlide--;
+            }
+
+            carrousel.style.transform = `translateX(${-100 * currentSlide}%)`;
+          };
+
+          previousSlideBtns.forEach((btn) => {
+            btn.addEventListener("click", () =>
+              changeSlide(currentSlide, "previous")
+            );
+          });
+
+          nextSlideBtns.forEach((btn) => {
+            btn.addEventListener("click", () =>
+              changeSlide(currentSlide, "next")
+            );
+          });
+        };
+
+        runAllScripts();
+      };
+    </script>
+    <!-- import dependence of bootstrap-->
+    <script src="{% static 'popper/popper.js' %}"></script>
+    <!-- import bootstrap core JS -->
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+  </body>
+</html>

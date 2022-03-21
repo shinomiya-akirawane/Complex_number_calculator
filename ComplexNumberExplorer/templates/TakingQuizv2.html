@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+  <head>
+    <title>TakingQuizv2 - prototype</title>
+    <meta property="og:title" content="TakingQuizv2 - prototype" />
+    <meta property="og:title" content="QuizList - prototype" />
+    <meta property="og:title" content="QuizHistory - prototype" />
+    <meta property="og:title" content="TakingQuiz - prototype" />
+    <meta property="og:title" content="CreateQuiz - prototype" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <!--Bootstrap core CSS -->
+    <link
+      rel="stylesheet"
+      href="{% static 'bootstrap/css/bootstrap.min.css'%}"
+    />
+    <style>
+      html {
+        line-height: 1.15;
+      }
+      body {
+        margin: 0;
+      }
+      * {
+        box-sizing: border-box;
+        border-width: 0;
+        border-style: solid;
+      }
+      p,
+      li,
+      ul,
+      pre,
+      div,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        margin: 0;
+        padding: 0;
+      }
+      button,
+      input,
+      optgroup,
+      select,
+      textarea {
+        font-family: inherit;
+        font-size: 100%;
+        line-height: 1.15;
+        margin: 0;
+      }
+      button,
+      select {
+        text-transform: none;
+      }
+      button,
+      [type="button"],
+      [type="reset"],
+      [type="submit"] {
+        -webkit-appearance: button;
+      }
+      button::-moz-focus-inner,
+      [type="button"]::-moz-focus-inner,
+      [type="reset"]::-moz-focus-inner,
+      [type="submit"]::-moz-focus-inner {
+        border-style: none;
+        padding: 0;
+      }
+      button:-moz-focus,
+      [type="button"]:-moz-focus,
+      [type="reset"]:-moz-focus,
+      [type="submit"]:-moz-focus {
+        outline: 1px dotted ButtonText;
+      }
+      a {
+        color: inherit;
+        text-decoration: inherit;
+      }
+      input {
+        padding: 2px 4px;
+      }
+      img {
+        display: block;
+      }
+    </style>
+    <style>
+      html {
+        font-family: Lexend;
+        font-size: 16px;
+      }
+
+      body {
+        font-weight: 400;
+        font-style: normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 1.1;
+        color: var(--dl-color-grays-dark100);
+        background-color: var(--dl-color-grays-white100);
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    />
+    <style>
+      ::placeholder {
+        color: #63667066;
+      }
+    </style>
+    <link rel="stylesheet" href="{% static 'css/style.css'%}" />
+  </head>
+  <body>
+    <div>
+      <link href="{% static 'css/TakingQuizv2.css'%}" rel="stylesheet" />
+
+      <div class="taking-quizv2-container">
+        <header
+          data-role="Header"
+          class="taking-quizv2-max-width navigation-container"
+        >
+          <img
+            alt="logo"
+            src="/static/img/logo.png"
+            class="taking-quizv2-image"
+          />
+          <div data-type="BurgerMenu" class="navigation-burger-menu">
+            <svg viewBox="0 0 1024 1024" class="taking-quizv2-icon">
+              <path
+                d="M128 554.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 298.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 810.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667z"
+              ></path>
+            </svg>
+          </div>
+          <a
+            href="/home/"
+            class="taking-quizv2-primary-btn button-primary button"
+          >
+            Log Out
+          </a>
+        </header>
+        <div class="taking-quizv2-container1">
+          <span class="taking-quizv2-text">
+            <span class="taking-quizv2-text01">Question 1</span>
+          </span>
+          <span class="taking-quizv2-text02">
+            <span class="taking-quizv2-text03">Quiz 1</span>
+          </span>
+          <form method='POST' action='/takingquiz/'>
+            {% csrf_token %}
+            <span class="taking-quizv2-text04">Your Answer:</span>
+          <input id='txt' name='answer' type="text" class="taking-quizv2-textinput input" />
+          <button type='submit' class="taking-quizv2-primary-btn1 button-primary button">
+            <span class="taking-quizv2-text05"><span>Submit</span></span>
+          </button>
+          </form>
+          <form method='GET' action='/takingquiz/?nid={{questionID}}'>
+            <button class="taking-quizv2-primary-btn2 button-primary button">
+              <span class="taking-quizv2-text07">Next</span>
+            </button>
+          </form>
+
+          <div class="taking-quizv2-container2">
+            <div class="taking-quizv2-sidebar"></div>
+            <nav class="taking-quizv2-nav">
+              <a href="/quizlist/" class="taking-quizv2-navlink">
+                <img
+                  alt="image"
+                  src="/static/img/history.png"
+                  class="taking-quizv2-image1"
+                />
+              </a>
+              <a href="/quizlist/" class="taking-quizv2-navlink1">
+                <span>Quiz List</span>
+              </a>
+            </nav>
+          </div>
+          <span class="taking-quizv2-text09">question display here</span>
+        </div>
+        <div class="taking-quizv2-container3">
+          <div class="taking-quizv2-container4">
+            <button class="taking-quizv2-button button" onclick="buttonInput('z')">z</button>
+            <button class="taking-quizv2-button01 button" onclick="buttonInput('sin')">sin</button>
+            <button class="taking-quizv2-button02 button" onclick="buttonInput('cos')">cos</button>
+            <button class="taking-quizv2-button03 button" onclick="buttonInput('pi')">pi</button>
+          </div>
+          <div class="taking-quizv2-container5">
+            <div class="taking-quizv2-container6">
+              <button class="taking-quizv2-button04 button" onclick="buttonInput('^')">^</button>
+              <button class="taking-quizv2-button05 button" onclick="buttonInput('|')">|</button>
+              <button class="taking-quizv2-button06 button" onclick="buttonInput('e')">e</button>
+            </div>
+            <button class="taking-quizv2-button07 button" onclick="buttonInput('j')">j</button>
+          </div>
+          <div class="taking-quizv2-container7">
+            <button class="taking-quizv2-button08 button" onclick="buttonInput('arg')">arg</button>
+            <button class="taking-quizv2-button09 button" onclick="buttonInput('(')">(</button>
+            <button class="taking-quizv2-button10 button" onclick="buttonInput(')')">)</button>
+            <button class="taking-quizv2-button11 button" onclick="buttonInput('=')">=</button>
+          </div>
+        </div>
+        <span class="taking-quizv2-text10">
+          <span class="taking-quizv2-text11">Solution</span>
+        </span>
+        <span class="taking-quizv2-text12">
+          correct answer will display once submitted
+        </span>
+      </div>
+    </div>
+    <!-- example JS for button onclick-->
+    <script>
+      function buttonInput(character) {
+        var value = document.getElementById("txt").value;
+        document.getElementById("txt").value = value + character;
+      }
+    </script>
+    <script>
+      window.onload = () => {
+        const runAllScripts = () => {
+          initializeAllSliders();
+        };
+
+        const listenForUrlChanges = () => {
+          let url = location.href;
+          document.body.addEventListener(
+            "click",
+            () => {
+              requestAnimationFrame(() => {
+                if (url !== location.href) {
+                  runAllScripts();
+                  url = location.href;
+                }
+              });
+            },
+            true
+          );
+        };
+
+        const initializeAllSliders = () => {
+          const allSliders = document.querySelectorAll('[data-type="slider"]');
+          allSliders.forEach((carrousel) => {
+            initializeSlider(carrousel);
+          });
+        };
+
+        const initializeSlider = (carrousel) => {
+          let currentSlide = 0;
+
+          const slides = carrousel.querySelectorAll('[data-type="slide"]');
+          const nextSlideBtns = carrousel.querySelectorAll(
+            '[data-action="nextSlide"]'
+          );
+          const previousSlideBtns = carrousel.querySelectorAll(
+            '[data-action="previousSlide"]'
+          );
+
+          const changeSlide = (slideIndex, action) => {
+            currentSlide = slideIndex;
+
+            switch (action) {
+              case "next":
+                slideIndex === slides.length - 1
+                  ? (currentSlide = 0)
+                  : currentSlide++;
+                break;
+              case "previous":
+                slideIndex === 0
+                  ? (currentSlide = slides.length - 1)
+                  : currentSlide--;
+            }
+
+            carrousel.style.transform = `translateX(${-100 * currentSlide}%)`;
+          };
+
+          previousSlideBtns.forEach((btn) => {
+            btn.addEventListener("click", () =>
+              changeSlide(currentSlide, "previous")
+            );
+          });
+
+          nextSlideBtns.forEach((btn) => {
+            btn.addEventListener("click", () =>
+              changeSlide(currentSlide, "next")
+            );
+          });
+        };
+
+        runAllScripts();
+      };
+    </script>
+    <!-- import dependence of bootstrap-->
+    <script src="{% static 'popper/popper.js' %}"></script>
+    <!-- import bootstrap core JS -->
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+  </body>
+</html>

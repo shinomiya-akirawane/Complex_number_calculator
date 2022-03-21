@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <title>TakingQuiz_01 - prototype</title>
+    <meta property="og:title" content="TakingQuiz_01 - prototype" />
+    <meta property="og:title" content="CreateQuiz - prototype" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
+
+    <!--Bootstrap core CSS -->
+    <link
+      rel="stylesheet"
+      href="{% static 'bootstrap/css/bootstrap.min.css'%}"
+    />
+    <style>
+      html {
+        line-height: 1.15;
+      }
+      body {
+        margin: 0;
+      }
+      * {
+        box-sizing: border-box;
+        border-width: 0;
+        border-style: solid;
+      }
+      p,
+      li,
+      ul,
+      pre,
+      div,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        margin: 0;
+        padding: 0;
+      }
+      button,
+      input,
+      optgroup,
+      select,
+      textarea {
+        font-family: inherit;
+        font-size: 100%;
+        line-height: 1.15;
+        margin: 0;
+      }
+      button,
+      select {
+        text-transform: none;
+      }
+      button,
+      [type="button"],
+      [type="reset"],
+      [type="submit"] {
+        -webkit-appearance: button;
+      }
+      button::-moz-focus-inner,
+      [type="button"]::-moz-focus-inner,
+      [type="reset"]::-moz-focus-inner,
+      [type="submit"]::-moz-focus-inner {
+        border-style: none;
+        padding: 0;
+      }
+      button:-moz-focus,
+      [type="button"]:-moz-focus,
+      [type="reset"]:-moz-focus,
+      [type="submit"]:-moz-focus {
+        outline: 1px dotted ButtonText;
+      }
+      a {
+        color: inherit;
+        text-decoration: inherit;
+      }
+      input {
+        padding: 2px 4px;
+      }
+      img {
+        display: block;
+      }
+    </style>
+    <style>
+      html {
+        font-family: Lexend;
+        font-size: 16px;
+      }
+
+      body {
+        font-weight: 400;
+        font-style: normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 1.1;
+        color: var(--dl-color-grays-dark100);
+        background-color: var(--dl-color-grays-white100);
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    />
+    <style>
+      ::placeholder {
+        color: #63667066;
+      }
+    </style>
+    <link rel="stylesheet" href="{% static 'css/style.css'%}" />
+  </head>
+  <body>
+    <div>
+      <link href="{% static 'css/TakingQuiz.css'%}" rel="stylesheet" />
+
+      <div class="taking-quiz_01-container">
+        <header
+          data-role="Header"
+          class="taking-quiz_01-max-width navigation-container"
+        >
+          <img
+            alt="logo"
+            src="/static/img/logo.png"
+            class="taking-quiz_01-image"
+          />
+          <div data-type="BurgerMenu" class="navigation-burger-menu">
+            <svg viewBox="0 0 1024 1024" class="taking-quiz_01-icon">
+              <path
+                d="M128 554.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 298.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 810.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667z"
+              ></path>
+            </svg>
+          </div>
+          <a
+            href="/home/"
+            class="taking-quiz_01-primary-btn button-primary button"
+          >
+            Log Out
+          </a>
+        </header>
+        <div class="taking-quiz_01-container1">
+          <form>
+            <span class="taking-quiz_01-text">
+              <span class="taking-quiz_01-text1">Question 1</span>
+            </span>
+            <span class="taking-quiz_01-text2">Your Answer:</span>
+            <input type="text" class="taking-quiz_01-textinput input" />
+            <button type='submit' class="taking-quiz_01-primary-btn1 button-primary button">
+              <span class="taking-quiz_01-text3">
+                <span>Next Question →</span>
+              </span>
+            </button>
+          </from>
+          
+          <div class="taking-quiz_01-container2">
+            <div class="taking-quiz_01-sidebar"></div>
+            <nav class="taking-quiz_01-nav">
+              <a href="/quizhistory/" class="taking-quiz_01-navlink">
+                <img
+                  alt="image"
+                  src="/static/img/history.png"
+                  class="taking-quiz_01-image1"
+                />
+              </a>
+              <a href="/quizhistory/" class="taking-quiz_01-navlink1">
+                History
+              </a>
+              <img
+                alt="image"
+                src="/static/img/penicon.png"
+                class="taking-quiz_01-image2"
+              />
+              <span class="taking-quiz_01-text5">Practice Quiz</span>
+            </nav>
+          </div>
+          <span class="taking-quiz_01-text6">{{question}}question display here</span>
+        </div>
+        <div class="taking-quiz_01-container3">
+          <div class="taking-quiz_01-container4">
+            <button class="taking-quiz_01-button button">z</button>
+            <button class="taking-quiz_01-button01 button">x</button>
+            <button class="taking-quiz_01-button02 button">y</button>
+            <button class="taking-quiz_01-button03 button">π</button>
+          </div>
+          <div class="taking-quiz_01-container5">
+            <div class="taking-quiz_01-container6">
+              <button class="taking-quiz_01-button04 button">^</button>
+              <button class="taking-quiz_01-button05 button">√</button>
+              <button class="taking-quiz_01-button06 button">e</button>
+            </div>
+            <button class="taking-quiz_01-button07 button">j</button>
+          </div>
+          <div class="taking-quiz_01-container7">
+            <button class="taking-quiz_01-button08 button">＜</button>
+            <button class="taking-quiz_01-button09 button">＞</button>
+            <button class="taking-quiz_01-button10 button">≤</button>
+            <button class="taking-quiz_01-button11 button">≥</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      window.onload = () => {
+        const runAllScripts = () => {
+          initializeAllSliders();
+        };
+
+        const listenForUrlChanges = () => {
+          let url = location.href;
+          document.body.addEventListener(
+            "click",
+            () => {
+              requestAnimationFrame(() => {
+                if (url !== location.href) {
+                  runAllScripts();
+                  url = location.href;
+                }
+              });
+            },
+            true
+          );
+        };
+
+        const initializeAllSliders = () => {
+          const allSliders = document.querySelectorAll('[data-type="slider"]');
+          allSliders.forEach((carrousel) => {
+            initializeSlider(carrousel);
+          });
+        };
+
+        const initializeSlider = (carrousel) => {
+          let currentSlide = 0;
+
+          const slides = carrousel.querySelectorAll('[data-type="slide"]');
+          const nextSlideBtns = carrousel.querySelectorAll(
+            '[data-action="nextSlide"]'
+          );
+          const previousSlideBtns = carrousel.querySelectorAll(
+            '[data-action="previousSlide"]'
+          );
+
+          const changeSlide = (slideIndex, action) => {
+            currentSlide = slideIndex;
+
+            switch (action) {
+              case "next":
+                slideIndex === slides.length - 1
+                  ? (currentSlide = 0)
+                  : currentSlide++;
+                break;
+              case "previous":
+                slideIndex === 0
+                  ? (currentSlide = slides.length - 1)
+                  : currentSlide--;
+            }
+
+            carrousel.style.transform = `translateX(${-100 * currentSlide}%)`;
+          };
+
+          previousSlideBtns.forEach((btn) => {
+            btn.addEventListener("click", () =>
+              changeSlide(currentSlide, "previous")
+            );
+          });
+
+          nextSlideBtns.forEach((btn) => {
+            btn.addEventListener("click", () =>
+              changeSlide(currentSlide, "next")
+            );
+          });
+        };
+
+        runAllScripts();
+      };
+    </script>
+    <!-- import dependence of bootstrap-->
+    <script src="{% static 'popper/popper.js' %}"></script>
+    <!-- import bootstrap core JS -->
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+  </body>
+</html>

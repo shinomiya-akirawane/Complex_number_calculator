@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <title>loginSignUp - prototype</title>
+    <meta property="og:title" content="loginSignUp - prototype" />
+    <meta property="og:title" content="500Error - prototype" />
+    <meta property="og:title" content="TeacherClasses - prototype" />
+    <meta property="og:title" content="400Error - prototype" />
+    <meta property="og:title" content="register - prototype" />
+    <meta property="og:title" content="TakingQuizv2 - prototype" />
+    <meta property="og:title" content="QuizList - prototype" />
+    <meta property="og:title" content="QuizHistory - prototype" />
+    <meta property="og:title" content="TakingQuiz - prototype" />
+    <meta property="og:title" content="CreateQuiz - prototype" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <!--Bootstrap core CSS -->
+    <link
+      href="{% static 'bootstrap/css/bootstrap.min.css'%}"
+      rel="stylesheet"
+    />
+
+    <style>
+      html {
+        line-height: 1.15;
+      }
+      body {
+        margin: 0;
+      }
+      * {
+        box-sizing: border-box;
+        border-width: 0;
+        border-style: solid;
+      }
+      p,
+      li,
+      ul,
+      pre,
+      div,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        margin: 0;
+        padding: 0;
+      }
+      button,
+      input,
+      optgroup,
+      select,
+      textarea {
+        font-family: inherit;
+        font-size: 100%;
+        line-height: 1.15;
+        margin: 0;
+      }
+      button,
+      select {
+        text-transform: none;
+      }
+      button,
+      [type="button"],
+      [type="reset"],
+      [type="submit"] {
+        -webkit-appearance: button;
+      }
+      button::-moz-focus-inner,
+      [type="button"]::-moz-focus-inner,
+      [type="reset"]::-moz-focus-inner,
+      [type="submit"]::-moz-focus-inner {
+        border-style: none;
+        padding: 0;
+      }
+      button:-moz-focus,
+      [type="button"]:-moz-focus,
+      [type="reset"]:-moz-focus,
+      [type="submit"]:-moz-focus {
+        outline: 1px dotted ButtonText;
+      }
+      a {
+        color: inherit;
+        text-decoration: inherit;
+      }
+      input {
+        padding: 2px 4px;
+      }
+      img {
+        display: block;
+      }
+    </style>
+    <style>
+      html {
+        font-family: Lexend;
+        font-size: 16px;
+      }
+
+      body {
+        font-weight: 400;
+        font-style: normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 1.1;
+        color: var(--dl-color-grays-dark100);
+        background-color: var(--dl-color-grays-white100);
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    />
+    <style>
+      ::placeholder {
+        color: #63667066;
+      }
+    </style>
+    <link rel="stylesheet" href="{%static 'css/style.css'%}" />
+  </head>
+  <body>
+    <div>
+      <link href="{% static 'css/loginSignup.css'%}" rel="stylesheet" />
+
+      <div class="login-sign-up-container">
+        <header
+          data-role="Header"
+          class="login-sign-up-max-width navigation-container"
+        >
+          <img
+            alt="logo"
+            src="/static/img/logo.png"
+            class="login-sign-up-image"
+          />
+          <div data-type="BurgerMenu" class="navigation-burger-menu">
+            <svg viewBox="0 0 1024 1024" class="login-sign-up-icon">
+              <path
+                d="M128 554.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 298.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 810.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667z"
+              ></path>
+            </svg>
+          </div>
+          <a
+            href="/home/"
+            class="login-sign-up-primary-btn button-primary button"
+          >
+            Homepage
+          </a>
+        </header>
+        <div class="login-sign-up-container1">
+          <form method='POST' action='/login/'>
+            {% csrf_token %}
+            <div class="login-sign-up-container2 input">
+              <input
+                name='password'
+                type="password"
+                placeholder="Password"
+                class="login-sign-up-input input"
+              />
+            </div>
+            <button type='submit' class="login-sign-up-button button-primary button">
+              Sign In 
+            </button>
+            <a
+              href="/register/"
+              class="login-sign-up-button1 button-primary button"
+            >
+              Register
+            </a>
+            <div class="login-sign-up-input-container">
+              <div class="login-sign-up-container3 input">
+                <input
+                  name='username'
+                  type="text"
+                  placeholder="Username"
+                  class="login-sign-up-input1 input"
+                />
+              </div>
+            </div>
+          </form>
+          
+        </div>
+      </div>
+    </div>
+    <script>
+      window.onload = () => {
+        const runAllScripts = () => {
+          initializeAllSliders();
+        };
+
+        const listenForUrlChanges = () => {
+          let url = location.href;
+          document.body.addEventListener(
+            "click",
+            () => {
+              requestAnimationFrame(() => {
+                if (url !== location.href) {
+                  runAllScripts();
+                  url = location.href;
+                }
+              });
+            },
+            true
+          );
+        };
+
+        const initializeAllSliders = () => {
+          const allSliders = document.querySelectorAll('[data-type="slider"]');
+          allSliders.forEach((carrousel) => {
+            initializeSlider(carrousel);
+          });
+        };
+
+        const initializeSlider = (carrousel) => {
+          let currentSlide = 0;
+
+          const slides = carrousel.querySelectorAll('[data-type="slide"]');
+          const nextSlideBtns = carrousel.querySelectorAll(
+            '[data-action="nextSlide"]'
+          );
+          const previousSlideBtns = carrousel.querySelectorAll(
+            '[data-action="previousSlide"]'
+          );
+
+          const changeSlide = (slideIndex, action) => {
+            currentSlide = slideIndex;
+
+            switch (action) {
+              case "next":
+                slideIndex === slides.length - 1
+                  ? (currentSlide = 0)
+                  : currentSlide++;
+                break;
+              case "previous":
+                slideIndex === 0
+                  ? (currentSlide = slides.length - 1)
+                  : currentSlide--;
+            }
+
+            carrousel.style.transform = `translateX(${-100 * currentSlide}%)`;
+          };
+
+          previousSlideBtns.forEach((btn) => {
+            btn.addEventListener("click", () =>
+              changeSlide(currentSlide, "previous")
+            );
+          });
+
+          nextSlideBtns.forEach((btn) => {
+            btn.addEventListener("click", () =>
+              changeSlide(currentSlide, "next")
+            );
+          });
+        };
+
+        runAllScripts();
+      };
+    </script>
+    <!-- import dependence of bootstrap-->
+    <script src="{% static 'popper/popper.js' %}"></script>
+    <!-- import bootstrap core JS -->
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+  </body>
+</html>

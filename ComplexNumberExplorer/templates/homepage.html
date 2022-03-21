@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="../statics/images/star.ico">
+    <title>CN Explorer</title>
+</head>
+<body>
+    <div id="header" style="background-color: white">
+        <h1>Complex Number Explorer</h1>
+        <a href="/register/" >REGISTER</a>
+        <a href="/login/">SIGN IN</a>
+    </div>
+
+    <form method="POST" action="homepage/" style=>
+        <input type="text" name="equation" value="Enter an equation"
+               style="color:gray; font-style: italic; font-family: 'Times New Roman'"
+               onfocus=" if (value == 'Enter an equation'){value=''} "
+               onblur=" if (value==''){value='Enter an equation'} "/>
+        <input type="submit" value="Draw" />
+    </form>
+
+    <div id="menu" style="background-color: white;height:300px;width:200px;float:left;">
+        <b>Argand Diagram</b><br>
+        <a href="/login/">Student</a><br>
+        <b>Teacher</b><br>
+    </div>
+
+</body>
+</html>
