@@ -133,32 +133,29 @@
               ></path>
             </svg>
           </div>
-          <a
-            href="/login/"
-            class="home-primary-btn button-primary button"
-          >
+          <a href="/login/" class="home-primary-btn button-primary button">
             Login/Sign up
           </a>
         </header>
         <div class="home-container1">
-          <form method='POST' action='/home/'>
+          <form method="POST" action="/home/">
             {% csrf_token %}
             <div class="home-input-container">
               <div class="home-container2 input">
                 <input
-                  name='input'
+                  name="input"
                   type="text"
                   placeholder="Enter an equation"
                   class="home-input input"
                   id="txt"
                 />
               </div>
-              <button type='submit' class="home-button button-primary button">Draw</button>
+              <button type="submit" class="home-button button-primary button">
+                Draw
+              </button>
+            </div>
+          </form>
 
-          </div>
-            </form>
-          
-          
           <div class="home-sidebar">
             <nav class="home-nav">
               <img
@@ -182,7 +179,7 @@
                   class="home-image3"
                 />
               </a>
-              <a href="/login/" class="home-navlink3">Tacher</a>
+              <a href="/login/" class="home-navlink3">Teacher</a>
             </nav>
           </div>
           <div class="home-container3"></div>
@@ -196,23 +193,45 @@
               >
                 z
               </button>
-              <button class="home-button02 button" onclick="buttonInput('sin')">sin</button>
-              <button class="home-button03 button" onclick="buttonInput('cos')">cos</button>
-              <button class="home-button04 button" onclick="buttonInput('pi')">pi</button>
+              <button class="home-button02 button" onclick="buttonInput('sin')">
+                sin
+              </button>
+              <button class="home-button03 button" onclick="buttonInput('cos')">
+                cos
+              </button>
+              <button class="home-button04 button" onclick="buttonInput('pi')">
+                pi
+              </button>
             </div>
             <div class="home-container6">
               <div class="home-container7">
-                <button class="home-button05 button" onclick="buttonInput('^')">^</button>
-                <button class="home-button06 button" onclick="buttonInput('|')">|</button>
-                <button class="home-button07 button" onclick="buttonInput('e')">e</button>
+                <button class="home-button05 button" onclick="buttonInput('^')">
+                  ^
+                </button>
+                <button class="home-button06 button" onclick="buttonInput('|')">
+                  |
+                </button>
+                <button class="home-button07 button" onclick="buttonInput('e')">
+                  e
+                </button>
               </div>
-              <button class="home-button08 button" onclick="buttonInput('j')">j</button>
+              <button class="home-button08 button" onclick="buttonInput('j')">
+                j
+              </button>
             </div>
             <div class="home-container8">
-              <button class="home-button09 button" onclick="buttonInput('arg')">arg</button>
-              <button class="home-button10 button" onclick="buttonInput('(')">(</button>
-              <button class="home-button11 button" onclick="buttonInput(')')">)</button>
-              <button class="home-button12 button" onclick="buttonInput('=')">=</button>
+              <button class="home-button09 button" onclick="buttonInput('arg')">
+                arg
+              </button>
+              <button class="home-button10 button" onclick="buttonInput('(')">
+                (
+              </button>
+              <button class="home-button11 button" onclick="buttonInput(')')">
+                )
+              </button>
+              <button class="home-button12 button" onclick="buttonInput('=')">
+                =
+              </button>
             </div>
           </div>
         </div>

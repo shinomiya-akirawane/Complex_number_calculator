@@ -40,3 +40,7 @@ def Register(request):
 
 def QuizList(request):
     return render(request, 'QuizList.html')
+
+
+def TeacherQuizList(request):
+    return render(request, 'TeacherQuizList.html')

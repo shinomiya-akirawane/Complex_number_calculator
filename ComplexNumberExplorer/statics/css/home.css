@@ -158,9 +158,9 @@
 .home-container3 {
   top: 134px;
   left: 299px;
-  width: 747px;
+  width: 600px;
   border: 2px dashed rgba(120, 120, 120, 0.4);
-  height: 544px;
+  height: 400px;
   display: flex;
   position: absolute;
   align-items: flex-start;

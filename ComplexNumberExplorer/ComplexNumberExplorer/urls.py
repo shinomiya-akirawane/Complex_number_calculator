@@ -14,8 +14,10 @@ urlpatterns = [
     path('quizhistory/', views.Quizhistory),
     path('register/', views.Register),
     path('quizlist/', views.QuizList),
+    path('teacherquizlist/', views.TeacherQuizList),
 
-    
+
+
 
 
 
