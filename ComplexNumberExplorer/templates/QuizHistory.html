@@ -159,26 +159,31 @@
           <div class="quiz-history-container2">
             <div class="quiz-history-sidebar"></div>
             <nav class="quiz-history-nav1">
-              <img
-                alt="image"
-                src="/static/img/history.png"
-                class="quiz-history-image1"
-              />
+              <a href="/quizlist/" class="quiz-history-navlink">
+                <img
+                  alt="image"
+                  src="/static/img/history.png"
+                  class="quiz-history-image1"
+                />
+              </a>
               <span class="quiz-history-text05">Quiz List</span>
-              <a href="TakingQuiz.html" class="quiz-history-navlink">
-                {% comment %}
+
+              {% comment %}
+              <a href="/quizlist/" class="quiz-history-navlink">
                 <img
                   alt="image"
                   src="/static/img/penicon.png"
                   class="quiz-history-image2"
                 />
               </a>
+
               <a href="TakingQuiz.html" class="quiz-history-navlink1">
                 Practice Quiz
               </a>
               {% endcomment %}
             </nav>
           </div>
+
           <span class="quiz-history-text06">
             <span class="quiz-history-text07">Question 1</span>
           </span>
