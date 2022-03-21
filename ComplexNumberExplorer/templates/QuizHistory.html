@@ -142,6 +142,8 @@
             Log Out
           </a>
         </header>
+
+        {% comment %}
         <header data-role="Header" class="quiz-history-header">
           <div class="quiz-history-nav">
             <span class="quiz-history-text">Quiz 1</span>
@@ -151,6 +153,8 @@
             <span class="quiz-history-text04">Quiz 5</span>
           </div>
         </header>
+
+        {% endcomment %}
         <div class="quiz-history-container1">
           <div class="quiz-history-container2">
             <div class="quiz-history-sidebar"></div>
@@ -160,8 +164,9 @@
                 src="/static/img/history.png"
                 class="quiz-history-image1"
               />
-              <span class="quiz-history-text05">History</span>
+              <span class="quiz-history-text05">Quiz List</span>
               <a href="TakingQuiz.html" class="quiz-history-navlink">
+                {% comment %}
                 <img
                   alt="image"
                   src="/static/img/penicon.png"
@@ -171,6 +176,7 @@
               <a href="TakingQuiz.html" class="quiz-history-navlink1">
                 Practice Quiz
               </a>
+              {% endcomment %}
             </nav>
           </div>
           <span class="quiz-history-text06">
