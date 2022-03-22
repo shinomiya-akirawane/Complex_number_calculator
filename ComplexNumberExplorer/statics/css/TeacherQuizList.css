@@ -1,13 +1,12 @@
-.teacher-classes-container {
+.teacher-quiz-list-container {
   width: 100%;
   display: flex;
   overflow: auto;
   min-height: 100vh;
   align-items: center;
   flex-direction: column;
-  background-color: #f7f4f2;
 }
-.teacher-classes-max-width {
+.teacher-quiz-list-max-width {
   width: 2000px;
   height: 90px;
   max-width: 100%;
@@ -15,24 +14,24 @@
   background-size: cover;
   background-image: url("/static/img/themecolour.jpg");
 }
-.teacher-classes-image {
+.teacher-quiz-list-image {
   height: 61px;
 }
-.teacher-classes-icon {
+.teacher-quiz-list-icon {
   width: var(--dl-size-size-xsmall);
   height: var(--dl-size-size-xsmall);
 }
-.teacher-classes-primary-btn {
+.teacher-quiz-list-primary-btn {
   text-decoration: none;
   background-color: #30d8fa;
 }
-.teacher-classes-container1 {
+.teacher-quiz-list-container1 {
   width: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
 }
-.teacher-classes-container2 {
+.teacher-quiz-list-container2 {
   flex: 0 0 auto;
   width: 100%;
   height: 645px;
@@ -41,7 +40,7 @@
   align-items: center;
   justify-content: center;
 }
-.teacher-classes-sidebar {
+.teacher-quiz-list-sidebar {
   top: 0px;
   left: 0px;
   width: 182px;
@@ -56,7 +55,7 @@
   justify-content: space-between;
   background-color: #d9d9d9;
 }
-.teacher-classes-nav {
+.teacher-quiz-list-nav {
   width: 171px;
   height: 365px;
   display: flex;
@@ -69,7 +68,7 @@
   flex-direction: column;
   justify-content: flex-start;
 }
-.teacher-classes-image1 {
+.teacher-quiz-list-image1 {
   top: 16px;
   left: 58px;
   width: 45px;
@@ -78,16 +77,16 @@
   align-self: center;
   object-fit: cover;
 }
-.teacher-classes-text {
+.teacher-quiz-list-text {
   top: 64px;
   left: 52px;
   position: absolute;
   align-self: center;
 }
-.teacher-classes-navlink {
+.teacher-quiz-list-navlink {
   display: contents;
 }
-.teacher-classes-image2 {
+.teacher-quiz-list-image2 {
   top: 147px;
   left: 60px;
   width: 43px;
@@ -97,80 +96,124 @@
   object-fit: cover;
   text-decoration: none;
 }
-.teacher-classes-navlink1 {
+.teacher-quiz-list-navlink1 {
   top: 200px;
   left: 29px;
   position: absolute;
   align-self: center;
   text-decoration: none;
 }
-.teacher-classes-image3 {
-  top: 144px;
-  left: 347px;
-  width: 60px;
-  height: 60px;
+.teacher-quiz-list-primary-btn1 {
+  top: 418px;
+  left: 325px;
+  width: 124px;
+  height: 41px;
+  display: flex;
   position: absolute;
-  align-self: center;
-  object-fit: cover;
+  font-size: 12px;
+  text-align: center;
+  padding-right: 5px;
+  flex-direction: row;
+  background-color: #30d8fa;
 }
-.teacher-classes-image4 {
+.teacher-quiz-list-text1 {
+  top: 8px;
+  left: 39px;
+  margin: auto;
+  position: absolute;
+  font-size: 20px;
+  text-align: center;
+}
+.teacher-quiz-list-image3 {
   top: 143px;
-  left: 551px;
-  width: 60px;
-  height: 60px;
+  left: 337px;
+  width: 81px;
+  height: 78px;
   position: absolute;
   align-self: center;
   object-fit: cover;
 }
-.teacher-classes-image5 {
-  top: 142px;
-  left: 755px;
-  width: 60px;
-  height: 60px;
+.teacher-quiz-list-image4 {
+  top: 143px;
+  left: 530px;
+  width: 81px;
+  height: 78px;
   position: absolute;
   align-self: center;
   object-fit: cover;
 }
-.teacher-classes-text1 {
-  top: 212px;
-  left: 333px;
+.teacher-quiz-list-image5 {
+  top: 143px;
+  left: 734px;
+  width: 81px;
+  height: 78px;
+  position: absolute;
+  align-self: center;
+  object-fit: cover;
+}
+.teacher-quiz-list-image6 {
+  top: 143px;
+  left: 926px;
+  width: 81px;
+  height: 78px;
+  position: absolute;
+  align-self: center;
+  object-fit: cover;
+}
+.teacher-quiz-list-text2 {
+  top: 227px;
+  left: 343px;
   position: absolute;
   font-size: 22px;
   align-self: center;
   text-decoration: underline;
 }
-.teacher-classes-text2 {
-  top: 211px;
+.teacher-quiz-list-text3 {
+  top: 227px;
   left: 537px;
   position: absolute;
   font-size: 22px;
   align-self: center;
   text-decoration: underline;
 }
-.teacher-classes-text3 {
-  top: 210px;
+.teacher-quiz-list-text4 {
+  top: 227px;
   left: 741px;
   position: absolute;
   font-size: 22px;
   align-self: center;
   text-decoration: underline;
 }
+.teacher-quiz-list-text5 {
+  top: 227px;
+  left: 930px;
+  position: absolute;
+  font-size: 22px;
+  align-self: center;
+  text-decoration: underline;
+}
 @media (max-width: 991px) {
-  .teacher-classes-image {
+  .teacher-quiz-list-image {
     width: var(--dl-size-size-large);
     height: auto;
     max-width: auto;
     margin-left: 10px;
   }
-  .teacher-classes-primary-btn {
+  .teacher-quiz-list-primary-btn {
+    background-color: #52d4e6;
+  }
+  .teacher-quiz-list-primary-btn1 {
     background-color: #52d4e6;
   }
 }
 @media (max-width: 767px) {
-  .teacher-classes-primary-btn {
+  .teacher-quiz-list-primary-btn {
     display: none;
   }
-  .teacher-classes-sidebar {
+  .teacher-quiz-list-sidebar {
     height: 70vh;
+  }
+  .teacher-quiz-list-primary-btn1 {
+    display: none;
   }
 }

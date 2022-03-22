@@ -3,8 +3,7 @@
 
 <html lang="en">
   <head>
-    <title>TakingQuizv2 - prototype</title>
-    <meta property="og:title" content="TakingQuizv2 - prototype" />
+    <title>QuizList - prototype</title>
     <meta property="og:title" content="QuizList - prototype" />
     <meta property="og:title" content="QuizHistory - prototype" />
     <meta property="og:title" content="TakingQuiz - prototype" />
@@ -13,80 +12,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
     <meta property="twitter:card" content="summary_large_image" />
-    <!--Bootstrap core CSS -->
-    <link
-      rel="stylesheet"
-      href="{% static 'bootstrap/css/bootstrap.min.css'%}"
-    />
+        <!--Bootstrap core CSS -->
+        <link
+        rel="stylesheet"
+        href="{% static 'bootstrap/css/bootstrap.min.css'%}"
+      />
     <style>
-      html {
-        line-height: 1.15;
-      }
-      body {
-        margin: 0;
-      }
-      * {
-        box-sizing: border-box;
-        border-width: 0;
-        border-style: solid;
-      }
-      p,
-      li,
-      ul,
-      pre,
-      div,
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6 {
-        margin: 0;
-        padding: 0;
-      }
-      button,
-      input,
-      optgroup,
-      select,
-      textarea {
-        font-family: inherit;
-        font-size: 100%;
-        line-height: 1.15;
-        margin: 0;
-      }
-      button,
-      select {
-        text-transform: none;
-      }
-      button,
-      [type="button"],
-      [type="reset"],
-      [type="submit"] {
-        -webkit-appearance: button;
-      }
-      button::-moz-focus-inner,
-      [type="button"]::-moz-focus-inner,
-      [type="reset"]::-moz-focus-inner,
-      [type="submit"]::-moz-focus-inner {
-        border-style: none;
-        padding: 0;
-      }
-      button:-moz-focus,
-      [type="button"]:-moz-focus,
-      [type="reset"]:-moz-focus,
-      [type="submit"]:-moz-focus {
-        outline: 1px dotted ButtonText;
-      }
-      a {
-        color: inherit;
-        text-decoration: inherit;
-      }
-      input {
-        padding: 2px 4px;
-      }
-      img {
-        display: block;
-      }
+      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6 {  margin: 0;  padding: 0;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}
     </style>
     <style>
       html {
@@ -96,13 +28,14 @@
 
       body {
         font-weight: 400;
-        font-style: normal;
+        font-style:normal;
         text-decoration: none;
         text-transform: none;
         letter-spacing: normal;
         line-height: 1.1;
         color: var(--dl-color-grays-dark100);
         background-color: var(--dl-color-grays-white100);
+
       }
     </style>
     <link
@@ -110,97 +43,68 @@
       href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&display=swap"
     />
     <style>
-      ::placeholder {
-        color: #63667066;
+      ::placeholder{
+      color: #63667066;
       }
     </style>
     <link rel="stylesheet" href="{% static 'css/style.css'%}" />
   </head>
   <body>
     <div>
-      <link href="{% static 'css/TakingQuizv2.css'%}" rel="stylesheet" />
+      <link href="{% static 'css/QuizList.css'%}" rel="stylesheet" />
 
-      <div class="taking-quizv2-container">
+      <div class="quiz-list-container">
         <header
           data-role="Header"
-          class="taking-quizv2-max-width navigation-container"
+          class="quiz-list-max-width navigation-container"
         >
           <img
             alt="logo"
-            src="/static/img/logo.png"
-            class="taking-quizv2-image"
+            src="/static/img/logo.png"            class="quiz-list-image"
           />
           <div data-type="BurgerMenu" class="navigation-burger-menu">
-            <svg viewBox="0 0 1024 1024" class="taking-quizv2-icon">
+            <svg viewBox="0 0 1024 1024" class="quiz-list-icon">
               <path
                 d="M128 554.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 298.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 810.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667z"
               ></path>
             </svg>
           </div>
           <a
-            href="loginSignUp.html"
-            class="taking-quizv2-primary-btn button-primary button"
+          href="/home/"
+            class="quiz-list-primary-btn button-primary button"
           >
-            Profile
+            Log Out
           </a>
         </header>
-        <div class="taking-quizv2-container1">
-          <span class="taking-quizv2-text">
-            <span class="taking-quizv2-text01">Question 1</span>
+        <div class="quiz-list-container1">
+          <span class="quiz-list-text">
+            <span class="quiz-list-text01">Quiz No.</span>
           </span>
-          <span class="taking-quizv2-text02">
-            <span class="taking-quizv2-text03">Quiz 1</span>
-          </span>
-          <span class="taking-quizv2-text04">Your Answer:</span>
-          <input type="text" class="taking-quizv2-textinput input" />
-          <button class="taking-quizv2-primary-btn1 button-primary button">
-            <span class="taking-quizv2-text05"><span>Submit</span></span>
-          </button>
-          <div class="taking-quizv2-container2">
-            <div class="taking-quizv2-sidebar"></div>
-            <nav class="taking-quizv2-nav">
-              <a href="QuizList.html" class="taking-quizv2-navlink">
+          <span class="quiz-list-text02">Stauts</span>
+          <div class="quiz-list-container2">
+            <div class="quiz-list-sidebar"></div>
+            <nav class="quiz-list-nav">
+              <a href="/quizlist/"  class="quiz-list-navlink">
                 <img
                   alt="image"
                   src="/static/img/history.png"
-                  class="taking-quizv2-image1"
+                  class="quiz-list-image1"
                 />
               </a>
-              <a href="QuizList.html" class="taking-quizv2-navlink1">
+              <a href="/quizlist/" class="quiz-list-navlink1">
                 <span>Quiz List</span>
               </a>
             </nav>
           </div>
-          <span class="taking-quizv2-text08">question display here</span>
         </div>
-        <div class="taking-quizv2-container3">
-          <div class="taking-quizv2-container4">
-            <button class="taking-quizv2-button button">z</button>
-            <button class="taking-quizv2-button01 button">x</button>
-            <button class="taking-quizv2-button02 button">y</button>
-            <button class="taking-quizv2-button03 button">π</button>
-          </div>
-          <div class="taking-quizv2-container5">
-            <div class="taking-quizv2-container6">
-              <button class="taking-quizv2-button04 button">^</button>
-              <button class="taking-quizv2-button05 button">√</button>
-              <button class="taking-quizv2-button06 button">e</button>
-            </div>
-            <button class="taking-quizv2-button07 button">i</button>
-          </div>
-          <div class="taking-quizv2-container7">
-            <button class="taking-quizv2-button08 button">＜</button>
-            <button class="taking-quizv2-button09 button">＞</button>
-            <button class="taking-quizv2-button10 button">≤</button>
-            <button class="taking-quizv2-button11 button">≥</button>
-          </div>
-        </div>
-        <span class="taking-quizv2-text09">
-          <span class="taking-quizv2-text10">Solution</span>
-        </span>
-        <span class="taking-quizv2-text11">
-          correct answer will display once submitted
-        </span>
+        <span class="quiz-list-text04">Quiz 1</span>
+        <span class="quiz-list-text05">Quiz 2</span>
+        <span class="quiz-list-text06">Quiz 3</span>
+        <span class="quiz-list-text07">Quiz 4</span>
+        <span class="quiz-list-text08">Answered</span>
+        <span class="quiz-list-text09">Answered</span>
+        <span class="quiz-list-text10">Answered</span>
+        <span class="quiz-list-text11">Not Answered</span>
       </div>
     </div>
     <script>
@@ -273,6 +177,7 @@
             );
           });
         };
+
         runAllScripts();
       };
     </script>

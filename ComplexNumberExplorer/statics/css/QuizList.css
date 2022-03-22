@@ -1,3 +1,4 @@
+
 .quiz-list-container {
   width: 100%;
   display: flex;
@@ -46,14 +47,14 @@
   text-transform: none;
   text-decoration: none;
 }
-.quiz-list-text1 {
+.quiz-list-text01 {
   font-style: normal;
   font-family: Lexend;
   font-weight: 600;
   text-transform: none;
   text-decoration: none;
 }
-.quiz-list-text2 {
+.quiz-list-text02 {
   top: 42px;
   left: 846px;
   position: absolute;
@@ -124,10 +125,61 @@
   margin-top: 5px;
   text-decoration: none;
 }
-.quiz-list-text4 {
-  top: 147px;
-  left: 342px;
+.quiz-list-text04 {
+  top: 200px;
+  left: 337px;
   position: absolute;
+  font-size: 19px;
+  text-decoration: underline;
+}
+.quiz-list-text05 {
+  top: 255px;
+  left: 337px;
+  position: absolute;
+  font-size: 19px;
+  text-decoration: underline;
+}
+.quiz-list-text06 {
+  top: 310px;
+  left: 337px;
+  position: absolute;
+  font-size: 19px;
+  text-decoration: underline;
+}
+.quiz-list-text07 {
+  top: 365px;
+  left: 337px;
+  position: absolute;
+  font-size: 19px;
+  text-decoration: underline;
+}
+.quiz-list-text08 {
+  top: 200px;
+  left: 849px;
+  position: absolute;
+  font-size: 19px;
+  text-decoration: underline;
+}
+.quiz-list-text09 {
+  top: 310px;
+  left: 849px;
+  position: absolute;
+  font-size: 19px;
+  text-decoration: underline;
+}
+.quiz-list-text10 {
+  top: 365px;
+  left: 849px;
+  position: absolute;
+  font-size: 19px;
+  text-decoration: underline;
+}
+.quiz-list-text11 {
+  top: 255px;
+  left: 849px;
+  position: absolute;
+  font-size: 19px;
+  text-decoration: underline;
 }
 @media (max-width: 991px) {
   .quiz-list-image {

@@ -2,13 +2,24 @@
 {% load static %}
 <html lang="en">
   <head>
-    <title>CreateQuiz - prototype</title>
+    <title>CreateQuizv2 - prototype</title>
+    <meta property="og:title" content="CreateQuizv2 - prototype" />
+    <meta property="og:title" content="prototype" />
+    <meta property="og:title" content="loginSignUp - prototype" />
+    <meta property="og:title" content="teacherQuizList - prototype" />
+    <meta property="og:title" content="500Error - prototype" />
+    <meta property="og:title" content="TeacherClasses - prototype" />
+    <meta property="og:title" content="400Error - prototype" />
+    <meta property="og:title" content="register - prototype" />
+    <meta property="og:title" content="TakingQuizv2 - prototype" />
+    <meta property="og:title" content="QuizList - prototype" />
+    <meta property="og:title" content="QuizHistory - prototype" />
+    <meta property="og:title" content="TakingQuiz - prototype" />
     <meta property="og:title" content="CreateQuiz - prototype" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
     <meta property="twitter:card" content="summary_large_image" />
-
     <!--Bootstrap core CSS -->
     <link
       href="{% static 'bootstrap/css/bootstrap.min.css'%}"
@@ -114,178 +125,116 @@
   </head>
   <body>
     <div>
-      <link href="{%static 'css/CreateQuiz.css'%}" rel="stylesheet" />
+      <link href="{%static 'css/CreateQuizv2.css'%}" rel="stylesheet" />
 
-      <div class="create-quiz-container">
+      <div class="create-quizv2-container">
+        
         <header
           data-role="Header"
-          class="create-quiz-max-width navigation-container"
+          class="create-quizv2-max-width navigation-container"
         >
           <img
             alt="logo"
             src="/static/img/logo.png"
-            class="create-quiz-image"
+            class="create-quizv2-image"
           />
           <div data-type="BurgerMenu" class="navigation-burger-menu">
-            <svg viewBox="0 0 1024 1024" class="create-quiz-icon">
+            <svg viewBox="0 0 1024 1024" class="create-quizv2-icon">
               <path
                 d="M128 554.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 298.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 810.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667z"
               ></path>
             </svg>
           </div>
           <a
-            href="login-sign-up.html"
-            class="create-quiz-primary-btn button-primary button"
+            href="/home/"
+            class="create-quizv2-primary-btn2 button-primary button"
           >
             Log Out
           </a>
         </header>
-        <div class="create-quiz-container1">
-          <div class="create-quiz-sidebar">
-            <nav class="create-quiz-nav">
-              <a href="/teacherclasses/" class="create-quiz-navlink">
+        <div class="create-quizv2-container1">
+          <div class="create-quizv2-sidebar">
+            <nav class="create-quizv2-nav">
+              <a href="/teacherclasses/" class="create-quizv2-navlink">
                 <img
                   alt="image"
                   src="/static/img/classes%20icon-200h.png"
-                  class="create-quiz-image1"
+                  class="create-quizv2-image1"
                 />
               </a>
-              <a href="/teacherclasses/" class="create-quiz-navlink1">
+              <a href="/teacherclasses/" class="create-quizv2-navlink1">
                 Classes
               </a>
-              <img
+              <a href='/teacherquizlist/'>
+                <img
                 alt="image"
                 src="/static/img/quiz%20icon-200h.png"
-                class="create-quiz-image2"
+                class="create-quizv2-image2"
               />
-              <span class="create-quiz-text">Create a Quiz</span>
+              <span class="create-quizv2-text2">Quiz List</span>
+              </a>
+              
             </nav>
           </div>
+          
+          <span class="taking-quizv2-text2">
+            <span class="taking-quizv2-text3">Quiz {{quizID}}</span>
+          </span>
 
-          <form method="POST" , action="/newQuiz/">
+          <span class="create-quizv2-text3">
+            <span class="create-quizv2-text4">Question {{questionNumber}}</span>
+          </span>
+          
+          <form method='POST' action='/newQuiz/?quizID={{quizID}}&id={{questionID}}'>
             {% csrf_token %}
-            <span class="create-quiz-text1">
-              <span class="create-quiz-text2">Question 1</span>
-            </span>
-
-            <span class="create-quiz-text3">Answer</span>
-            <input
-              name="answer"
-              type="text"
-              class="create-quiz-textinput input"
-            />
-
-            <button
-              type="submit"
-              class="create-quiz-primary-btn2 button-primary button"
-            >
-              <span class="create-quiz-text4">
-                <span>Next Question</span>
-                <span class="create-quiz-text6"></span>
-              </span>
+            <button type='submit' class="create-quizv2-primary-btn button-primary button">
+              <span class="create-quizv2-text">Submit</span>
             </button>
-            <button class="create-quiz-primary-btn3 button-primary button">
-              <span class="create-quiz-text5">Submit</span>
-            </button>
+            <a href={{nextLink}}>
+              <button  type='button' class="create-quizv2-primary-btn1 button-primary button">
+                <span class="create-quizv2-text1">{{next}}</span>
+              </button>
+            </a>
+            
+            <span class="create-quizv2-text5">Answer</span>
+            <input value='{{answer}}' name='answer' type="text" class="create-quizv2-textinput input" />
+            <a href='/newQuiz/?quizID={{quizID}}&id={{questionID}}&auto_generate=true'>
+              <button type='button' class="create-quizv2-primary-btn3 button-primary button">
+                Auto Generate
+              </button>
+            </a>
+            
             <input
-              name="question"
+              name='question'
               type="text"
+              value='{{question}}'
               placeholder="Input question here"
-              class="create-quiz-textinput1 input"
-              id="txt"
+              class="create-quizv2-textinput1 input"
             />
           </form>
-
-          <form method="GET" action="/newQuiz/?auto_generate/">
-            <button
-              type="submit"
-              class="create-quiz-primary-btn1 button-primary button"
-            >
-              Auto Generate
-            </button>
-          </form>
+          
         </div>
-
-        <div class="create-quiz-container2">
-          <div class="create-quiz-container3">
-            <button
-              class="create-quiz-button button"
-              onclick="buttonInput('z')"
-            >
-              z
-            </button>
-            <button
-              class="create-quiz-button01 button"
-              onclick="buttonInput('sin')"
-            >
-              sin
-            </button>
-            <button
-              class="create-quiz-button02 button"
-              onclick="buttonInput('cos')"
-            >
-              cos
-            </button>
-            <button
-              class="create-quiz-button03 button"
-              onclick="buttonInput('pi')"
-            >
-              pi
-            </button>
+        <div class="create-quizv2-container2">
+          <div class="create-quizv2-container3">
+            <button class="create-quizv2-button button" onclick="buttonInput('z')">z</button>
+            <button class="create-quizv2-button01 button" onclick="buttonInput('sin')">sin</button>
+            <button class="create-quizv2-button02 button" onclick="buttonInput('cos')">cos</button>
+            <button class="create-quizv2-button03 button" onclick="buttonInput('pi')">pi</button>
           </div>
-          <div class="create-quiz-container4">
-            <div class="create-quiz-container5">
-              <button
-                class="create-quiz-button04 button"
-                onclick="buttonInput('^')"
-              >
-                ^
-              </button>
-              <button
-                class="create-quiz-button05 button"
-                onclick="buttonInput('|')"
-              >
-                |
-              </button>
-              <button
-                class="create-quiz-button06 button"
-                onclick="buttonInput('e')"
-              >
-                e
-              </button>
+          <div class="create-quizv2-container4">
+            <div class="create-quizv2-container5">
+              <button class="create-quizv2-button04 button" onclick="buttonInput('^')">^</button>
+              <button class="create-quizv2-button05 button" onclick="buttonInput('|')">|</button>
+              <button class="create-quizv2-button06 button" onclick="buttonInput('e')">e</button>
             </div>
-            <button
-              class="create-quiz-button07 button"
-              onclick="buttonInput('j')"
-            >
-              j
-            </button>
-          </div>
-          <div class="create-quiz-container6">
-            <button
-              class="create-quiz-button08 button"
-              onclick="buttonInput('arg')"
-            >
-              arg
-            </button>
-            <button
-              class="create-quiz-button09 button"
-              onclick="buttonInput('(')"
-            >
-              (
-            </button>
-            <button
-              class="create-quiz-button10 button"
-              onclick="buttonInput(')')"
-            >
-              )
-            </button>
-            <button
-              class="create-quiz-button11 button"
-              onclick="buttonInput('=')"
-            >
-              =
-            </button>
+            
+            <button class="create-quizv2-button07 button" onclick="buttonInput('j')">j</button>
+            </div>
+          <div class="create-quizv2-container6">
+            <button class="create-quizv2-button08 button" onclick="buttonInput('arg')">arg</button>
+            <button class="create-quizv2-button09 button" onclick="buttonInput('(')">(</button>
+            <button class="create-quizv2-button10 button" onclick="buttonInput(')')">)</button>
+            <button class="create-quizv2-button11 button" onclick="buttonInput('=')">=</button>
           </div>
         </div>
       </div>

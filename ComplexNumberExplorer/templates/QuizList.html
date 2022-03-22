@@ -131,18 +131,15 @@
               ></path>
             </svg>
           </div>
-          <a
-            href="/home/"
-            class="quiz-list-primary-btn button-primary button"
-          >
+          <a href="/home/" class="quiz-list-primary-btn button-primary button">
             Log Out
           </a>
         </header>
         <div class="quiz-list-container1">
           <span class="quiz-list-text">
-            <span class="quiz-list-text1">Quiz No.</span>
+            <span class="quiz-list-text01">Quiz No.</span>
           </span>
-          <span class="quiz-list-text2">Stauts</span>
+          <span class="quiz-list-text02">Status</span>
           <div class="quiz-list-container2">
             <div class="quiz-list-sidebar"></div>
             <nav class="quiz-list-nav">
@@ -158,10 +155,26 @@
               </a>
             </nav>
           </div>
-          <span class="quiz-list-text4">quiz list display here</span>
         </div>
+
+        <span class="quiz-list-text04"><a href='/takingquiz/?quizID=1&id=1'>Quiz 1</a></span>
+        <span class="quiz-list-text08"><a href='/quizhistory/?quizID=1&id=1'>{{quiz_1_status}}</a></span>
+  
+        
+        <span class="quiz-list-text05"><a href='/takingquiz/?quizID=2&id=6'>Quiz 2</a></span>
+        <span class="quiz-list-text11"><a href='/quizhistory/?quizID=2&id=6'>{{quiz_2_status}}</a></span>
+
+        
+
+        <span class="quiz-list-text06"><a href='/takingquiz/?quizID=3&id=11'>Quiz 3</a></span>
+        <span class="quiz-list-text09"><a href='/quizhistory/?quizID=3&id=11'>{{quiz_3_status}}</a></span>
+
+        <span class="quiz-list-text07"><a href='/takingquiz/?quizID=4&id=16'>Quiz 4</a></span>
+        <span class="quiz-list-text10"><a href='/quizhistory/?quizID=4&id=16'>{{quiz_4_status}}</a></span>
+        
       </div>
     </div>
+
     <script>
       window.onload = () => {
         const runAllScripts = () => {

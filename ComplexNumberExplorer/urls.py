@@ -15,6 +15,7 @@ urlpatterns = [
     path('register/', views.Register),
     path('quizlist/', views.QuizList),
     path('logout/', views.logout),
+    path('teacherquizlist/', views.teacherQuizList),
 
 
 ]

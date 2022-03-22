@@ -146,24 +146,24 @@
         </header>
         <div class="taking-quizv2-container1">
           <span class="taking-quizv2-text">
-            <span class="taking-quizv2-text01">Question 1</span>
+            <span class="taking-quizv2-text01">Question {{questionNumber}}</span>
           </span>
           <span class="taking-quizv2-text02">
-            <span class="taking-quizv2-text03">Quiz 1</span>
+            <span class="taking-quizv2-text03">Quiz {{quizID}}</span>
           </span>
-          <form method='POST' action='/takingquiz/'>
+          <form method='POST' action='/takingquiz/?quizID={{quizID}}&id={{questionID}}'>
             {% csrf_token %}
             <span class="taking-quizv2-text04">Your Answer:</span>
-          <input id='txt' name='answer' type="text" class="taking-quizv2-textinput input" />
+          <input  value='{{answer}}' id='txt' name='answer' type="text" class="taking-quizv2-textinput input" />
           <button type='submit' class="taking-quizv2-primary-btn1 button-primary button">
             <span class="taking-quizv2-text05"><span>Submit</span></span>
           </button>
           </form>
-          <form method='GET' action='/takingquiz/?nid={{questionID}}'>
+          <a href={{nextLink}}>
             <button class="taking-quizv2-primary-btn2 button-primary button">
-              <span class="taking-quizv2-text07">Next</span>
+              <span class="taking-quizv2-text07">{{next}}</span>
             </button>
-          </form>
+          </a>
 
           <div class="taking-quizv2-container2">
             <div class="taking-quizv2-sidebar"></div>
@@ -180,7 +180,7 @@
               </a>
             </nav>
           </div>
-          <span class="taking-quizv2-text09">question display here</span>
+          <span class="taking-quizv2-text09">{{Qcontent}}: {{Qequation}}</span>
         </div>
         <div class="taking-quizv2-container3">
           <div class="taking-quizv2-container4">
@@ -208,7 +208,7 @@
           <span class="taking-quizv2-text11">Solution</span>
         </span>
         <span class="taking-quizv2-text12">
-          correct answer will display once submitted
+          result: {{result}} ////correct answer will display once submitted {{Qanswer}}
         </span>
       </div>
     </div>

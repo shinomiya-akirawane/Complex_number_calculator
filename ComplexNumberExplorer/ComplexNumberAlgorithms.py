@@ -5,7 +5,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 from pylab import *
 
-IMAGE_ADDRESS = 'img1.png'
+IMAGE_ADDRESS = 'Y:\CN_Explorer\ComplexNumberExplorer\statics\draw\img1.png'
+IMG_SIZE = (7.4,5.4)
 class FormTranslation:
     @staticmethod
     def list2str(l):
@@ -480,7 +481,7 @@ class Graph():
     # ['a + bj','c + dj']
     @staticmethod
     def plotForNums(nums:list):
-        plt.figure()
+        plt.figure(figsize=IMG_SIZE)
         maxLen = -9999999
         for num in nums:
             parts = StrPreOperation.extractParts(num)
@@ -513,7 +514,7 @@ class Graph():
         leftSide = sides['leftSide']
         rightSide = sides['rightSide']
         if '|' in rightSide:
-            plt.figure()
+            plt.figure(figsize=IMG_SIZE)
             leftPoint = StrPreOperation.extractEquation(leftSide)
             rightPoint = StrPreOperation.extractEquation(rightSide)
             leftParts = StrPreOperation.extractParts(FormTranslation.list2str(leftPoint[0]))
@@ -552,7 +553,7 @@ class Graph():
             plt.plot(verticalX,verticalY)
             plt.savefig(IMAGE_ADDRESS)
         elif 'pi' in rightSide:
-            plt.figure()
+            plt.figure(figsize=IMG_SIZE)
             leftPoint = StrPreOperation.extractEquation(leftSide)
             leftParts = StrPreOperation.extractParts(FormTranslation.list2str(leftPoint[0]))
             rightParts = rightSide
@@ -598,7 +599,7 @@ class Graph():
             axisLen = abs(radius)+abs(y*1.25)
             CircleX = CircleY = np.arange(-radius,radius,0.1)
             CircleX, CircleY = np.meshgrid(CircleX, CircleY)
-            figure, axes = plt.subplots()
+            figure, axes = plt.subplots(figsize = IMG_SIZE)
             paraX = np.linspace(x,x+radius)
             paraY = y + paraX*0
             Graph.plotAxis(axisLen)
@@ -610,9 +611,9 @@ class Graph():
             plt.plot(paraX,paraY,'g--')
             plt.text(x+radius/2,y,str(radius))
             plt.savefig(IMAGE_ADDRESS)
-#Graph.plotForEquation('|z-(2+3j)| = 5')
+Graph.plotForEquation('|z-(2+3j)| = 5')
 #Graph.plotForEquation('|z - (3e^0.2pij)| = |z-(3e^2pij)|')
-Graph.plotForEquation('arg[z-(3e^0.2pij)] = 0.3*pi')
+#Graph.plotForEquation('arg[z-(3e^0.2pij)] = 0.3*pi')
 #Graph.plotForEquation('- (1+2j) *z-(3+4j)=(3e^0.2pij)')
 #Graph.plotForNums(['1+2j','3e^0.2pij'])
 #print(MathCalculator.linearEquationSolver('-(1+2j)*z-(3+4j)=(3+1j)'))
