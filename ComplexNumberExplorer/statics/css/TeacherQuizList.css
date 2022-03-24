@@ -98,7 +98,7 @@
 }
 .teacher-quiz-list-navlink1 {
   top: 200px;
-  left: 29px;
+  left: 45px;
   position: absolute;
   align-self: center;
   text-decoration: none;
@@ -160,8 +160,13 @@
   align-self: center;
   object-fit: cover;
 }
+.teacher-quiz-list-table {
+  top: 250px;
+  left: 343px;
+  position: absolute;
+}
 .teacher-quiz-list-text2 {
-  top: 227px;
+  top: 200px;
   left: 343px;
   position: absolute;
   font-size: 22px;

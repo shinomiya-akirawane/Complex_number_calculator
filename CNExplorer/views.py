@@ -1,19 +1,22 @@
 from django.shortcuts import render,redirect
 from django.http import HttpRequest, HttpResponse
 from ComplexNumberExplorer.ComplexNumberAlgorithms import *
-from CNExplorer.models import CandidateResult, PaperList, Question, Groups, QuestionDatabase, usersprofile
+from CNExplorer.models import CandidateResult, PaperList, Question, Groups, QuestionDatabase, usersprofile,Paper
 import random
 
 
 def home(request):
     if request.method == 'POST':
         eq = request.POST.get('input')
+        result=''
+        answer=''
         if '=' in eq:
             Graph.plotForEquation(eq)
-        elif '*' in eq:
-            Graph.plotForCombinedCal(eq)
+            #answer = MathCalculator.linearEquationSolver(eq)
         else:
-            Graph.plotForNums([eq])
+            Graph.plotForCombinedCal(eq)
+            answer = MathCalculator.combinedCal(eq)
+        result = eq + '          result: ' + answer
         picturePath = '/static/draw/img1.png'
         return render(request, 'home.html', {'picturePath': picturePath, 'input': eq})
     return render(request, 'home.html', {'picturePath': '/static/draw/home_origin.png'})
@@ -23,15 +26,16 @@ def loginSignUp(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
+        if username == 'studentAdmin' and password == '123':
+            return redirect('/quizlist/')
+        elif username == 'teacherAdmin' and password == '456':
+            return redirect('/teacherclasses/')
         U = usersprofile.objects.get(name=username)
         if password == U.password and U.usertype == 'Student':
             return redirect('/quizlist/')
         elif password == U.password and U.usertype == 'Teacher':
              return redirect('/teacherclasses/')
-        elif username == 'studentAdmin' and password == '123':
-            return redirect('/quizlist/')
-        elif username == 'teacherAdmin' and password == '456':
-            return redirect('/teacherclasses/')
+        
     return render(request, 'loginSignUp.html')
 
 
@@ -66,6 +70,8 @@ def CreateQuiz(request):
         PL.id = quizID
         PL.groupNum = G
         PL.is_allow = 0
+        PL.is_attempted = 'Not Answered'
+        PL.startQuestionID = (int(quizID)-1) * 5 + 1
         PL.save()
     else:
         nextLink = '/newQuiz/?quizID='+ str(quizID) + '&id=' + str(nextQuestionID)
@@ -73,7 +79,7 @@ def CreateQuiz(request):
         print(nextLink)
     
     if request.GET.get('auto_generate') == 'true':
-        Q2 = QuestionDatabase.objects.get(id=random.randint(1,20))
+        Q2 = QuestionDatabase.objects.get(id=random.randint(1,12))
         question = Q2.content + ': ' + Q2.equation
         answer = Q2.answer
     else: 
@@ -110,6 +116,8 @@ def error500(request):
 def TakingQuizv2(request):
     result = ''
     answer=''
+    exampleAnswer=''
+    solution=''
     quizID = request.GET.get('quizID')
     questionID = request.GET.get('id')
     Q = Question.objects.get(id=questionID)
@@ -128,13 +136,17 @@ def TakingQuizv2(request):
         nextLink = '/quizlist/'
         next = 'Finish'
         PL.is_allow = 1
+        PL.is_attempted = 'Answered'
         PL.save()
     else:
         nextLink = '/takingquiz/?quizID='+ str(quizID) + '&id=' + str(nextQuestionID)
         next = 'Next'
         print(nextLink)
+    # deal with POST request
     if request.method == 'POST':
         answer = request.POST.get('answer')
+        exampleAnswer = 'correct answer: ' + Qanswer
+        solution = 'Solution'
         
         CR = CandidateResult()
         CR.id = questionID
@@ -144,11 +156,11 @@ def TakingQuizv2(request):
         CR.user=usersprofile.objects.get(id=1)
         CR.save()
         
-        if answer == Qanswer:
+        if answer.strip() == Qanswer.strip():
             result = 'Correct!'
         else:
             result = 'Incorrect!'
-    return render(request, 'TakingQuizv2.html', {'next': next, 'quizID': quizID, 'questionID': questionID, 'questionNumber': questionNumber, 'Qcontent': Qcontent, 'Qequation': Qequation, 'Qanswer': Qanswer, 'result': result, 'nextLink': nextLink, 'answer': answer })
+    return render(request, 'TakingQuizv2.html', {'solution': solution, 'next': next, 'quizID': quizID, 'questionID': questionID, 'questionNumber': questionNumber, 'Qcontent': Qcontent, 'Qequation': Qequation, 'exampleAnswer': exampleAnswer, 'result': result, 'nextLink': nextLink, 'answer': answer })
 
 
 def TeacherClasses(request):
@@ -184,12 +196,10 @@ def Quizhistory(request):
     
     if '=' in Qequation:
         Graph.plotForEquation(Qequation)
-    elif '*' in Qequation:
-        Graph.plotForCombinedCal(Qequation)
     else:
-        Graph.plotForNums([Qequation])
+        Graph.plotForCombinedCal(Qequation)
     picturePath='/static/draw/img1.png'
-    return render(request, 'quizHistoryv1.html', {'questionNumber': questionNumber, 'next': next, 'nextLink': nextLink, 'Qcontent': Qcontent, 'Qequation': Qequation, 'Qanswer': Qanswer, 'CRanswer': CRanswer, 'quizID': quizID, 'questionID': questionID, 'nextQuestionID': nextQuestionID, 'picturePath': picturePath})
+    return render(request, 'quizHistoryv2.html', {'questionNumber': questionNumber, 'next': next, 'nextLink': nextLink, 'Qcontent': Qcontent, 'Qequation': Qequation, 'Qanswer': Qanswer, 'CRanswer': CRanswer, 'quizID': quizID, 'questionID': questionID, 'nextQuestionID': nextQuestionID, 'picturePath': picturePath})
 
 
 def Register(request):
@@ -220,22 +230,30 @@ def Register(request):
 
 
 def QuizList(request):
-    
-    isAttempt=[]
-    statuses=[]
-    for i in range(1, 5):
-        PL = PaperList.objects.get(id=i)
-        isAttempt.append(PL.is_allow)
-    statusRel = {False: 'Not Answered', True: 'Answered'}
-    for attempt in isAttempt:
-        statuses.append(statusRel[attempt])
-    status = ''
+   
+    quizlist = PaperList.objects.all()
+    questionID = []
 
-    return render(request, 'QuizList.html', {'quiz_1_status': statuses[0], 'quiz_2_status': statuses[1], 'quiz_3_status': statuses[2], 'quiz_4_status': statuses[3]})
+    return render(request, 'QuizList1.html', {'quizlist': quizlist})
 
 
 def teacherQuizList(request):
-    newQuizID = request.GET.get('newQuizID')
+    if request.GET.get('new') == 'true':
+        newID = request.GET.get('newQuizID')
+        G = Groups.objects.get(id=1)
+        PL = PaperList(newID)
+        PL.groupNum = G
+        PL.is_allow = 0
+        PL.is_attempted = 'Not Answered'
+        PL.save()
+        PL.startQuestionID = (PL.id-1) * 5 + 1
+        PL.save()
+    quizlist = PaperList.objects.all()
+    newQuizID = len(quizlist) + 1
+    '''
+       newQuizID = request.GET.get('newQuizID')
     if newQuizID != None:
         PaperList.objects.get(id=newQuizID).is_allow = 0
-    return render(request, 'TeacherQuizList.html')
+    '''
+ 
+    return render(request, 'TeacherQuizList.html', {'quizlist': quizlist, 'newQuizID': newQuizID})

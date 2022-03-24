@@ -157,10 +157,18 @@
           </div>
         </div>
 
-        <span class="quiz-list-text04"><a href='/takingquiz/?quizID=1&id=1'>Quiz 1</a></span>
-        <span class="quiz-list-text08"><a href='/quizhistory/?quizID=1&id=1'>{{quiz_1_status}}</a></span>
-  
-        
+        <table height='270px' class="quiz-list-text04">
+          {% for quiz in quizlist %}
+          
+          <tr>
+            <td width='510px'><a href='/takingquiz/?quizID={{quiz.id}}&id={{quiz.startQuestionID}}'>Quiz {{quiz.id}}</a></td>
+            <td><a href='/quizhistory/?quizID={{quiz.id}}&id={{quiz.startQuestionID}}'>{{quiz.is_attempted}}</a></td>
+          </tr>
+          {% endfor %}
+        </table>
+
+       
+        <!--
         <span class="quiz-list-text05"><a href='/takingquiz/?quizID=2&id=6'>Quiz 2</a></span>
         <span class="quiz-list-text11"><a href='/quizhistory/?quizID=2&id=6'>{{quiz_2_status}}</a></span>
 
@@ -171,7 +179,7 @@
 
         <span class="quiz-list-text07"><a href='/takingquiz/?quizID=4&id=16'>Quiz 4</a></span>
         <span class="quiz-list-text10"><a href='/quizhistory/?quizID=4&id=16'>{{quiz_4_status}}</a></span>
-        
+        -->
       </div>
     </div>
 

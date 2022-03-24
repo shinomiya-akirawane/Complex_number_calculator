@@ -178,56 +178,75 @@
               </nav>
             </div>
           </div>
-          <a href='/newQuiz/?quizID=1&id=1'>
+          <a href='/teacherquizlist/?new=true&newQuizID={{newQuizID}}'>
             <button class="teacher-quiz-list-primary-btn1 button-primary button">
               <span class="teacher-quiz-list-text1">New</span>
             </button>
           </a>
           
         </div>
-        <a href=/newQuiz/?quizID=1&id=1>
+        <table class='teacher-quiz-list-text2' height='100px'>
+          <tr>
+            {% for quiz in quizlist%}
+            <td width='150px'>
+              <a href=/newQuiz/?quizID={{quiz.id}}&id={{quiz.startQuestionID}}>
+                <img
+                alt="image"
+                src="/static/img/teacherquizlist-icon.png"
+                width='85px';
+                height='75px';
+              />
+              </a>
+              <a href=/newQuiz/?quizID={{quiz.id}}&id={{quiz.startQuestionID}}>
+                <span>Quiz {{quiz.id}}</span>
+              </a>
+              <!--
+                <br><br>
+                <a href=/teacherquizlist/?deleteID={{quiz.id}}>
+                  Delete
+                </a>
+              -->
+            </td>
+            {% endfor %}
+          </tr>
+        </table>
+        <!--
+          <span class="teacher-quiz-list-text2">Quiz 1</span>
+        
+          <a href=/newQuiz/?quizID=2&id=6>
           <img
-          alt="image"
-          src="/static/img/teacherquizlist-icon.png"
-          class="teacher-quiz-list-image3"
-        />
-        </a>
-        <a href=/newQuiz/?quizID=1&id=1>
-        <span class="teacher-quiz-list-text2">Quiz 1</span>
-        </a>
+            alt="image"
+            src="/static/img/teacherquizlist-icon.png"
+            class="teacher-quiz-list-image4"
+          />
+          </a>
+          <a href=/newQuiz/?quizID=2&id=6>
+          <span class="teacher-quiz-list-text3">Quiz 2</span>
+          </a>
+  
+          <a href=/newQuiz/?quizID=3&id=11>
+          <img
+            alt="image"
+            src="/static/img/teacherquizlist-icon.png"
+            class="teacher-quiz-list-image5"
+          />
+          </a>
+          <a href=/newQuiz/?quizID=3&id=11>
+            <span class="teacher-quiz-list-text4">Quiz 3</span>
+          </a>
+          
+          <a href=/newQuiz/?quizID=4&id=16>
+          <img
+            alt="image"
+            src="/static/img/teacherquizlist-icon.png"
+            class="teacher-quiz-list-image6"
+          />
+          </a>
+          <a href=/newQuiz/?quizID=4&id=16>
+            <span class="teacher-quiz-list-text5">Quiz 4</span>
+          </a>
+        -->
         
-        <a href=/newQuiz/?quizID=2&id=6>
-        <img
-          alt="image"
-          src="/static/img/teacherquizlist-icon.png"
-          class="teacher-quiz-list-image4"
-        />
-        </a>
-        <a href=/newQuiz/?quizID=2&id=6>
-        <span class="teacher-quiz-list-text3">Quiz 2</span>
-        </a>
-
-        <a href=/newQuiz/?quizID=3&id=11>
-        <img
-          alt="image"
-          src="/static/img/teacherquizlist-icon.png"
-          class="teacher-quiz-list-image5"
-        />
-        </a>
-        <a href=/newQuiz/?quizID=3&id=11>
-          <span class="teacher-quiz-list-text4">Quiz 3</span>
-        </a>
-        
-        <a href=/newQuiz/?quizID=4&id=16>
-        <img
-          alt="image"
-          src="/static/img/teacherquizlist-icon.png"
-          class="teacher-quiz-list-image6"
-        />
-        </a>
-        <a href=/newQuiz/?quizID=4&id=16>
-          <span class="teacher-quiz-list-text5">Quiz 4</span>
-        </a>
         
       </div>
     </div>

@@ -62,6 +62,9 @@ class PaperList(models.Model):
     name = models.CharField(max_length=50, verbose_name=u"papername", default=u"")
     is_allow = models.BooleanField(default=False, verbose_name=u"if_tested")
     groupNum = models.ForeignKey('Groups', related_name = 'paper_Group', on_delete=models.CASCADE)
+    is_attempted = models.CharField(max_length = 32, verbose_name = u"paperstatus", default = u"")
+    startQuestionID = models.CharField(max_length = 32, default='')
+
 
     class Meta:
         verbose_name = u"PaperList"
@@ -72,7 +75,8 @@ class PaperList(models.Model):
 
 class Paper(models.Model):
     id = models.AutoField(primary_key=True)
-    question = models.ForeignKey(Question, verbose_name=u"Question",on_delete=models.CASCADE)
+    question =     question = models.ForeignKey(Question, verbose_name=u"Question",on_delete=models.CASCADE)
+
     PaperListID = models.ForeignKey(PaperList, verbose_name=u"PaperName",on_delete=models.CASCADE)
 
     class Meta:
